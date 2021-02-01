@@ -7,13 +7,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: XJJBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.initUI()
         // Do any additional setup after loading the view.
     }
 
+    private func initUI() {
+        XJJCheck.checkFont("Kaiti", perfectMatch: false)
+        self.page = .first
+    }
 
 }
 

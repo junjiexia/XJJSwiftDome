@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		F969619025C7FEEB00CE461B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969618F25C7FEEB00CE461B /* AppDelegate.swift */; };
-		F969619225C7FEEB00CE461B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969619125C7FEEB00CE461B /* SceneDelegate.swift */; };
 		F969619425C7FEEB00CE461B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969619325C7FEEB00CE461B /* ViewController.swift */; };
-		F969619725C7FEEC00CE461B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F969619525C7FEEC00CE461B /* Main.storyboard */; };
 		F969619925C7FEF400CE461B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F969619825C7FEF400CE461B /* Assets.xcassets */; };
 		F969619C25C7FEF400CE461B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F969619A25C7FEF400CE461B /* LaunchScreen.storyboard */; };
 		F96961A725C7FEF400CE461B /* XJJSwiftDomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961A625C7FEF400CE461B /* XJJSwiftDomeTests.swift */; };
 		F96961B225C7FEF400CE461B /* XJJSwiftDomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961B125C7FEF400CE461B /* XJJSwiftDomeUITests.swift */; };
+		F96961CC25C8003C00CE461B /* XJJConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961CB25C8003C00CE461B /* XJJConfig.swift */; };
+		F96961DF25C8004400CE461B /* XJJTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961D125C8004400CE461B /* XJJTheme.swift */; };
+		F96961E025C8004400CE461B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961D525C8004400CE461B /* String+Extension.swift */; };
+		F96961E125C8004400CE461B /* XJJBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961D925C8004400CE461B /* XJJBaseViewController.swift */; };
+		F96961E225C8004400CE461B /* XJJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961DA25C8004400CE461B /* XJJNavigationController.swift */; };
+		F96961E325C8004400CE461B /* XJJCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961DC25C8004400CE461B /* XJJCheck.swift */; };
+		F96961E425C8004400CE461B /* XJJText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961DD25C8004400CE461B /* XJJText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +42,7 @@
 /* Begin PBXFileReference section */
 		F969618C25C7FEEB00CE461B /* XJJSwiftDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XJJSwiftDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F969618F25C7FEEB00CE461B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F969619125C7FEEB00CE461B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F969619325C7FEEB00CE461B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F969619625C7FEEC00CE461B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F969619825C7FEF400CE461B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F969619B25C7FEF400CE461B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F969619D25C7FEF400CE461B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +52,13 @@
 		F96961AD25C7FEF400CE461B /* XJJSwiftDomeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XJJSwiftDomeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96961B125C7FEF400CE461B /* XJJSwiftDomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJSwiftDomeUITests.swift; sourceTree = "<group>"; };
 		F96961B325C7FEF400CE461B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F96961CB25C8003C00CE461B /* XJJConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJConfig.swift; sourceTree = "<group>"; };
+		F96961D125C8004400CE461B /* XJJTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJTheme.swift; sourceTree = "<group>"; };
+		F96961D525C8004400CE461B /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		F96961D925C8004400CE461B /* XJJBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJBaseViewController.swift; sourceTree = "<group>"; };
+		F96961DA25C8004400CE461B /* XJJNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJNavigationController.swift; sourceTree = "<group>"; };
+		F96961DC25C8004400CE461B /* XJJCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJCheck.swift; sourceTree = "<group>"; };
+		F96961DD25C8004400CE461B /* XJJText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +109,10 @@
 		F969618E25C7FEEB00CE461B /* XJJSwiftDome */ = {
 			isa = PBXGroup;
 			children = (
+				F96961D025C8004400CE461B /* Resource */,
 				F969618F25C7FEEB00CE461B /* AppDelegate.swift */,
-				F969619125C7FEEB00CE461B /* SceneDelegate.swift */,
 				F969619325C7FEEB00CE461B /* ViewController.swift */,
-				F969619525C7FEEC00CE461B /* Main.storyboard */,
+				F96961CB25C8003C00CE461B /* XJJConfig.swift */,
 				F969619825C7FEF400CE461B /* Assets.xcassets */,
 				F969619A25C7FEF400CE461B /* LaunchScreen.storyboard */,
 				F969619D25C7FEF400CE461B /* Info.plist */,
@@ -126,6 +136,83 @@
 				F96961B325C7FEF400CE461B /* Info.plist */,
 			);
 			path = XJJSwiftDomeUITests;
+			sourceTree = "<group>";
+		};
+		F96961D025C8004400CE461B /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F96961D125C8004400CE461B /* XJJTheme.swift */,
+				F96961D225C8004400CE461B /* Extension */,
+				F96961D625C8004400CE461B /* Fonts */,
+				F96961D725C8004400CE461B /* custom */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F96961D225C8004400CE461B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F96961D325C8004400CE461B /* UI */,
+				F96961D425C8004400CE461B /* BDC */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		F96961D325C8004400CE461B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F96961D425C8004400CE461B /* BDC */ = {
+			isa = PBXGroup;
+			children = (
+				F96961D525C8004400CE461B /* String+Extension.swift */,
+			);
+			path = BDC;
+			sourceTree = "<group>";
+		};
+		F96961D625C8004400CE461B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F96961D725C8004400CE461B /* custom */ = {
+			isa = PBXGroup;
+			children = (
+				F96961D825C8004400CE461B /* Controller */,
+				F96961DB25C8004400CE461B /* Model */,
+				F96961DE25C8004400CE461B /* View */,
+			);
+			path = custom;
+			sourceTree = "<group>";
+		};
+		F96961D825C8004400CE461B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F96961D925C8004400CE461B /* XJJBaseViewController.swift */,
+				F96961DA25C8004400CE461B /* XJJNavigationController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F96961DB25C8004400CE461B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F96961DC25C8004400CE461B /* XJJCheck.swift */,
+				F96961DD25C8004400CE461B /* XJJText.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F96961DE25C8004400CE461B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +320,6 @@
 			files = (
 				F969619C25C7FEF400CE461B /* LaunchScreen.storyboard in Resources */,
 				F969619925C7FEF400CE461B /* Assets.xcassets in Resources */,
-				F969619725C7FEEC00CE461B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +344,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96961E125C8004400CE461B /* XJJBaseViewController.swift in Sources */,
+				F96961E225C8004400CE461B /* XJJNavigationController.swift in Sources */,
+				F96961DF25C8004400CE461B /* XJJTheme.swift in Sources */,
+				F96961E325C8004400CE461B /* XJJCheck.swift in Sources */,
+				F96961E425C8004400CE461B /* XJJText.swift in Sources */,
 				F969619425C7FEEB00CE461B /* ViewController.swift in Sources */,
+				F96961CC25C8003C00CE461B /* XJJConfig.swift in Sources */,
+				F96961E025C8004400CE461B /* String+Extension.swift in Sources */,
 				F969619025C7FEEB00CE461B /* AppDelegate.swift in Sources */,
-				F969619225C7FEEB00CE461B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +388,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F969619525C7FEEC00CE461B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F969619625C7FEEC00CE461B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F969619A25C7FEF400CE461B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -446,7 +530,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = junjieXia.XJJSwiftDome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -465,7 +549,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = junjieXia.XJJSwiftDome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
