@@ -18,6 +18,12 @@ class ViewController: XJJBaseViewController {
     private func initUI() {
         XJJCheck.checkFont("JSuHunTi", perfectMatch: false)
         self.page = .first
+        self.addRightTextItem("测试")
+    }
+    
+    override func rightItemAction(_ item: UIBarButtonItem) {
+        let vc = TestViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }

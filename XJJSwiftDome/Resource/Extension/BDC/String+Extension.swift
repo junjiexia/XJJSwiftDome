@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     func sub(_ start: Int, _ count: Int) -> String {
@@ -25,5 +26,32 @@ extension String {
         }
         
         return result
+    }
+}
+
+extension String {
+    func getSize(_ font: UIFont) -> CGSize {
+        let rect = NSString(string: self).boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+        return rect.size
+    }
+    
+    func getHeight(_ font: UIFont, _ width: CGFloat) -> CGFloat {
+        let rect = NSString(string: self).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+        return ceil(rect.height)
+    }
+    
+    func getHeight(_ font: UIFont, _ width: CGFloat, _ maxHeight: CGFloat) -> CGFloat {
+        let rect = NSString(string: self).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+        return ceil(rect.height) > maxHeight ? maxHeight : ceil(rect.height)
+    }
+    
+    func getWidth(_ font: UIFont, _ height: CGFloat) -> CGFloat {
+        let rect = NSString(string: self).boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: height), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+        return ceil(rect.width)
+    }
+    
+    func getWidth(_ font: UIFont, _ height: CGFloat, _ maxWidth: CGFloat) -> CGFloat {
+        let rect = NSString(string: self).boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: height), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+        return ceil(rect.width) > maxWidth ? maxWidth : ceil(rect.width)
     }
 }

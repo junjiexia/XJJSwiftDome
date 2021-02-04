@@ -11,45 +11,7 @@ class XJJNavigationController: UINavigationController {
     
     var customPop: Bool = false // 是否自定义跳转，是 -- 点击返回按钮，不会pop到上个页面，需要自行跳转
     weak var eDelegate:  XJJNavigationDelegate? // 代理没有多余限制，用 block 需要建立 block 集合进行管理
-    
-    func setAttrTitle(_ text: String, controller: XJJBaseViewController? = nil) {
-        if let ntext = XJJThemeConfig.config.theme.nav_text {
-            self.textType = ntext.type
-            switch ntext.type {
-            case .text:
-                controller?.navigationItem.title = text
-                self.cLabel.attributedText = nil
-            case .range:
-                controller?.navigationItem.title = ""
-                XJJThemeConfig.config.theme.nav_text?.text = text
-                self.cLabel.attributedText = XJJThemeConfig.config.theme.nav_text?.rangeAttr
-            case .designated:
-                controller?.navigationItem.title = ""
-                XJJThemeConfig.config.theme.nav_text?.text = text
-                self.cLabel.attributedText = XJJThemeConfig.config.theme.nav_text?.designatedAttr
-            }
-        }
-    }
-    
-    func setupTheme() {
-        if let text = XJJThemeConfig.config.theme.nav_text {
-            self.textType = text.type
-            switch text.type {
-            case .text:
-                self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : text.color, NSAttributedString.Key.font : text.font]
-            default:
-                break
-            }
-        }
-        if let image = XJJThemeConfig.config.theme.nav_image {
-            self.navigationBar.setBackgroundImage(image, for: .any, barMetrics: .default)
-        }
-        if let color = XJJThemeConfig.config.theme.nav_color {
-            self.navigationBar.barTintColor = color
-        }
-        self.returnItem = XJJThemeConfig.config.theme.nav_return
-    }
-
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI()
@@ -71,19 +33,29 @@ class XJJNavigationController: UINavigationController {
     }
     
     private var returnItem: XJJPageImageModel? // 返回图片
-    private var textType: XJJText.TType = .text // 标题文字类型
-    
-    private var cLabel: UILabel!
-    
+        
     private func initUI() {
         self.modalPresentationStyle = .fullScreen
         self.navigationBar.isTranslucent = false
         self.setupTheme()
-        
-        let w_merge: CGFloat = self.navigationBar.bounds.width * 1 / 5
-        self.cLabel = UILabel(frame: CGRect(x: w_merge, y: 0, width: w_merge * 3, height: self.navigationBar.bounds.height))
-        self.cLabel.textAlignment = .center
-        self.navigationBar.addSubview(cLabel)
+    }
+    
+    private func setupTheme() {
+        if let text = XJJThemeConfig.config.theme.nav_title {
+            switch text.type {
+            case .text:
+                self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : text.color, NSAttributedString.Key.font : text.font]
+            default:
+                break
+            }
+        }
+        if let image = XJJThemeConfig.config.theme.nav_image {
+            self.navigationBar.setBackgroundImage(image, for: .any, barMetrics: .default)
+        }
+        if let color = XJJThemeConfig.config.theme.nav_color {
+            self.navigationBar.barTintColor = color
+        }
+        self.returnItem = XJJThemeConfig.config.theme.nav_return
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
