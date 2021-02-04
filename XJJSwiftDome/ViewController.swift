@@ -16,7 +16,7 @@ class ViewController: XJJBaseViewController {
     }
 
     private func initUI() {
-        XJJCheck.checkFont("Kaiti", perfectMatch: false)
+        XJJCheck.checkFont("JSuHunTi", perfectMatch: false)
         self.page = .first
     }
 

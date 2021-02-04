@@ -62,7 +62,7 @@ final class XJJThemeConfig {
     var theme: XJJTheme = XJJTheme()
     
     init() {
-        self.theme.nav_text = XJJText(rangeType: [XJJText.TRange(index: 0, count: 1, color: UIColor.red, font: UIFont(name: "STKaiti", size: 20)!), XJJText.TRange(index: 1, count: 1, color: UIColor.blue, font: UIFont(name: "STKaiti", size: 20)!)])
+        self.theme.nav_text = XJJText(rangeType: [XJJText.TRange(index: 0, count: 1, color: UIColor.red, font: UIFont(name: "JSuHunTi", size: 20)!), XJJText.TRange(index: 1, count: 1, color: UIColor.blue, font: UIFont(name: "JSuHunTi", size: 20)!)])
         self.theme.nav_image = nil
         self.theme.nav_color = nil
         self.theme.nav_return = nil
@@ -70,7 +70,7 @@ final class XJJThemeConfig {
         self.theme.bar_color = nil
         self.theme.bar_image = nil
         self.theme.page_text =  [
-            XJJPageText.text: XJJText(type: nil, font: UIFont(name: "STKaiti", size: 15))
+            XJJPageText.text: XJJText(type: nil, font: nil)
         ]
         self.theme.page_image = [
             XJJPage.first: []
