@@ -62,7 +62,7 @@ final class XJJThemeConfig {
     var theme: XJJTheme = XJJTheme()
     
     init() {
-        self.theme.nav_text = XJJText(rangeType: [XJJText.TRange(index: 0, count: 1, color: UIColor.red, font: UIFont(name: "JSuHunTi", size: 20)!), XJJText.TRange(index: 1, count: 1, color: UIColor.blue, font: UIFont(name: "JSuHunTi", size: 20)!)])
+        self.theme.nav_text = XJJText(rangeType: [XJJText.TRange(index: 0, count: 1, color: UIColor.red, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!), XJJText.TRange(index: 1, count: 1, color: UIColor.blue, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!)])
         self.theme.nav_image = nil
         self.theme.nav_color = nil
         self.theme.nav_return = nil

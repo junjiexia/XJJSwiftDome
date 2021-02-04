@@ -4,6 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>汉仪秦川飞影体.ttf</string>
 		<string>迷你简书魏.ttf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>

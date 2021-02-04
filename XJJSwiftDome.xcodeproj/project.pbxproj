@@ -21,6 +21,8 @@
 		F96961E325C8004400CE461B /* XJJCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961DC25C8004400CE461B /* XJJCheck.swift */; };
 		F96961E425C8004400CE461B /* XJJText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961DD25C8004400CE461B /* XJJText.swift */; };
 		F9E8B8A625CBC421002E2664 /* 迷你简书魏.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9E8B8A525CBC421002E2664 /* 迷你简书魏.ttf */; };
+		F9E8B8AB25CBCFCC002E2664 /* 汉仪秦川飞影体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9E8B8AA25CBCFCC002E2664 /* 汉仪秦川飞影体.ttf */; };
+		F9E8B8B825CBD1E3002E2664 /* 字体说明 in Resources */ = {isa = PBXBuildFile; fileRef = F9E8B8B725CBD1E3002E2664 /* 字体说明 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		F96961DC25C8004400CE461B /* XJJCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJCheck.swift; sourceTree = "<group>"; };
 		F96961DD25C8004400CE461B /* XJJText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJText.swift; sourceTree = "<group>"; };
 		F9E8B8A525CBC421002E2664 /* 迷你简书魏.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "迷你简书魏.ttf"; sourceTree = "<group>"; };
+		F9E8B8AA25CBCFCC002E2664 /* 汉仪秦川飞影体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "汉仪秦川飞影体.ttf"; sourceTree = "<group>"; };
+		F9E8B8B725CBD1E3002E2664 /* 字体说明 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "字体说明"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				F9E8B8A525CBC421002E2664 /* 迷你简书魏.ttf */,
+				F9E8B8AA25CBCFCC002E2664 /* 汉仪秦川飞影体.ttf */,
+				F9E8B8B725CBD1E3002E2664 /* 字体说明 */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -324,6 +330,8 @@
 				F969619C25C7FEF400CE461B /* LaunchScreen.storyboard in Resources */,
 				F9E8B8A625CBC421002E2664 /* 迷你简书魏.ttf in Resources */,
 				F969619925C7FEF400CE461B /* Assets.xcassets in Resources */,
+				F9E8B8AB25CBCFCC002E2664 /* 汉仪秦川飞影体.ttf in Resources */,
+				F9E8B8B825CBD1E3002E2664 /* 字体说明 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
