@@ -39,6 +39,20 @@ class XJJBaseViewController: UIViewController {
         self.initUI()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.setupSubviewsLayout()
+    }
+    
+    func setupSubviewsLayout() {
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBackground()
+    }
         
     private var pageItem: XJJPageModel? // 当前页面主题模型
     private var navText: XJJText? // 当前页面导航其他文字格式
@@ -58,16 +72,22 @@ class XJJBaseViewController: UIViewController {
         }else {
             self.navText = XJJThemeConfig.config.theme.nav_text
         }
-        self.setAttrTitle(page.rawValue, pageItem: pageItem)
+        self.setAttrTitle(page.rawValue)
     }
     
-    func setAttrTitle(_ text: String, pageItem: XJJPageModel? = nil) {
-        if let navT = pageItem?.nav_title { // 特定文字格式
+    private func setAttrTitle(_ text: String) {
+        if let navT = self.pageItem?.nav_title { // 特定文字格式
             self.titleView.text = navT
         }else {
             XJJThemeConfig.config.theme.nav_title?.text = text
             self.titleView.text = XJJThemeConfig.config.theme.nav_title
         }
+    }
+    
+    private func setNavigationBackground() {
+        guard let nItem = self.pageItem else {return}
+        self.navigationController?.navigationBar.barTintColor = nItem.nav_color
+        self.navigationController?.navigationBar.setBackgroundImage(nItem.nav_image, for: .any, barMetrics: .default)
     }
     
     

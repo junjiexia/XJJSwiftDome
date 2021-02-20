@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F92DDB3C25CD2D0C00B390FE /* XJJTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB3B25CD2D0C00B390FE /* XJJTabBarController.swift */; };
+		F92DDB4125CD2EC400B390FE /* XJJTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB4025CD2EC400B390FE /* XJJTimer.swift */; };
+		F92DDB4825CD34C200B390FE /* XJJTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB4725CD34C200B390FE /* XJJTimerViewController.swift */; };
+		F92DDB5025CD391800B390FE /* XJJMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB4F25CD391800B390FE /* XJJMainViewController.swift */; };
+		F92DDB5A25CD40CB00B390FE /* XJJNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB5925CD40CB00B390FE /* XJJNewsViewController.swift */; };
+		F92DDB5F25CD40EF00B390FE /* XJJMyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB5E25CD40EF00B390FE /* XJJMyViewController.swift */; };
+		F92DDB6425CD48F300B390FE /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB6325CD48F300B390FE /* UILabel+Extension.swift */; };
 		F969619025C7FEEB00CE461B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969618F25C7FEEB00CE461B /* AppDelegate.swift */; };
 		F969619425C7FEEB00CE461B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969619325C7FEEB00CE461B /* ViewController.swift */; };
 		F969619925C7FEF400CE461B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F969619825C7FEF400CE461B /* Assets.xcassets */; };
@@ -20,6 +27,9 @@
 		F96961E225C8004400CE461B /* XJJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961DA25C8004400CE461B /* XJJNavigationController.swift */; };
 		F96961E325C8004400CE461B /* XJJCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961DC25C8004400CE461B /* XJJCheck.swift */; };
 		F96961E425C8004400CE461B /* XJJText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961DD25C8004400CE461B /* XJJText.swift */; };
+		F98950C925E0A57E00538A29 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98950C825E0A57E00538A29 /* UITableView+Extension.swift */; };
+		F98950CE25E0A59900538A29 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98950CD25E0A59900538A29 /* UIScrollView+Extension.swift */; };
+		F98950D325E0BD6000538A29 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98950D225E0BD6000538A29 /* UIDevice+Extension.swift */; };
 		F9E8B8A625CBC421002E2664 /* 迷你简书魏.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9E8B8A525CBC421002E2664 /* 迷你简书魏.ttf */; };
 		F9E8B8AB25CBCFCC002E2664 /* 汉仪秦川飞影体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9E8B8AA25CBCFCC002E2664 /* 汉仪秦川飞影体.ttf */; };
 		F9E8B8B825CBD1E3002E2664 /* 字体说明 in Resources */ = {isa = PBXBuildFile; fileRef = F9E8B8B725CBD1E3002E2664 /* 字体说明 */; };
@@ -46,6 +56,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F92DDB3B25CD2D0C00B390FE /* XJJTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTabBarController.swift; sourceTree = "<group>"; };
+		F92DDB4025CD2EC400B390FE /* XJJTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTimer.swift; sourceTree = "<group>"; };
+		F92DDB4725CD34C200B390FE /* XJJTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTimerViewController.swift; sourceTree = "<group>"; };
+		F92DDB4F25CD391800B390FE /* XJJMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJMainViewController.swift; sourceTree = "<group>"; };
+		F92DDB5925CD40CB00B390FE /* XJJNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsViewController.swift; sourceTree = "<group>"; };
+		F92DDB5E25CD40EF00B390FE /* XJJMyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJMyViewController.swift; sourceTree = "<group>"; };
+		F92DDB6325CD48F300B390FE /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		F969618C25C7FEEB00CE461B /* XJJSwiftDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XJJSwiftDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F969618F25C7FEEB00CE461B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F969619325C7FEEB00CE461B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +82,9 @@
 		F96961DA25C8004400CE461B /* XJJNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJNavigationController.swift; sourceTree = "<group>"; };
 		F96961DC25C8004400CE461B /* XJJCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJCheck.swift; sourceTree = "<group>"; };
 		F96961DD25C8004400CE461B /* XJJText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJText.swift; sourceTree = "<group>"; };
+		F98950C825E0A57E00538A29 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		F98950CD25E0A59900538A29 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
+		F98950D225E0BD6000538A29 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		F9E8B8A525CBC421002E2664 /* 迷你简书魏.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "迷你简书魏.ttf"; sourceTree = "<group>"; };
 		F9E8B8AA25CBCFCC002E2664 /* 汉仪秦川飞影体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "汉仪秦川飞影体.ttf"; sourceTree = "<group>"; };
 		F9E8B8B725CBD1E3002E2664 /* 字体说明 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "字体说明"; sourceTree = "<group>"; };
@@ -98,6 +118,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F92DDB4525CD346C00B390FE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F92DDB4F25CD391800B390FE /* XJJMainViewController.swift */,
+				F92DDB5425CD406F00B390FE /* News */,
+				F92DDB4625CD348B00B390FE /* Timer */,
+				F92DDB5525CD408200B390FE /* My */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F92DDB4625CD348B00B390FE /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				F92DDB4725CD34C200B390FE /* XJJTimerViewController.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		F92DDB5425CD406F00B390FE /* News */ = {
+			isa = PBXGroup;
+			children = (
+				F92DDB5925CD40CB00B390FE /* XJJNewsViewController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		F92DDB5525CD408200B390FE /* My */ = {
+			isa = PBXGroup;
+			children = (
+				F92DDB5E25CD40EF00B390FE /* XJJMyViewController.swift */,
+				F9E8B8BC25CBE859002E2664 /* TestViewController.swift */,
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
 		F969618325C7FEEB00CE461B = {
 			isa = PBXGroup;
 			children = (
@@ -124,8 +180,8 @@
 				F96961D025C8004400CE461B /* Resource */,
 				F969618F25C7FEEB00CE461B /* AppDelegate.swift */,
 				F969619325C7FEEB00CE461B /* ViewController.swift */,
-				F9E8B8BC25CBE859002E2664 /* TestViewController.swift */,
 				F96961CB25C8003C00CE461B /* XJJConfig.swift */,
+				F92DDB4525CD346C00B390FE /* Main */,
 				F969619825C7FEF400CE461B /* Assets.xcassets */,
 				F969619A25C7FEF400CE461B /* LaunchScreen.storyboard */,
 				F969619D25C7FEF400CE461B /* Info.plist */,
@@ -175,6 +231,10 @@
 			isa = PBXGroup;
 			children = (
 				F9E8B8C625CBF752002E2664 /* UIView+Extension.swift */,
+				F92DDB6325CD48F300B390FE /* UILabel+Extension.swift */,
+				F98950C825E0A57E00538A29 /* UITableView+Extension.swift */,
+				F98950CD25E0A59900538A29 /* UIScrollView+Extension.swift */,
+				F98950D225E0BD6000538A29 /* UIDevice+Extension.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -212,6 +272,7 @@
 			children = (
 				F96961D925C8004400CE461B /* XJJBaseViewController.swift */,
 				F96961DA25C8004400CE461B /* XJJNavigationController.swift */,
+				F92DDB3B25CD2D0C00B390FE /* XJJTabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -221,6 +282,7 @@
 			children = (
 				F96961DC25C8004400CE461B /* XJJCheck.swift */,
 				F96961DD25C8004400CE461B /* XJJText.swift */,
+				F92DDB4025CD2EC400B390FE /* XJJTimer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -367,16 +429,26 @@
 			files = (
 				F9E8B8BD25CBE859002E2664 /* TestViewController.swift in Sources */,
 				F96961E125C8004400CE461B /* XJJBaseViewController.swift in Sources */,
+				F92DDB5A25CD40CB00B390FE /* XJJNewsViewController.swift in Sources */,
+				F98950D325E0BD6000538A29 /* UIDevice+Extension.swift in Sources */,
 				F96961E225C8004400CE461B /* XJJNavigationController.swift in Sources */,
 				F96961DF25C8004400CE461B /* XJJTheme.swift in Sources */,
 				F96961E325C8004400CE461B /* XJJCheck.swift in Sources */,
 				F96961E425C8004400CE461B /* XJJText.swift in Sources */,
+				F98950CE25E0A59900538A29 /* UIScrollView+Extension.swift in Sources */,
+				F98950C925E0A57E00538A29 /* UITableView+Extension.swift in Sources */,
+				F92DDB5025CD391800B390FE /* XJJMainViewController.swift in Sources */,
+				F92DDB6425CD48F300B390FE /* UILabel+Extension.swift in Sources */,
 				F9E8B8C725CBF752002E2664 /* UIView+Extension.swift in Sources */,
 				F9E8B8C225CBEDE0002E2664 /* XJJNavigationTitleView.swift in Sources */,
 				F969619425C7FEEB00CE461B /* ViewController.swift in Sources */,
+				F92DDB3C25CD2D0C00B390FE /* XJJTabBarController.swift in Sources */,
 				F96961CC25C8003C00CE461B /* XJJConfig.swift in Sources */,
 				F96961E025C8004400CE461B /* String+Extension.swift in Sources */,
+				F92DDB4125CD2EC400B390FE /* XJJTimer.swift in Sources */,
+				F92DDB5F25CD40EF00B390FE /* XJJMyViewController.swift in Sources */,
 				F969619025C7FEEB00CE461B /* AppDelegate.swift in Sources */,
+				F92DDB4825CD34C200B390FE /* XJJTimerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

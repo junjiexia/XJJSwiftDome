@@ -125,13 +125,9 @@ extension UIView {
     
     // 当前视图的控制器
     func viewController() -> UIViewController? {
-        
-        for view in sequence(first: self.superview, next: {$0?.superview}){
-            
-            if let responder = view?.next{
-                
-                if responder.isKind(of: UIViewController.self){
-                    
+        for view in sequence(first: self.superview, next: {$0?.superview}) {
+            if let responder = view?.next {
+                if responder.isKind(of: UIViewController.self) {
                     return responder as? UIViewController
                 }
             }
@@ -141,12 +137,9 @@ extension UIView {
     }
     
     func superScroll() -> UIScrollView? {
-        for view in sequence(first: self.superview, next: {$0?.superview}){
-            
-            if let responder = view?.next{
-                
-                if responder.isKind(of: UIScrollView.self){
-                    
+        for view in sequence(first: self.superview, next: {$0?.superview}) {
+            if let responder = view?.next {
+                if responder.isKind(of: UIScrollView.self) {
                     return responder as? UIScrollView
                 }
             }
@@ -156,12 +149,9 @@ extension UIView {
     }
     
     func superTable() -> UITableView? {
-        for view in sequence(first: self.superview, next: {$0?.superview}){
-            
-            if let responder = view?.next{
-                
-                if responder.isKind(of: UITableView.self){
-                    
+        for view in sequence(first: self.superview, next: {$0?.superview}) {
+            if let responder = view?.next {
+                if responder.isKind(of: UITableView.self) {
                     return responder as? UITableView
                 }
             }

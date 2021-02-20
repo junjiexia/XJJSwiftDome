@@ -60,17 +60,7 @@ class XJJNavigationTitleView: UIView {
     }
     
     private func setupLabel(_ text: XJJText) {
-        switch text.type {
-        case .text:
-            self.titleLabel?.text = text.text
-            self.titleLabel?.attributedText = nil
-        case .range:
-            self.titleLabel?.text = ""
-            self.titleLabel?.attributedText = text.rangeAttr
-        case .designated:
-            self.titleLabel?.text = ""
-            self.titleLabel?.attributedText = text.designatedAttr
-        }
+        self.titleLabel?.setText(text)
     }
     
     private func setSubviewLayout() {

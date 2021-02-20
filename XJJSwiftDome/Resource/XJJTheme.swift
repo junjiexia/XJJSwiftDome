@@ -14,7 +14,10 @@ enum XJJThemeStyle: String { // 主题类型  主题key = 主题名称
 }
 
 enum XJJPage: String { // 页面  页面key = 页面名称
-    case first = "首页"
+    case first = ""
+    case news = "新闻"
+    case timer = "定时器"
+    case my = "我的"
     case test = "我爱你520"
 }
 
@@ -95,11 +98,26 @@ final class XJJThemeConfig {
             :
         ]
         self.theme.page_item = [
-            XJJPage.first: XJJPageModel(nav_image: nil,
+            XJJPage.news: XJJPageModel(nav_image: UIImage(named: "navigation_background"),
                                         nav_color: nil,
-                                        nav_title: XJJText(range: XJJPage.first.rawValue, attrArr: [XJJText.TRange(index: 0, count: 1, color: UIColor.red, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!), XJJText.TRange(index: 1, count: 1, color: UIColor.purple, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!)]),
-                                        nav_text: XJJText(type: UIColor.blue, font: UIFont.systemFont(ofSize: 14)),
-                                        nav_return: nil)
+                                        nav_title: XJJText(range: XJJPage.news.rawValue, attrArr: [XJJText.TRange(index: 0, count: 1, color: UIColor.red, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!), XJJText.TRange(index: 1, count: 1, color: UIColor.orange, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!)]),
+                                        nav_text: XJJText(type: UIColor.white, font: UIFont.systemFont(ofSize: 14)),
+                                        nav_return: nil),
+            XJJPage.timer: XJJPageModel(nav_image: nil,
+                                        nav_color: UIColor.orange,
+                                        nav_title: XJJText(XJJPage.timer.rawValue, color: UIColor.green, font: UIFont.systemFont(ofSize: 14)),
+                                        nav_text: XJJText(type: UIColor.white, font: UIFont.systemFont(ofSize: 14)),
+                                        nav_return: nil),
+            XJJPage.my: XJJPageModel(nav_image: UIImage(named: "navigation_background"),
+                                        nav_color: nil,
+                                        nav_title: XJJText(range: XJJPage.my.rawValue, attrArr: [XJJText.TRange(index: 0, count: 1, color: UIColor.red, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!), XJJText.TRange(index: 1, count: 1, color: UIColor.orange, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!)]),
+                                        nav_text: XJJText(type: UIColor.white, font: UIFont.systemFont(ofSize: 14)),
+                                        nav_return: nil),
+            XJJPage.test: XJJPageModel(nav_image: nil,
+                                       nav_color: UIColor.yellow,
+                                       nav_title: XJJText(designated: XJJPage.test.rawValue, attrArr: [XJJText.TDesignated(designated: "0123456789", color: UIColor.purple, font: UIFont(name: "JSuHunTi", size: 20)!), XJJText.TDesignated(designated: "我你他她", color: UIColor.green, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!), XJJText.TDesignated(designated: "爱", color: UIColor.red, font: UIFont.systemFont(ofSize: 14))]),
+                                       nav_text: nil,
+                                       nav_return: nil)
         ]
     }
 }

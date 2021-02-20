@@ -8,8 +8,14 @@
 import Foundation
 import UIKit
 
-final class XJJConfig {
-    static let config = XJJConfig()
+class XJJConfig {
     
     
+}
+
+class XJJUIConfig {
+    static let nav_h: CGFloat = EDevice.isMoreX() ? 88 : 64
+    static let status_h: CGFloat = EDevice.isMoreX() ? 30 : 20
+    static let tab_h: CGFloat = EDevice.isMoreX() ? 80 : 50
+    static let bottom_h: CGFloat = EDevice.isMoreX() ? 30 : 0
 }
