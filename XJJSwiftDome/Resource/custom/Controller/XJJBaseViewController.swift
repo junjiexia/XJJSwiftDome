@@ -36,13 +36,14 @@ class XJJBaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.initUI()
+        self.initUI() // 在这里设置 frame 时，需要考虑手机安全区域问题，iPhone X 以上 需要减去导航和底部多出来的高度
         // Do any additional setup after loading the view.
     }
     
+    //MARK: - 使用 viewWillLayoutSubviews 或 viewDidLayoutSubviews 方法时，界面慎用自动布局，会造成 viewWillLayoutSubviews 和 viewDidLayoutSubviews 多次调用
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.setupSubviewsLayout()
+        self.setupSubviewsLayout() // 在这里设置 frame 时，不用考虑手机安全区域的问题
     }
     
     func setupSubviewsLayout() {

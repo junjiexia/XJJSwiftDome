@@ -13,6 +13,19 @@ class XJJText {
     var text: String = ""
     var color: UIColor = UIColor.darkText
     var font: UIFont = UIFont.systemFont(ofSize: 15)
+    var alignment: NSTextAlignment = .left
+    
+    var size: CGSize {
+        get {
+            return getTextSize()
+        }
+    }
+    
+    var gradientLayer: CAGradientLayer? {
+        get {
+            return getGradientLayer()
+        }
+    }
     
     // 按照顺序设置多个范围，定义多个不同颜色和字体的文本
     var rangeAttrArr: [TRange] = []
@@ -31,7 +44,7 @@ class XJJText {
     }
     
     // 每个文字，随机颜色和字体显示
-    var randomFactor: TRandom? // 随机因子
+    var randomFactor: TRandom = TRandom() // 随机因子
     var randomAttr: NSAttributedString {
         get {
             return randomAttrForText()
@@ -42,6 +55,8 @@ class XJJText {
             return wholeRandomAttrForText()
         }
     }
+    
+    var totalRange: [TRange] = [] // 完整的分段
     
     enum TType { // 文字类型
         case text // 字符串
@@ -56,12 +71,14 @@ class XJJText {
         var count: Int = 0 // 数量
         var color: UIColor = UIColor.darkText
         var font: UIFont = UIFont.systemFont(ofSize: 15)
+        var alignment: NSTextAlignment = .center
     }
     
     struct TDesignated {
         var designated: String = "" // 目标文字
         var color: UIColor = UIColor.darkText
         var font: UIFont = UIFont.systemFont(ofSize: 15)
+        var alignment: NSTextAlignment = .center
     }
     
     struct TRandom {
@@ -71,14 +88,16 @@ class XJJText {
         var greenColorRange: (Int, Int) = (0, 256) // 绿色最小值，最大值
         var blueColorRange: (Int, Int) = (0, 256) // 蓝色最小值，最大值
         var alphaRange: (CGFloat, CGFloat) = (1, 1) // 透明度最小值，最大值
+        var alignment: NSTextAlignment = .center
     }
     
     init() {}
     
-    init(type color: UIColor?, font: UIFont?) { // 普通文字格式
+    init(type color: UIColor?, font: UIFont?, alignment: NSTextAlignment? = nil) { // 普通文字格式
         self.type = .text
         self.color = color ?? UIColor.darkText
         self.font = font ?? UIFont.systemFont(ofSize: 15)
+        self.alignment = alignment ?? .left
     }
     
     init(rangeType attrArr: [TRange]) {
@@ -101,11 +120,13 @@ class XJJText {
         self.randomFactor = factor
     }
     
-    init(_ text: String, color: UIColor? = nil, font: UIFont? = nil) {
+    init(_ text: String, color: UIColor? = nil, font: UIFont? = nil, alignment: NSTextAlignment? = nil) {
         self.type = .text
         self.text = text
         self.color = color ?? UIColor.darkText
         self.font = font ?? UIFont.systemFont(ofSize: 15)
+        self.totalRange = [TRange(index: 0, count: text.count, color: color ?? UIColor.darkText, font: font ?? UIFont.systemFont(ofSize: 15))]
+        self.alignment = alignment ?? .left
     }
     
     init(range text: String, attrArr: [TRange]) {
@@ -137,6 +158,7 @@ class XJJText {
      */
     private func rangeAttrForText() -> NSAttributedString {
         let attrText: NSMutableAttributedString = NSMutableAttributedString(string: "")
+        self.totalRange = []
         
         if rangeAttrArr.count > 0, text.count > 0 {
             var index = 0
@@ -145,23 +167,28 @@ class XJJText {
                 if attr.index != index {
                     if index + attr.index - 1 > text.count {
                         attrText.append(NSAttributedString(string: text.sub(index, text.count - 1 - index), attributes: [NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: font]))
+                        self.totalRange.append(TRange(index: index, count: text.count - 1 - index, color: color, font: font))
                         break
                     }else {
                         attrText.append(NSAttributedString(string: text.sub(index, attr.index - 1), attributes: [NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: font]))
+                        self.totalRange.append(TRange(index: index, count: attr.index - 1, color: color, font: font))
                         index = attr.index
                     }
                 }
                 
                 if index + attr.count > text.count {
                     attrText.append(NSAttributedString(string: text.sub(index, text.count - 1 - index), attributes: [NSAttributedString.Key.foregroundColor: attr.color, NSAttributedString.Key.font: attr.font]))
+                    self.totalRange.append(TRange(index: index, count: text.count - 1 - index, color: attr.color, font: attr.font))
                     break
                 }else {
                     attrText.append(NSAttributedString(string: text.sub(attr.index, attr.count), attributes: [NSAttributedString.Key.foregroundColor: attr.color, NSAttributedString.Key.font: attr.font]))
+                    self.totalRange.append(TRange(index: attr.index, count: attr.count, color: attr.color, font: attr.font))
                     index += attr.count
                 }
                 
                 if i == rangeAttrArr.count - 1, index < text.count - 1 {
                     attrText.append(NSAttributedString(string: text.sub(index, text.count - 1 - index), attributes: [NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: font]))
+                    self.totalRange.append(TRange(index: index, count: text.count - 1 - index, color: color, font: font))
                 }
             }
         }
@@ -171,6 +198,10 @@ class XJJText {
     
     private func designatedAttrForText() -> NSAttributedString {
         let attrText: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: font])
+        self.totalRange = text.map {[weak self] _ in
+            guard let sself = self else {return TRange()}
+            return TRange(index: 0, count: 1, color: sself.color, font: sself.font)
+        }
         
         if designatedAttrArr.count > 0, text.count > 0 {
             for i in 0..<designatedAttrArr.count {
@@ -179,6 +210,9 @@ class XJJText {
                     let char = text.characters()[i]
                     if attr.designated.contains(char) {
                         attrText.replaceCharacters(in: NSRange(location: i, length: 1), with: NSAttributedString(string: String(char), attributes: [NSAttributedString.Key.foregroundColor: attr.color, NSAttributedString.Key.font: attr.font]))
+                        self.totalRange[i].index = i
+                        self.totalRange[i].color = attr.color
+                        self.totalRange[i].font = attr.font
                     }
                 }
             }
@@ -189,27 +223,31 @@ class XJJText {
     
     private func randomAttrForText() -> NSAttributedString {
         let attrText: NSMutableAttributedString = NSMutableAttributedString(string: "")
+        self.totalRange = []
         
-        if let random = randomFactor {
+        let factor = self.randomFactor
+        let arr = self.text.characters()
+        
+        for i in 0..<arr.count {
+            let tx = String(arr[i])
             
-            _ = self.text.map({
-                let redDiff = random.redColorRange.1 - random.redColorRange.0
-                let redColor = CGFloat(random.redColorRange.0 + (redDiff == 0 ? 0 : Int(arc4random()) % redDiff)) / 255.0
-                let greedDiff = random.greenColorRange.1 - random.greenColorRange.0
-                let greedColor = CGFloat(random.greenColorRange.0 + (greedDiff == 0 ? 0 : Int(arc4random()) % greedDiff)) / 255.0
-                let blueDiff = random.blueColorRange.1 - random.blueColorRange.0
-                let blueColor = CGFloat(random.blueColorRange.0 + (blueDiff == 0 ? 0 : Int(arc4random()) % (blueDiff))) / 255.0
-                let alphaDiff = UInt32((random.alphaRange.1 - random.alphaRange.0) * 100)
-                let alpha = random.alphaRange.0 + (alphaDiff == 0 ? 0 : CGFloat(arc4random() % alphaDiff) / 100.0)
-                let random_color = UIColor(red: redColor, green: greedColor, blue: blueColor, alpha: alpha)
-                
-                let fontName = random.fontArr[Int(arc4random()) % random.fontArr.count]
-                let sizeDiff = random.fontSize.1 - random.fontSize.0
-                let fontSize = CGFloat(random.fontSize.0 + (sizeDiff == 0 ? 0 : Int(arc4random()) % sizeDiff))
-                let random_font = UIFont(name: fontName, size: fontSize) ?? font
-                
-                attrText.append(NSAttributedString(string: String($0), attributes: [NSAttributedString.Key.foregroundColor: random_color, NSAttributedString.Key.font: random_font]))
-            })
+            let redDiff = factor.redColorRange.1 - factor.redColorRange.0
+            let redColor = CGFloat(factor.redColorRange.0 + (redDiff == 0 ? 0 : Int(arc4random()) % redDiff)) / 255.0
+            let greedDiff = factor.greenColorRange.1 - factor.greenColorRange.0
+            let greedColor = CGFloat(factor.greenColorRange.0 + (greedDiff == 0 ? 0 : Int(arc4random()) % greedDiff)) / 255.0
+            let blueDiff = factor.blueColorRange.1 - factor.blueColorRange.0
+            let blueColor = CGFloat(factor.blueColorRange.0 + (blueDiff == 0 ? 0 : Int(arc4random()) % (blueDiff))) / 255.0
+            let alphaDiff = UInt32((factor.alphaRange.1 - factor.alphaRange.0) * 100)
+            let alpha = factor.alphaRange.0 + (alphaDiff == 0 ? 0 : CGFloat(arc4random() % alphaDiff) / 100.0)
+            let random_color = UIColor(red: redColor, green: greedColor, blue: blueColor, alpha: alpha)
+            
+            let fontName = factor.fontArr[Int(arc4random()) % factor.fontArr.count]
+            let sizeDiff = factor.fontSize.1 - randomFactor.fontSize.0
+            let fontSize = CGFloat(factor.fontSize.0 + (sizeDiff == 0 ? 0 : Int(arc4random()) % sizeDiff))
+            let random_font = UIFont(name: fontName, size: fontSize) ?? font
+            
+            attrText.append(NSAttributedString(string: tx, attributes: [NSAttributedString.Key.foregroundColor: random_color, NSAttributedString.Key.font: random_font]))
+            self.totalRange.append(TRange(index: i, count: 1, color: random_color, font: random_font))
         }
         
         return attrText
@@ -217,75 +255,120 @@ class XJJText {
 
     private func wholeRandomAttrForText() -> NSAttributedString {
         
-        if let random = randomFactor {
-            let redDiff = random.redColorRange.1 - random.redColorRange.0
-            let redColor = CGFloat(random.redColorRange.0 + (redDiff == 0 ? 0 : Int(arc4random()) % redDiff)) / 255.0
-            let greedDiff = random.greenColorRange.1 - random.greenColorRange.0
-            let greedColor = CGFloat(random.greenColorRange.0 + (greedDiff == 0 ? 0 : Int(arc4random()) % greedDiff)) / 255.0
-            let blueDiff = random.blueColorRange.1 - random.blueColorRange.0
-            let blueColor = CGFloat(random.blueColorRange.0 + (blueDiff == 0 ? 0 : Int(arc4random()) % (blueDiff))) / 255.0
-            let alphaDiff = UInt32((random.alphaRange.1 - random.alphaRange.0) * 100)
-            let alpha = random.alphaRange.0 + (alphaDiff == 0 ? 0 : CGFloat(arc4random() % alphaDiff) / 100.0)
-            let random_color = UIColor(red: redColor, green: greedColor, blue: blueColor, alpha: alpha)
-            
-            let fontName = random.fontArr[Int(arc4random()) % random.fontArr.count]
-            let sizeDiff = random.fontSize.1 - random.fontSize.0
-            let fontSize = CGFloat(random.fontSize.0 + (sizeDiff == 0 ? 0 : Int(arc4random()) % sizeDiff))
-            let random_font = UIFont(name: fontName, size: fontSize) ?? font
-            
-            return NSAttributedString(string: self.text, attributes: [NSAttributedString.Key.foregroundColor: random_color, NSAttributedString.Key.font: random_font])
-        }else {
-            return NSAttributedString(string: self.text, attributes: [NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: font])
+        let redDiff = randomFactor.redColorRange.1 - randomFactor.redColorRange.0
+        let redColor = CGFloat(randomFactor.redColorRange.0 + (redDiff == 0 ? 0 : Int(arc4random()) % redDiff)) / 255.0
+        let greedDiff = randomFactor.greenColorRange.1 - randomFactor.greenColorRange.0
+        let greedColor = CGFloat(randomFactor.greenColorRange.0 + (greedDiff == 0 ? 0 : Int(arc4random()) % greedDiff)) / 255.0
+        let blueDiff = randomFactor.blueColorRange.1 - randomFactor.blueColorRange.0
+        let blueColor = CGFloat(randomFactor.blueColorRange.0 + (blueDiff == 0 ? 0 : Int(arc4random()) % (blueDiff))) / 255.0
+        let alphaDiff = UInt32((randomFactor.alphaRange.1 - randomFactor.alphaRange.0) * 100)
+        let alpha = randomFactor.alphaRange.0 + (alphaDiff == 0 ? 0 : CGFloat(arc4random() % alphaDiff) / 100.0)
+        let random_color = UIColor(red: redColor, green: greedColor, blue: blueColor, alpha: alpha)
+        
+        let fontName = randomFactor.fontArr[Int(arc4random()) % randomFactor.fontArr.count]
+        let sizeDiff = randomFactor.fontSize.1 - randomFactor.fontSize.0
+        let fontSize = CGFloat(randomFactor.fontSize.0 + (sizeDiff == 0 ? 0 : Int(arc4random()) % sizeDiff))
+        let random_font = UIFont(name: fontName, size: fontSize) ?? font
+        
+        self.totalRange = [TRange(index: 0, count: self.text.count, color: random_color, font: random_font)]
+        return NSAttributedString(string: self.text, attributes: [NSAttributedString.Key.foregroundColor: random_color, NSAttributedString.Key.font: random_font])
+    }
+    
+    private func getTextSize() -> CGSize {
+        let _font = self.font
+        switch type {
+        case .text:
+            return text.getSize(font)
+        case .range:
+            return text.getSize(rangeAttrArr.max { $0.font.pointSize > $1.font.pointSize }?.font ?? _font)
+        case .designated:
+            return text.getSize(designatedAttrArr.max { $0.font.pointSize > $1.font.pointSize }?.font ?? _font)
+        case .random, .wholeRandom:
+            return text.getSize(UIFont.systemFont(ofSize: CGFloat(randomFactor.fontSize.1)))
         }
+    }
+    
+    private func getGradientLayer() -> CAGradientLayer? {
+        let count = totalRange.count
+        
+        if count > 0 {
+            let layer = CAGradientLayer()
+            layer.colors = []
+            layer.locations = []
+            
+            for i in 0..<count {
+                layer.colors?.append(totalRange[i].color.cgColor)
+                if i == 0, totalRange[i].index == 0 {
+                    
+                }else {
+                    layer.locations?.append(NSNumber(floatLiteral: Double(totalRange[i].index) / Double(count)))
+                }
+            }
+
+            layer.locations?.append(1.0)
+            
+            return layer
+        }
+        
+        return nil
     }
     
 }
 
 //MARK: - 相关扩展
 extension UILabel {
-    func setText(_ text: XJJText) {
-        switch text.type {
+    func setText(_ text: XJJText?) {
+        switch text?.type {
         case .text:
-            self.text = text.text
             self.attributedText = nil
-            self.textColor = text.color
-            self.font = text.font
+            self.text = text?.text
+            self.textColor = text?.color
+            self.font = text?.font
+            self.textAlignment = text?.alignment ?? .left
         case .range:
             self.text = ""
-            self.attributedText = text.rangeAttr
+            self.attributedText = text?.rangeAttr
+            self.textAlignment = text?.alignment ?? .center
         case .designated:
             self.text = ""
-            self.attributedText = text.designatedAttr
+            self.attributedText = text?.designatedAttr
+            self.textAlignment = text?.alignment ?? .center
         case .random:
             self.text = ""
-            self.attributedText = text.randomAttr
+            self.attributedText = text?.randomAttr
+            self.textAlignment = text?.alignment ?? .center
         case .wholeRandom:
             self.text = ""
-            self.attributedText = text.wholeRandomAttr
-        }        
+            self.attributedText = text?.wholeRandomAttr
+            self.textAlignment = text?.alignment ?? .center
+        case .none:
+            break
+        }
     }
 }
 
 extension UIButton {
-    func setText(_ text: XJJText) {
-        switch text.type {
+    func setText(_ text: XJJText?) {
+        switch text?.type {
         case .text:
-            self.setTitle(text.text, for: .normal)
-            self.setTitleColor(text.color, for: .normal)
-            self.titleLabel?.font = text.font
-            self.titleLabel?.attributedText = nil
+            self.setAttributedTitle(nil, for: .normal)
+            self.setTitle(text?.text, for: .normal)
+            self.setTitleColor(text?.color, for: .normal)
+            self.titleLabel?.font = text?.font
         case .range:
             self.setTitle("", for: .normal)
-            self.setAttributedTitle(text.rangeAttr, for: .normal)
+            self.setAttributedTitle(text?.rangeAttr, for: .normal)
         case .designated:
             self.setTitle("", for: .normal)
-            self.setAttributedTitle(text.designatedAttr, for: .normal)
+            self.setAttributedTitle(text?.designatedAttr, for: .normal)
         case .random:
             self.setTitle("", for: .normal)
-            self.setAttributedTitle(text.randomAttr, for: .normal)
+            self.setAttributedTitle(text?.randomAttr, for: .normal)
         case .wholeRandom:
             self.setTitle("", for: .normal)
-            self.setAttributedTitle(text.wholeRandomAttr, for: .normal)
+            self.setAttributedTitle(text?.wholeRandomAttr, for: .normal)
+        case .none:
+            break
         }
     }
 }

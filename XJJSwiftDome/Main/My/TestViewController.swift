@@ -17,16 +17,18 @@ class TestViewController: XJJBaseViewController {
     
     private func initUI() {
         self.page = .test
+        
+        self.gradientLayer()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func gradientLayer() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 100, y: 100, width: 200, height: 100)
+        gradientLayer.colors = [UIColor.red.cgColor, UIColor.green.cgColor, UIColor.blue.cgColor]
+        gradientLayer.locations = [0.2, 0.5, 0.8]
+        gradientLayer.startPoint = CGPoint.zero
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        self.view.layer.addSublayer(gradientLayer)
     }
-    */
 
 }

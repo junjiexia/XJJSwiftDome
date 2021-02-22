@@ -29,6 +29,7 @@ class XJJMyViewController: XJJBaseViewController {
         
         let factor = XJJText.TRandom(fontSize: (15, 15), fontArr: ["HYQinChuanFeiYingW"])
         self.tableData = [
+            TableInfo(text: XJJText(wholeRandom: "设置", factor: factor), id: "设置"),
             TableInfo(text: XJJText(wholeRandom: "退出主页", factor: factor), id: "退出主页")
         ]
     }
