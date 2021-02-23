@@ -9,13 +9,28 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    /// 随机色
+    // 随机颜色
     class var randomColor: UIColor {
         get {
             return UIColor(red: CGFloat(arc4random() % 255) / 255.0, green: CGFloat(arc4random() % 255) / 255.0, blue: CGFloat(arc4random() % 255) / 255.0, alpha: 1)
         }
     }
     
+    // 相对颜色
+    var invertColor: UIColor {
+        get {
+            var r: CGFloat = 0
+            var g: CGFloat = 0
+            var b: CGFloat = 0
+            var a: CGFloat = 0
+            
+            self.getRed(&r, green: &g, blue: &b, alpha: &a)
+            
+            return UIColor(red: 1.0 - r, green: 1.0 - g, blue: 1.0 - b, alpha: a)
+        }
+    }
+    
+    // 十六进制颜色字串
     var hexText: String {
         get {
             var r: CGFloat = 0

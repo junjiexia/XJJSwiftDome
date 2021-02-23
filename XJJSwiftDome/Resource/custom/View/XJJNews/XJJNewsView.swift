@@ -17,7 +17,7 @@ class XJJNewsView: UIView {
     }
     
     // 设置属性，以创建视图
-    func setup(titles: [XJJNewsTitleCellItem], contents: [XJJNewsContentCell]) {
+    func setup(titles: [XJJNewsTitleCellItem], contents: [UIView]) {
         self.setupTitle(data: titles)
         self.setupContent(data: contents)
     }
@@ -74,8 +74,8 @@ class XJJNewsView: UIView {
         self.titleView.dataSource = data
     }
     
-    private func setupContent(data: [XJJNewsContentCell]) {
-        var arr: [XJJNewsContentCell] = data
+    private func setupContent(data: [UIView]) {
+        var arr: [UIView] = data
         
         if data.count < self.titleCount {
             let count = self.titleCount - data.count

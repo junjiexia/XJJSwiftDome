@@ -37,7 +37,11 @@ class XJJNewsViewController: XJJBaseViewController {
         self.newsView = XJJNewsView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height - XJJUIConfig.nav_h - XJJUIConfig.tab_h))
         self.view.addSubview(newsView)
         
-        self.newsView.setup(titles: titleData, contents: [])
+        let scrollView = UIScrollView()
+        scrollView.addDefaultRefresh()
+        scrollView.contentSize = CGSize(width: self.view.bounds.width, height: self.view.bounds.height + 200)
+        
+        self.newsView.setup(titles: titleData, contents: [scrollView])
     }
 
     /*

@@ -9,7 +9,7 @@ import UIKit
 
 class XJJNewsContentView: UIScrollView {
     
-    var dataViews: [XJJNewsContentCell]? {
+    var dataViews: [UIView]? {
         didSet {
             guard let views = dataViews else {return}
             self.updateUI(views)
@@ -30,7 +30,7 @@ class XJJNewsContentView: UIScrollView {
         self.setupSubviewsLayout()
     }
     
-    private var cellArr: [XJJNewsContentCell] = []
+    private var cellArr: [UIView] = []
     
     private func initUI() {
         self.showsVerticalScrollIndicator = false
@@ -41,13 +41,18 @@ class XJJNewsContentView: UIScrollView {
         self.bounces = false
     }
     
-    private func updateUI(_ views: [XJJNewsContentCell]) {
+    private func updateUI(_ views: [UIView]) {
         self.cellArr.forEach { $0.removeFromSuperview() }
         self.cellArr = views
         
         for i in 0..<self.cellArr.count {
-            self.cellArr[i].item?.id = i
-            self.addSubview(self.cellArr[i])
+            if let cell = self.cellArr[i] as? XJJNewsContentCell {
+                cell.item?.id = i
+                self.cellArr[i] = cell
+                self.addSubview(self.cellArr[i])
+            }else {
+                self.addSubview(self.cellArr[i])
+            }
         }
     }
     
