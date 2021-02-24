@@ -110,12 +110,12 @@ class XJJText {
         self.designatedAttrArr = attrArr
     }
     
-    init(random factor: TRandom) {
+    init(randomType factor: TRandom) {
         self.type = .random
         self.randomFactor = factor
     }
     
-    init(wholeRandom factor: TRandom) {
+    init(wholeRandomType factor: TRandom) {
         self.type = .wholeRandom
         self.randomFactor = factor
     }
@@ -312,7 +312,33 @@ class XJJText {
         
         return nil
     }
+}
+
+extension XJJText: XJJCopyable {
+    typealias T = XJJText
     
+    func copy() -> XJJText {
+        let obj = XJJText()
+        
+        obj.type = self.type
+        obj.text = self.text
+        obj.color = self.color
+        obj.font = self.font
+        obj.totalRange = self.totalRange
+        obj.alignment = self.alignment
+        
+        obj.rangeAttrArr = self.rangeAttrArr
+        obj.designatedAttrArr = self.designatedAttrArr
+        obj.randomFactor = self.randomFactor
+        
+        return obj
+    }
+    
+    func newText(_ text: String) -> XJJText {
+        let new = self.copy()
+        new.text = text
+        return new
+    }
 }
 
 //MARK: - 相关扩展

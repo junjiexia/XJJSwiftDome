@@ -20,10 +20,20 @@ class XJJNewsViewController: XJJBaseViewController {
     private var titleData: [XJJNewsTitleCellItem] = []
     
     private func initData() {
+        let text = XJJThemeConfig.config.theme.page_text[XJJPageText.newsTitle]
         self.titleData = [
-            XJJNewsTitleCellItem(image: UIImage(named: "icon_news")!, selectImage: UIImage(named: "icon_news_light"), widthCount: 0.8, isSelect: true),
-            XJJNewsTitleCellItem(text: XJJText("推荐", color: UIColor.orange, font: UIFont(name: "HYQinChuanFeiYingW", size: 14), alignment: .center)),
-            XJJNewsTitleCellItem(textAndImage: XJJText(random: "猜你喜欢", factor: XJJText.TRandom(fontSize: (14, 15), fontArr: ["HYQinChuanFeiYingW"])), image: UIImage(named: "icon_timer")!, selectImage: UIImage(named: "icon_timer_light"), widthCount: 1.5)
+            XJJNewsTitleCellItem(text: XJJText("推荐", color: text?.color, font: text?.font, alignment: .center), isSelect: true),
+            XJJNewsTitleCellItem(text: XJJText("体育", color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText("教育", color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText("政治", color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText("财经", color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText("旅游", color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText("美食", color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText("爱好", color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText("美化", color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText("建筑", color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText("开心一刻", color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText("猜你喜欢", color: text?.color, font: text?.font, alignment: .center))
         ]
     }
     

@@ -54,7 +54,19 @@ class XJJBaseViewController: UIViewController {
         super.viewWillAppear(animated)
         self.setNavigationBackground()
     }
-        
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    deinit {
+        print((self.page?.rawValue ?? "未知") + "页面销毁")
+    }
+    
     private var pageItem: XJJPageModel? // 当前页面主题模型
     private var navText: XJJText? // 当前页面导航其他文字格式
     private var titleView: XJJNavigationTitleView! // 导航标题

@@ -44,7 +44,8 @@ class XJJLoadMoreControl: UIControl {
     }
     
     deinit {
-        self.removeObserver(self, forKeyPath: "contentOffset")
+        self.scrollView?.removeObserver(self, forKeyPath: "contentOffset")
+        self.scrollView = nil
     }
     
     private var content: UIView!
@@ -74,6 +75,9 @@ class XJJLoadMoreControl: UIControl {
     }
     
     private func eventAction(_ l_state: LState, old_state: LState?) {
+        XJJRefresh.refreshState = l_state == .loading ? .getMore : .ready
+        self.scrollView?.isScrollEnabled = XJJRefresh.refreshState == .ready
+        
         if let _view = self.content as? XJJLoadMoreControlView {
             _view.updateState(l_state: l_state, old_state: old_state, scroll: self.scrollView) {[weak self] in
                 guard let sself = self else {return}
@@ -98,6 +102,7 @@ extension XJJLoadMoreControl {
         switch keyPath {
         case "contentOffset":
             //print("object:", object ?? "未知")
+            guard XJJRefresh.refreshState == .ready else {return}
             if let scroll = object as? UIScrollView {
                 let new_offset = change?[.newKey] as? CGPoint ?? CGPoint.zero
                 //let old_offset = change?[.oldKey] as? CGPoint ?? CGPoint.zero

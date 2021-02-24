@@ -45,7 +45,8 @@ class XJJRefreshControl: UIControl {
     }
     
     deinit {
-        self.removeObserver(self, forKeyPath: "contentOffset")
+        self.scrollView?.removeObserver(self, forKeyPath: "contentOffset")
+        self.scrollView = nil
     }
     
     private var content: UIView!
@@ -74,7 +75,10 @@ class XJJRefreshControl: UIControl {
         self.addSubview(content)
     }
     
-    private func eventAction(_ r_state: RState, old_state: RState?) {        
+    private func eventAction(_ r_state: RState, old_state: RState?) {
+        XJJRefresh.refreshState = r_state == .refreshing ? .getNew : .ready
+        self.scrollView?.isScrollEnabled = XJJRefresh.refreshState == .ready
+        
         if let _view = self.content as? XJJRefreshControlView {
             _view.updateState(r_state: r_state, old_state: old_state, scroll: self.scrollView) {[weak self] in
                 guard let sself = self else {return}
@@ -99,6 +103,7 @@ extension XJJRefreshControl {
         switch keyPath {
         case "contentOffset":
             //print("object:", object ?? "未知")
+            guard XJJRefresh.refreshState == .ready else {return}
             if let scroll = object as? UIScrollView {
                 let new_offset = change?[.newKey] as? CGPoint ?? CGPoint.zero
                 //let old_offset = change?[.oldKey] as? CGPoint ?? CGPoint.zero

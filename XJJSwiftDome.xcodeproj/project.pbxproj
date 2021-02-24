@@ -47,6 +47,12 @@
 		F9E8B8BD25CBE859002E2664 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8B8BC25CBE859002E2664 /* TestViewController.swift */; };
 		F9E8B8C225CBEDE0002E2664 /* XJJNavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8B8C125CBEDE0002E2664 /* XJJNavigationTitleView.swift */; };
 		F9E8B8C725CBF752002E2664 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8B8C625CBF752002E2664 /* UIView+Extension.swift */; };
+		F9EA8AB425E62AA600FE563B /* XJJNewsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EA8AB325E62AA600FE563B /* XJJNewsTableView.swift */; };
+		F9EA8ABA25E62B5C00FE563B /* XJJNewsTableOneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EA8AB925E62B5C00FE563B /* XJJNewsTableOneCell.swift */; };
+		F9EA8ABF25E64DEB00FE563B /* XJJTheme+Normal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EA8ABE25E64DEB00FE563B /* XJJTheme+Normal.swift */; };
+		F9EA8AC425E64E4400FE563B /* XJJTheme+XinNian.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EA8AC325E64E4400FE563B /* XJJTheme+XinNian.swift */; };
+		F9EA8ACA25E651B500FE563B /* XJJSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EA8AC925E651B500FE563B /* XJJSheet.swift */; };
+		F9EA8ACF25E655EB00FE563B /* XJJProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EA8ACE25E655EB00FE563B /* XJJProtocol.swift */; };
 		F9FA20A225E4A06600DC0421 /* XJJRefreshControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FA20A125E4A06600DC0421 /* XJJRefreshControlView.swift */; };
 		F9FA20A725E4A83700DC0421 /* Date+ Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FA20A625E4A83700DC0421 /* Date+ Extension.swift */; };
 		F9FA20AC25E4AE7700DC0421 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FA20AB25E4AE7700DC0421 /* UIImage+Extension.swift */; };
@@ -118,6 +124,12 @@
 		F9E8B8BC25CBE859002E2664 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		F9E8B8C125CBEDE0002E2664 /* XJJNavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNavigationTitleView.swift; sourceTree = "<group>"; };
 		F9E8B8C625CBF752002E2664 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		F9EA8AB325E62AA600FE563B /* XJJNewsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsTableView.swift; sourceTree = "<group>"; };
+		F9EA8AB925E62B5C00FE563B /* XJJNewsTableOneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsTableOneCell.swift; sourceTree = "<group>"; };
+		F9EA8ABE25E64DEB00FE563B /* XJJTheme+Normal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XJJTheme+Normal.swift"; sourceTree = "<group>"; };
+		F9EA8AC325E64E4400FE563B /* XJJTheme+XinNian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XJJTheme+XinNian.swift"; sourceTree = "<group>"; };
+		F9EA8AC925E651B500FE563B /* XJJSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJSheet.swift; sourceTree = "<group>"; };
+		F9EA8ACE25E655EB00FE563B /* XJJProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJProtocol.swift; sourceTree = "<group>"; };
 		F9FA20A125E4A06600DC0421 /* XJJRefreshControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJRefreshControlView.swift; sourceTree = "<group>"; };
 		F9FA20A625E4A83700DC0421 /* Date+ Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ Extension.swift"; sourceTree = "<group>"; };
 		F9FA20AB25E4AE7700DC0421 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -173,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				F92DDB5925CD40CB00B390FE /* XJJNewsViewController.swift */,
+				F9EA8AAA25E6261D00FE563B /* Views */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -243,6 +256,8 @@
 			isa = PBXGroup;
 			children = (
 				F96961D125C8004400CE461B /* XJJTheme.swift */,
+				F9EA8ABE25E64DEB00FE563B /* XJJTheme+Normal.swift */,
+				F9EA8AC325E64E4400FE563B /* XJJTheme+XinNian.swift */,
 				F96961D225C8004400CE461B /* Extension */,
 				F96961D625C8004400CE461B /* Fonts */,
 				F96961D725C8004400CE461B /* custom */,
@@ -319,6 +334,7 @@
 				F96961DC25C8004400CE461B /* XJJCheck.swift */,
 				F96961DD25C8004400CE461B /* XJJText.swift */,
 				F92DDB4025CD2EC400B390FE /* XJJTimer.swift */,
+				F9EA8ACE25E655EB00FE563B /* XJJProtocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -326,6 +342,7 @@
 		F96961DE25C8004400CE461B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F9EA8AC825E6518D00FE563B /* XJJAlert */,
 				F9BAF48125E3962100A16B47 /* XJJRefresh */,
 				F98950D725E0E7F300538A29 /* XJJNews */,
 				F9E8B8C125CBEDE0002E2664 /* XJJNavigationTitleView.swift */,
@@ -389,6 +406,31 @@
 				F9FA20B825E4FD9900DC0421 /* XJJLoadMoreControlView.swift */,
 			);
 			path = XJJRefresh;
+			sourceTree = "<group>";
+		};
+		F9EA8AAA25E6261D00FE563B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F9EA8AB825E62AEB00FE563B /* Cells */,
+				F9EA8AB325E62AA600FE563B /* XJJNewsTableView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F9EA8AB825E62AEB00FE563B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F9EA8AB925E62B5C00FE563B /* XJJNewsTableOneCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F9EA8AC825E6518D00FE563B /* XJJAlert */ = {
+			isa = PBXGroup;
+			children = (
+				F9EA8AC925E651B500FE563B /* XJJSheet.swift */,
+			);
+			path = XJJAlert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -530,13 +572,16 @@
 				F92DDB5A25CD40CB00B390FE /* XJJNewsViewController.swift in Sources */,
 				F98950D325E0BD6000538A29 /* UIDevice+Extension.swift in Sources */,
 				F98950EE25E0EB6F00538A29 /* XJJNewsTitleCell.swift in Sources */,
+				F9EA8ABA25E62B5C00FE563B /* XJJNewsTableOneCell.swift in Sources */,
 				F96961E225C8004400CE461B /* XJJNavigationController.swift in Sources */,
 				F9BAF48325E3967C00A16B47 /* XJJRefresh.swift in Sources */,
 				F96961DF25C8004400CE461B /* XJJTheme.swift in Sources */,
+				F9EA8ACA25E651B500FE563B /* XJJSheet.swift in Sources */,
 				F96961E325C8004400CE461B /* XJJCheck.swift in Sources */,
 				F98950E325E0E98600538A29 /* XJJNewsTitleView.swift in Sources */,
 				F96961E425C8004400CE461B /* XJJText.swift in Sources */,
 				F9FA20A225E4A06600DC0421 /* XJJRefreshControlView.swift in Sources */,
+				F9EA8AB425E62AA600FE563B /* XJJNewsTableView.swift in Sources */,
 				F98950CE25E0A59900538A29 /* UIScrollView+Extension.swift in Sources */,
 				F9C31F6825E2121C00097909 /* Array+Extension.swift in Sources */,
 				F98950C925E0A57E00538A29 /* UITableView+Extension.swift in Sources */,
@@ -545,6 +590,7 @@
 				F98950E825E0E99900538A29 /* XJJNewsContentView.swift in Sources */,
 				F9BAF49525E3AF1F00A16B47 /* XJJRefreshControl.swift in Sources */,
 				F9E8B8C725CBF752002E2664 /* UIView+Extension.swift in Sources */,
+				F9EA8ABF25E64DEB00FE563B /* XJJTheme+Normal.swift in Sources */,
 				F9E8B8C225CBEDE0002E2664 /* XJJNavigationTitleView.swift in Sources */,
 				F98950F325E0F95400538A29 /* XJJNewsTitleCellItem.swift in Sources */,
 				F9BAF46C25E3648000A16B47 /* XJJNewsContentCell.swift in Sources */,
@@ -552,6 +598,8 @@
 				F969619425C7FEEB00CE461B /* ViewController.swift in Sources */,
 				F92DDB3C25CD2D0C00B390FE /* XJJTabBarController.swift in Sources */,
 				F96961CC25C8003C00CE461B /* XJJConfig.swift in Sources */,
+				F9EA8AC425E64E4400FE563B /* XJJTheme+XinNian.swift in Sources */,
+				F9EA8ACF25E655EB00FE563B /* XJJProtocol.swift in Sources */,
 				F96961E025C8004400CE461B /* String+Extension.swift in Sources */,
 				F9BAF47125E364E000A16B47 /* XJJNewsContentCellItem.swift in Sources */,
 				F9FA20AC25E4AE7700DC0421 /* UIImage+Extension.swift in Sources */,

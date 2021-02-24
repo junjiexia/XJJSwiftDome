@@ -11,25 +11,26 @@ class XJJMainViewController: XJJTabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.initUI()
         // Do any additional setup after loading the view.
     }
     
-    private var first: XJJNewsViewController!
-    private var second: XJJTimerViewController!
-    private var third: XJJMyViewController!
+    private var first: XJJNewsViewController = XJJNewsViewController()
+    private var second: XJJTimerViewController = XJJTimerViewController()
+    private var third: XJJMyViewController = XJJMyViewController()
     
-    private func initUI() {
-        self.tabBar.barTintColor = XJJThemeConfig.config.theme.bar_color
-        
-        self.first = XJJNewsViewController()
-        self.setupChildViewController(first, image: UIImage(named: "icon_news"), selectedImage: UIImage(named: "icon_news_light"), title: "新闻")
-        
-        self.second = XJJTimerViewController()
-        self.setupChildViewController(second, image: UIImage(named: "icon_timer"), selectedImage: UIImage(named: "icon_timer_light"), title: "定时器")
-        
-        self.third = XJJMyViewController()
-        self.setupChildViewController(third, image: UIImage(named: "icon_my"), selectedImage: UIImage(named: "icon_my_light"), title: "我的")
+    override func setupTheme() {
+        self.setupChildViewController(first,
+                                      image: XJJThemeConfig.config.theme.bar_icon[XJJPageIcon.tabbar_icon1_0]?.image,
+                                      selectedImage: XJJThemeConfig.config.theme.bar_icon[XJJPageIcon.tabbar_icon1_1]?.image,
+                                      title: "新闻")
+        self.setupChildViewController(second,
+                                      image: XJJThemeConfig.config.theme.bar_icon[XJJPageIcon.tabbar_icon2_0]?.image,
+                                      selectedImage: XJJThemeConfig.config.theme.bar_icon[XJJPageIcon.tabbar_icon2_1]?.image,
+                                      title: "定时器")
+        self.setupChildViewController(third,
+                                      image: XJJThemeConfig.config.theme.bar_icon[XJJPageIcon.tabbar_icon3_0]?.image,
+                                      selectedImage: XJJThemeConfig.config.theme.bar_icon[XJJPageIcon.tabbar_icon3_1]?.image,
+                                      title: "我的")
     }
     
     /*

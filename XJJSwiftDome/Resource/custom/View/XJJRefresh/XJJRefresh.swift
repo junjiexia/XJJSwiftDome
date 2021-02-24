@@ -10,13 +10,14 @@ import UIKit
 
 class XJJRefresh {
     enum State {
-        case getNew
-        case getMore
-        case ready
+        case getNew // 刷新
+        case getMore // 加载
+        case ready // 准备就绪
     }
     
     static var controlHeight: CGFloat = 50
     static var loadMoreHeight: CGFloat = 60
+    static var refreshState: State = .ready
     
     class func defaultRefresh() -> XJJRefreshControl {
         let refreshControl = XJJRefreshControl(frame: CGRect(x: 0, y: -controlHeight, width: UIScreen.main.bounds.width, height: controlHeight))

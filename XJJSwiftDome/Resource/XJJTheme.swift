@@ -14,7 +14,7 @@ enum XJJThemeStyle: String { // 主题类型  主题key = 主题名称
 }
 
 enum XJJPage: String { // 页面  页面key = 页面名称
-    case first = ""
+    case first = "合集"
     case news = "新闻"
     case timer = "定时器"
     case my = "我的"
@@ -23,10 +23,17 @@ enum XJJPage: String { // 页面  页面key = 页面名称
 
 enum XJJPageText: String { // 页面文字格式 文字格式key = 文字格式说明
     case text = "正文"
+    case randomText = "正文随机颜色、字体"
+    case newsTitle = "新闻标题"
 }
 
-enum XJJPageIcon: String { // 页面图片  图片key = 图片名称
-    case icon = "icon"
+enum XJJPageIcon: String { // 页面图片  图片key = 图片说明
+    case tabbar_icon1_0 = "底部菜单第一项-普通状态"
+    case tabbar_icon1_1 = "底部菜单第一项-高亮状态"
+    case tabbar_icon2_0 = "底部菜单第二项-普通状态"
+    case tabbar_icon2_1 = "底部菜单第二项-高亮状态"
+    case tabbar_icon3_0 = "底部菜单第三项-普通状态"
+    case tabbar_icon3_1 = "底部菜单第三项-高亮状态"
 }
 
 struct XJJPageModel { // 单个页面模型
@@ -61,6 +68,8 @@ class XJJTheme {
     // 底部工具栏
     var bar_image: UIImage? // 底部工具栏背景图
     var bar_color: UIColor? // 底部工具栏背景颜色
+    var bar_text: XJJText = XJJText(type: UIColor.lightGray, font: UIFont.systemFont(ofSize: 12)) // 通用底部工具栏文字格式
+    var bar_text_h: XJJText = XJJText(type: UIColor.blue, font: UIFont.systemFont(ofSize: 12)) // 通用底部工具栏高亮文字格式
     var bar_icon: [XJJPageIcon: XJJPageImageModel] = [:] // 底部工具栏按钮
     
     // 资源整合
@@ -79,48 +88,15 @@ final class XJJThemeConfig {
     var theme: XJJTheme = XJJTheme()
     
     init() {
-        self.theme.nav_title = XJJText(rangeType: [XJJText.TRange(index: 0, count: 1, color: UIColor.red, font: UIFont(name: "JSuHunTi", size: 20)!), XJJText.TRange(index: 1, count: 1, color: UIColor.blue, font: UIFont(name: "JSuHunTi", size: 20)!)])
-        self.theme.nav_text = XJJText(type: UIColor.darkText, font: UIFont.systemFont(ofSize: 14))
-        self.theme.nav_image = nil
-        self.theme.nav_color = nil
-        self.theme.nav_return = XJJPageImageModel(text: nil, image: UIImage(named: "icon_return"))
+        self.normalStyle()
+    }
         
-        self.theme.bar_color = nil
-        self.theme.bar_image = nil
-        self.theme.bar_icon = [
-            :
-        ]
-        
-        self.theme.page_text =  [
-            XJJPageText.text: XJJText(type: nil, font: nil)
-        ]
-        self.theme.page_icon = [
-            :
-        ]
-        self.theme.page_item = [
-            XJJPage.news: XJJPageModel(nav_image: UIImage(named: "navigation_background"),
-                                        nav_color: nil,
-                                        nav_title: XJJText(range: XJJPage.news.rawValue, attrArr: [XJJText.TRange(index: 0, count: 1, color: UIColor.red, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!), XJJText.TRange(index: 1, count: 1, color: UIColor.orange, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!)]),
-                                        nav_text: XJJText(type: UIColor.white, font: UIFont.systemFont(ofSize: 14)),
-                                        nav_return: nil),
-            XJJPage.timer: XJJPageModel(nav_image: nil,
-                                        nav_color: UIColor.orange,
-                                        nav_title: XJJText(XJJPage.timer.rawValue, color: UIColor.green, font: UIFont.systemFont(ofSize: 14)),
-                                        nav_text: XJJText(type: UIColor.white, font: UIFont.systemFont(ofSize: 14)),
-                                        nav_return: nil),
-            XJJPage.my: XJJPageModel(nav_image: UIImage(named: "navigation_background"),
-                                        nav_color: nil,
-                                        nav_title: XJJText(range: XJJPage.my.rawValue, attrArr: [XJJText.TRange(index: 0, count: 1, color: UIColor.red, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!), XJJText.TRange(index: 1, count: 1, color: UIColor.orange, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!)]),
-                                        nav_text: XJJText(type: UIColor.white, font: UIFont.systemFont(ofSize: 14)),
-                                        nav_return: nil),
-            XJJPage.test: XJJPageModel(nav_image: nil,
-                                       nav_color: UIColor.yellow,
-                                       nav_title: XJJText(designated: XJJPage.test.rawValue, attrArr: [XJJText.TDesignated(designated: "0123456789", color: UIColor.purple, font: UIFont(name: "JSuHunTi", size: 20)!), XJJText.TDesignated(designated: "我你他她", color: UIColor.green, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!), XJJText.TDesignated(designated: "爱", color: UIColor.red, font: UIFont.systemFont(ofSize: 14))]),
-                                       nav_text: nil,
-                                       nav_return: nil)
-        ]
+    func switchTheme(style: XJJThemeStyle) {
+        switch style {
+        case .normal:
+            self.normalStyle()
+        case .xin_nian:
+            self.xinNianStyle()
+        }
     }
 }
-
-
-

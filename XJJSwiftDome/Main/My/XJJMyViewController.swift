@@ -27,11 +27,10 @@ class XJJMyViewController: XJJBaseViewController {
     private func initData() {
         XJJCheck.checkFont("JSuHunTi", perfectMatch: false)
         
-        let factor = XJJText.TRandom(fontSize: (15, 15), fontArr: ["HYQinChuanFeiYingW"])
-        self.tableData = [
-            TableInfo(text: XJJText(wholeRandom: "设置", factor: factor), id: "设置"),
-            TableInfo(text: XJJText(wholeRandom: "退出主页", factor: factor), id: "退出主页")
-        ]
+        if let text = XJJThemeConfig.config.theme.page_text[XJJPageText.randomText] {
+            self.tableData.append(TableInfo(text: text.newText("设置"), id: "设置"))
+            self.tableData.append(TableInfo(text: text.newText("退出主页"), id: "退出主页"))
+        }
     }
         
     private func initUI() {

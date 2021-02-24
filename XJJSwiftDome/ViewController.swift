@@ -25,8 +25,12 @@ class ViewController: XJJBaseViewController {
     private var tableData: [TableInfo] = []
     
     private func initData() {
-        let factor = XJJText.TRandom(fontSize: (14, 15), fontArr: ["HYQinChuanFeiYingW", "JSuHunTi"])
-        self.tableData = [TableInfo(text: XJJText(random: "打开主页", factor: factor), id: "主页")]
+        self.page = .first
+        
+        if let text = XJJThemeConfig.config.theme.page_text[XJJPageText.randomText] {
+            self.tableData.append(TableInfo(text: text.newText("打开主页"), id: "主页"))
+            self.tableData.append(TableInfo(text: text.newText("切换主题"), id: "主题"))
+        }
     }
     
     private func initUI() {
@@ -41,6 +45,12 @@ class ViewController: XJJBaseViewController {
         self.table.setupLine()
         self.table.delegate = self
         self.table.dataSource = self
+    }
+    
+    private func updateUI() {
+        self.tableData.removeAll()
+        self.initData()
+        self.table.reloadData()
     }
     
     override func setupSubviewsLayout() {
@@ -81,6 +91,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = XJJMainViewController()
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
+        case "主题":
+            XJJSheet.sheet(on: self, "选择主题", ["默认主题", "新年主题"]) {[weak self] (index, text) in
+                guard let sself = self else {return}
+                switch text {
+                case "默认主题":
+                    XJJThemeConfig.config.switchTheme(style: .normal)
+                    sself.updateUI()
+                case "新年主题":
+                    XJJThemeConfig.config.switchTheme(style: .xin_nian)
+                    sself.updateUI()
+                default:
+                    break
+                }
+            }
         default:
             break
         }
