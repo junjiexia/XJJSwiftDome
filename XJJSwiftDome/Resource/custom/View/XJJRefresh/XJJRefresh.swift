@@ -9,35 +9,57 @@ import Foundation
 import UIKit
 
 class XJJRefresh {
-    enum RState {
+    enum State {
         case getNew
         case getMore
         case ready
     }
     
     static var controlHeight: CGFloat = 50
+    static var loadMoreHeight: CGFloat = 60
     
     class func defaultRefresh() -> XJJRefreshControl {
         let refreshControl = XJJRefreshControl(frame: CGRect(x: 0, y: -controlHeight, width: UIScreen.main.bounds.width, height: controlHeight))
         
         return refreshControl
     }
+    
+    class func defaultLoadMore() -> XJJLoadMoreControl {
+        let loadMoreControl = XJJLoadMoreControl(frame: CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: loadMoreHeight))
+        
+        return loadMoreControl
+    }
 }
 
 extension UIScrollView {
-    func addDefaultRefresh() {
+    func addDefaultRefreshAndLoad() {
         self.setupRefreshUI()
-        
+        self.addDefaultRefresh()
+        self.addDefaultLoadMore()
+    }
+    
+    func addDefaultRefresh() {
         let refreshControl = XJJRefresh.defaultRefresh()
+        refreshControl.tag = 2000
         self.addSubview(refreshControl)
         
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
     
     @objc func refresh(_ control: XJJRefreshControl) {
-        UIView.animate(withDuration: 5.0) {
-            control.endRefresh()
-        }
+        //control.endRefresh()
+    }
+    
+    func addDefaultLoadMore() {
+        let loadMoreControl = XJJRefresh.defaultLoadMore()
+        loadMoreControl.tag = 2001
+        self.addSubview(loadMoreControl)
+        
+        loadMoreControl.addTarget(self, action: #selector(loadMore), for: .valueChanged)
+    }
+    
+    @objc func loadMore(_ control: XJJLoadMoreControl) {
+        //control.endLoad()
     }
     
     func setupRefreshUI() {

@@ -1,16 +1,15 @@
 //
-//  XJJRefreshControl.swift
+//  XJJLoadMoreControl.swift
 //  XJJSwiftDome
 //
-//  Created by Levy on 2021/2/22.
+//  Created by Levy on 2021/2/23.
 //
 
 import Foundation
 import UIKit
 
-class XJJRefreshControl: UIControl {
-    
-    var refreshBlock: ((_ r_state: RState, _ old_state: RState?) -> Void)?
+class XJJLoadMoreControl: UIControl {
+    var loadMoreBlock: ((_ l_state: LState, _ old_state: LState?) -> Void)?
     
     var contentView: UIView? {
         didSet {
@@ -19,20 +18,20 @@ class XJJRefreshControl: UIControl {
         }
     }
     
-    var refreshState: RState {
+    var loadState: LState? {
         get {
-            return self.rState ?? .normal
+            return self.lState ?? .normal
         }
     }
     
-    func endRefresh() {
-        self.rState = .normal
+    func endLoad() {
+        self.lState = .normal
     }
-        
-    enum RState: String {
-        case normal = "普通状态"
-        case runing = "下拉状态"
-        case refreshing = "正在刷新"
+    
+    enum LState: String {
+        case normal = "正常状态"
+        case runing = "加载状态"
+        case loading = "加载中"
     }
     
     override init(frame: CGRect) {
@@ -51,15 +50,15 @@ class XJJRefreshControl: UIControl {
     private var content: UIView!
     private weak var scrollView: UIScrollView?
     
-    private var rState: RState? {
+    private var lState: LState? {
         didSet {
-            guard let r_state = rState else {return}
-            self.eventAction(r_state, old_state: oldValue)
+            guard let l_state = lState else {return}
+            self.eventAction(l_state, old_state: oldValue)
         }
     }
     
     private func initUI() {
-        self.content = XJJRefreshControlView(frame: self.bounds)
+        self.content = XJJLoadMoreControlView(frame: self.bounds)
         self.addSubview(content)
     }
     
@@ -74,20 +73,20 @@ class XJJRefreshControl: UIControl {
         self.addSubview(content)
     }
     
-    private func eventAction(_ r_state: RState, old_state: RState?) {        
-        if let _view = self.content as? XJJRefreshControlView {
-            _view.updateState(r_state: r_state, old_state: old_state, scroll: self.scrollView) {[weak self] in
+    private func eventAction(_ l_state: LState, old_state: LState?) {
+        if let _view = self.content as? XJJLoadMoreControlView {
+            _view.updateState(l_state: l_state, old_state: old_state, scroll: self.scrollView) {[weak self] in
                 guard let sself = self else {return}
                 sself.sendActions(for: .valueChanged)
             }
         }else {
-            self.refreshBlock?(r_state, old_state)
+            self.loadMoreBlock?(l_state, old_state)
         }
     }
     
 }
 
-extension XJJRefreshControl {
+extension XJJLoadMoreControl {
     override func willMove(toSuperview newSuperview: UIView?) {
         guard let super_view = newSuperview as? UIScrollView else {return}
         self.scrollView = super_view
@@ -110,18 +109,18 @@ extension XJJRefreshControl {
     }
     
     private func checkDataForObserve(offset: CGPoint, scroll: UIScrollView) {
-        let offsetMaxY: CGFloat = -(scroll.contentInset.top + XJJRefresh.controlHeight)
+        let offsetMaxY: CGFloat = scroll.contentInset.bottom + XJJRefresh.loadMoreHeight
         
-        //print("offset:", offset, "max:", offsetMaxY)
+        //print("offset:", offset, "max:", offsetMaxY, "inset:", scroll.contentInset)
         if scroll.isDragging { // 正在拖拽
-            if offset.y >= offsetMaxY, self.refreshState == .runing {
-                self.rState = .normal
-            }else if offset.y < offsetMaxY, self.refreshState == .normal {
-                self.rState = .runing
+            if offset.y <= offsetMaxY, self.loadState == .runing {
+                self.lState = .normal
+            }else if offset.y > offsetMaxY, self.loadState == .normal {
+                self.lState = .runing
             }
         }else { // 拖拽完成
-            if self.refreshState == .runing {
-                self.rState = .refreshing
+            if self.loadState == .runing {
+                self.lState = .loading
             }
         }
     }

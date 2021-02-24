@@ -1,5 +1,5 @@
 //
-//  XJJRefreshControlView.swift
+//  XJJLoadMoreControlView.swift
 //  XJJSwiftDome
 //
 //  Created by Levy on 2021/2/23.
@@ -7,40 +7,34 @@
 
 import UIKit
 
-class XJJRefreshControlView: UIView {
+class XJJLoadMoreControlView: UIView {
     
-    func updateState(r_state: XJJRefreshControl.RState, old_state: XJJRefreshControl.RState?, scroll: UIScrollView?, refreshBlock: (() -> Void)?) {
-        switch r_state {
+    func updateState(l_state: XJJLoadMoreControl.LState, old_state: XJJLoadMoreControl.LState?, scroll: UIScrollView?, loadMoreBlock: (() -> Void)?) {
+        switch l_state {
         case .normal:
-            if old_state == .refreshing {
-                self.updateDate = Date().dateString("yyyy-MM-dd HH:mm:ss")
-                self.updateText(self.textSet.3 + self.updateDate)
+            if old_state == .loading {
+                self.updatePage += 1
+                self.updateText(self.textSet.3)
                 self.aiView.stopAnimating()
                 UIView.animate(withDuration: 0.25, animations: {
-                    scroll?.contentInset.top -= XJJRefresh.controlHeight
+                    scroll?.contentInset.bottom -= XJJRefresh.loadMoreHeight
                 }, completion: { (_) in
-                    self.imageView.isHidden = false
-                    self.updateText(self.textSet.4 + self.updateDate)
+                    self.updateText(self.textSet.4 + "\(self.updatePage)")
+                    //self.isHidden = true
                 })
             }else {
                 self.updateText(self.textSet.0)
             }
-            UIView.animate(withDuration: 0.25, animations: {
-                self.imageView.transform = CGAffineTransform.identity
-            })
         case .runing:
+            self.isHidden = false
             self.updateText(self.textSet.1)
-            UIView.animate(withDuration: 0.25, animations: {
-                self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(-3 * Double.pi))
-            })
-        case .refreshing:
+        case .loading:
             self.updateText(self.textSet.2)
             self.aiView.startAnimating()
-            self.imageView.isHidden = true
             UIView.animate(withDuration: 0.25, animations: {
-                scroll?.contentInset.top += XJJRefresh.controlHeight
+                scroll?.contentInset.bottom += XJJRefresh.loadMoreHeight
             }, completion: { (_) in
-                refreshBlock?()
+                loadMoreBlock?()
             })
         }
     }
@@ -59,30 +53,20 @@ class XJJRefreshControlView: UIView {
         self.setupSubviewsLayout()
     }
     
-    private var imageView: UIImageView!
     private var textLabel: UILabel!
     private var aiView: UIActivityIndicatorView!
     
-    private var textSet: (String, String, String, String, String) = ("下拉刷新数据", "继续下拉刷新数据", "正在刷新", "刷新完成，", "上次更新时间：") // 显示字串（正常，下拉，刷新中，刷新完成，上次更新时间）
-    private var updateDate: String = ""
+    private var textSet: (String, String, String, String, String) = ("上拉加载数据", "继续上拉加载数据", "正在加载", "加载完成", "已加载页数：") // 显示字串（正常，上拉，加载中，加载完成，已加载页数）
+    private var updatePage: Int = 0
     
     private func initUI() {
         self.initActivityIndicatorView()
-        self.initImageView()
         self.initTextLabel()
     }
     
     private func initActivityIndicatorView() {
         self.aiView = UIActivityIndicatorView(style: .medium)
         self.addSubview(aiView)
-    }
-    
-    private func initImageView() {
-        self.imageView = UIImageView(image: UIImage(named: "shuaxin"))
-        self.addSubview(imageView)
-        
-        self.imageView.tintColor = self.backgroundColor?.invertColor
-        self.imageView.image?.withRenderingMode(.alwaysTemplate)
     }
     
     private func initTextLabel() {
@@ -106,9 +90,9 @@ class XJJRefreshControlView: UIView {
     private func setupSubviewsLayout() {
         self.removeConstraints(self.constraints)
         
-        UIView.setupNeedLayout([aiView, imageView, textLabel])
+        UIView.setupNeedLayout([aiView, textLabel])
         
-        let isCompleted: Bool = !self.aiView.isAnimating && self.imageView.isHidden
+        let isCompleted: Bool = !self.aiView.isAnimating
         
         self.aiView.autoLayoutCenterY(0, .equal)
         self.aiView.autoLayoutWidth(aiSize.width, .equal)
@@ -133,14 +117,6 @@ class XJJRefreshControlView: UIView {
         }else {
             self.aiView.autoLayoutCenterX(0, .equal)
         }
-        
-        self.imageView.autoLayoutCenterY(0, .equal)
-        self.imageView.autoLayoutRight(0, .equal, aiView)
-        if let size = self.imageView.image?.size {
-            self.imageView.autoLayoutWidth(size.width, .equal)
-            self.imageView.autoLayoutHeight(size.height, .equal)
-        }
-        
     }
     
     /*
