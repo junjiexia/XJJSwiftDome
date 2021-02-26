@@ -79,11 +79,13 @@ class XJJBaseViewController: UIViewController {
     }
     
     private func setupPage(_ page: XJJPage) {
-        if let item = XJJThemeConfig.config.theme.page_item[page] {
+        self.view.backgroundColor = XJJThemeConfig.share.theme.page_color[.backgroud]
+        
+        if let item = XJJThemeConfig.share.theme.page_item[page] {
             self.pageItem = item
-            self.navText = item?.nav_text ?? XJJThemeConfig.config.theme.nav_text
+            self.navText = item?.nav_text ?? XJJThemeConfig.share.theme.nav_text
         }else {
-            self.navText = XJJThemeConfig.config.theme.nav_text
+            self.navText = XJJThemeConfig.share.theme.nav_text
         }
         self.setAttrTitle(page.rawValue)
     }
@@ -92,8 +94,8 @@ class XJJBaseViewController: UIViewController {
         if let navT = self.pageItem?.nav_title { // 特定文字格式
             self.titleView.text = navT
         }else {
-            XJJThemeConfig.config.theme.nav_title?.text = text
-            self.titleView.text = XJJThemeConfig.config.theme.nav_title
+            XJJThemeConfig.share.theme.nav_title?.text = text
+            self.titleView.text = XJJThemeConfig.share.theme.nav_title
         }
     }
     

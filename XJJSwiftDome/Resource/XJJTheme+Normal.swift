@@ -17,19 +17,19 @@ extension XJJThemeConfig {
         self.theme.nav_text = XJJText(type: UIColor.darkText, font: UIFont(name: fontName, size: 14))
         self.theme.nav_image = nil
         self.theme.nav_color = nil
-        self.theme.nav_return = XJJPageImageModel(text: nil, image: UIImage(named: "icon_return"))
+        self.theme.nav_return = XJJPageIconModel(text: nil, image: UIImage(named: "icon_return"))
         
         self.theme.bar_color = nil
         self.theme.bar_image = nil
         self.theme.bar_text = XJJText(type: UIColor.lightGray, font: UIFont(name: fontName, size: 13))
         self.theme.bar_text_h = XJJText(type: UIColor.blue, font: UIFont(name: fontName, size: 13))
         self.theme.bar_icon = [
-            XJJPageIcon.tabbar_icon1_0: XJJPageImageModel(text: nil, image: UIImage(named: "icon_news")),
-            XJJPageIcon.tabbar_icon1_1: XJJPageImageModel(text: nil, image: UIImage(named: "icon_news_light")),
-            XJJPageIcon.tabbar_icon2_0: XJJPageImageModel(text: nil, image: UIImage(named: "icon_timer")),
-            XJJPageIcon.tabbar_icon2_1: XJJPageImageModel(text: nil, image: UIImage(named: "icon_timer_light")),
-            XJJPageIcon.tabbar_icon3_0: XJJPageImageModel(text: nil, image: UIImage(named: "icon_my")),
-            XJJPageIcon.tabbar_icon3_1: XJJPageImageModel(text: nil, image: UIImage(named: "icon_my_light"))
+            XJJPageIcon.tabbar_icon1_0: XJJPageIconModel(text: nil, image: UIImage(named: "icon_news")),
+            XJJPageIcon.tabbar_icon1_1: XJJPageIconModel(text: nil, image: UIImage(named: "icon_news_light")),
+            XJJPageIcon.tabbar_icon2_0: XJJPageIconModel(text: nil, image: UIImage(named: "icon_timer")),
+            XJJPageIcon.tabbar_icon2_1: XJJPageIconModel(text: nil, image: UIImage(named: "icon_timer_light")),
+            XJJPageIcon.tabbar_icon3_0: XJJPageIconModel(text: nil, image: UIImage(named: "icon_my")),
+            XJJPageIcon.tabbar_icon3_1: XJJPageIconModel(text: nil, image: UIImage(named: "icon_my_light"))
         ]
         
         self.theme.page_text =  [
@@ -39,7 +39,13 @@ extension XJJThemeConfig {
         ]
         
         self.theme.page_icon = [
-            :
+            XJJPageIcon.empty_image: XJJPageIconModel(text: nil, image: UIImage(named: "empty_Image")),
+            XJJPageIcon.cross_image: XJJPageIconModel(text: nil, image: UIImage(named: "cross_image"))
+        ]
+        
+        self.theme.page_color = [
+            XJJPageColor.backgroud: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1),
+            XJJPageColor.tableLine: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         ]
         
         let randomColor = UIColor.randomColor

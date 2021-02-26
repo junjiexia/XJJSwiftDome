@@ -32,7 +32,7 @@ class XJJNavigationController: UINavigationController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var returnItem: XJJPageImageModel? // 返回图片
+    private var returnItem: XJJPageIconModel? // 返回图片
         
     private func initUI() {
         self.modalPresentationStyle = .fullScreen
@@ -41,7 +41,7 @@ class XJJNavigationController: UINavigationController {
     }
     
     private func setupTheme() {
-        if let text = XJJThemeConfig.config.theme.nav_title {
+        if let text = XJJThemeConfig.share.theme.nav_title {
             switch text.type {
             case .text:
                 self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : text.color, NSAttributedString.Key.font : text.font]
@@ -49,13 +49,13 @@ class XJJNavigationController: UINavigationController {
                 break
             }
         }
-        if let image = XJJThemeConfig.config.theme.nav_image {
+        if let image = XJJThemeConfig.share.theme.nav_image {
             self.navigationBar.setBackgroundImage(image, for: .any, barMetrics: .default)
         }
-        if let color = XJJThemeConfig.config.theme.nav_color {
+        if let color = XJJThemeConfig.share.theme.nav_color {
             self.navigationBar.barTintColor = color
         }
-        self.returnItem = XJJThemeConfig.config.theme.nav_return
+        self.returnItem = XJJThemeConfig.share.theme.nav_return
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {

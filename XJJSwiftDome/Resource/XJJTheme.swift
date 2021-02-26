@@ -28,6 +28,8 @@ enum XJJPageText: String { // 页面文字格式 文字格式key = 文字格式�
 }
 
 enum XJJPageIcon: String { // 页面图片  图片key = 图片说明
+    case empty_image = "默认空白图片"
+    case cross_image = "取消图片"
     case tabbar_icon1_0 = "底部菜单第一项-普通状态"
     case tabbar_icon1_1 = "底部菜单第一项-高亮状态"
     case tabbar_icon2_0 = "底部菜单第二项-普通状态"
@@ -36,45 +38,54 @@ enum XJJPageIcon: String { // 页面图片  图片key = 图片说明
     case tabbar_icon3_1 = "底部菜单第三项-高亮状态"
 }
 
+enum XJJPageColor: String { // 页面颜色  颜色key = 颜色用途说明
+    case theme = "主题颜色"
+    case backgroud = "背景色"
+    case tableLine = "列表底部横线"
+}
+
 struct XJJPageModel { // 单个页面模型
     var nav_image: UIImage? // 导航背景图
     var nav_color: UIColor? // 导航背景颜色
     var nav_title: XJJText? // 导航标题
     var nav_text: XJJText? // 导航文字
-    var nav_return: XJJPageImageModel? // 导航返回按钮
+    var nav_return: XJJPageIconModel? // 导航返回按钮
 }
 
-struct XJJPageImageModel { // 图片模型
+struct XJJPageIconModel { // 图片模型
     var text: XJJText? // 图片文字
     var image: UIImage? // 图片
+    var highlightedText: XJJText? // 高亮文字
+    var highlightedImage: UIImage? // 高亮图片
 }
 
 //MARK: - 主题模型
 /*
  1. 导航和底部工具栏都有通用格式
  2. 导航首先查找 page_item 中对应页面的内容，如果没有则使用通用格式
- 3. 按钮都为 [XJJPageIcon: XJJPageImageModel] 格式，根据 XJJPageIcon 查找对应按钮信息
+ 3. 按钮都为 [XJJPageIcon: XJJPageIconModel] 格式，根据 XJJPageIcon 查找对应按钮信息
  4. 资源整合中，文字格式为 [XJJPageText: XJJText]，根据 XJJPageText 查找对应文字信息
  */
-class XJJTheme {
+final class XJJTheme {
     var style: XJJThemeStyle = .normal // 类型
     // 导航
     var nav_image: UIImage? // 导航背景图
     var nav_color: UIColor? // 导航背景颜色
     var nav_title: XJJText? // 导航标题
     var nav_text: XJJText? // 通用导航标题文字格式
-    var nav_return: XJJPageImageModel? // 导航返回按钮
+    var nav_return: XJJPageIconModel? // 导航返回按钮
     
     // 底部工具栏
     var bar_image: UIImage? // 底部工具栏背景图
     var bar_color: UIColor? // 底部工具栏背景颜色
     var bar_text: XJJText = XJJText(type: UIColor.lightGray, font: UIFont.systemFont(ofSize: 12)) // 通用底部工具栏文字格式
     var bar_text_h: XJJText = XJJText(type: UIColor.blue, font: UIFont.systemFont(ofSize: 12)) // 通用底部工具栏高亮文字格式
-    var bar_icon: [XJJPageIcon: XJJPageImageModel] = [:] // 底部工具栏按钮
+    var bar_icon: [XJJPageIcon: XJJPageIconModel] = [:] // 底部工具栏按钮
     
     // 资源整合
     var page_text: [XJJPageText: XJJText] = [:] // 默认文字格式集合，使用时通过key获取对应的文字格式
-    var page_icon: [XJJPageIcon: XJJPageImageModel] = [:] // 图片集合
+    var page_icon: [XJJPageIcon: XJJPageIconModel] = [:] // 图片集合
+    var page_color: [XJJPageColor: UIColor] = [:] // 颜色集合
     
     // 页面
     var page_item: [XJJPage: XJJPageModel?] = [:] // 页面合集
@@ -83,20 +94,20 @@ class XJJTheme {
 }
 
 final class XJJThemeConfig {
-    static let config = XJJThemeConfig()
+    static let share: XJJThemeConfig = XJJThemeConfig()
     
     var theme: XJJTheme = XJJTheme()
     
     init() {
-        self.normalStyle()
+        normalStyle()
     }
         
     func switchTheme(style: XJJThemeStyle) {
         switch style {
         case .normal:
-            self.normalStyle()
+            normalStyle()
         case .xin_nian:
-            self.xinNianStyle()
+            xinNianStyle()
         }
     }
 }

@@ -17,7 +17,7 @@ class XJJRefreshControlView: UIView {
                 self.updateText(self.textSet.3 + self.updateDate)
                 self.aiView.stopAnimating()
                 UIView.animate(withDuration: 0.25, animations: {
-                    scroll?.contentInset.top -= XJJRefresh.controlHeight
+                    scroll?.contentInset.top -= XJJRefresh.regreshHeight
                 }, completion: { (_) in
                     self.imageView.isHidden = false
                     self.updateText(self.textSet.4 + self.updateDate)
@@ -31,14 +31,14 @@ class XJJRefreshControlView: UIView {
         case .runing:
             self.updateText(self.textSet.1)
             UIView.animate(withDuration: 0.25, animations: {
-                self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(-3 * Double.pi))
+                self.imageView.transform = CGAffineTransform(rotationAngle: CGFloat(3 * Double.pi))
             })
         case .refreshing:
             self.updateText(self.textSet.2)
             self.aiView.startAnimating()
             self.imageView.isHidden = true
             UIView.animate(withDuration: 0.25, animations: {
-                scroll?.contentInset.top += XJJRefresh.controlHeight
+                scroll?.contentInset.top += XJJRefresh.regreshHeight
             }, completion: { (_) in
                 refreshBlock?()
             })

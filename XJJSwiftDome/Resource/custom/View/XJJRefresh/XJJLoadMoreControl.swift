@@ -5,6 +5,9 @@
 //  Created by Levy on 2021/2/23.
 //
 
+/* 加载控制器
+ */
+
 import Foundation
 import UIKit
 
@@ -44,7 +47,8 @@ class XJJLoadMoreControl: UIControl {
     }
     
     deinit {
-        self.scrollView?.removeObserver(self, forKeyPath: "contentOffset")
+        self.scrollView?.removeObserver(self, forKeyPath: XJJRefresh.contentOffsetKey)
+        self.scrollView?.removeObserver(self, forKeyPath: XJJRefresh.contentSizeKey)
         self.scrollView = nil
     }
     
@@ -60,6 +64,7 @@ class XJJLoadMoreControl: UIControl {
     
     private func initUI() {
         self.content = XJJLoadMoreControlView(frame: self.bounds)
+        self.content.tag = XJJRefresh.loadMoreTag
         self.addSubview(content)
     }
     
@@ -70,7 +75,8 @@ class XJJLoadMoreControl: UIControl {
         }
         
         self.content = view
-        self.content?.frame = self.bounds
+        self.content.frame = self.bounds
+        self.content.tag = XJJRefresh.loadMoreTag
         self.addSubview(content)
     }
     
@@ -95,29 +101,39 @@ extension XJJLoadMoreControl {
         guard let super_view = newSuperview as? UIScrollView else {return}
         self.scrollView = super_view
         
-        self.scrollView?.addObserver(self, forKeyPath: "contentOffset", options: [.new, .old], context: nil)
+        self.scrollView?.addObserver(self, forKeyPath: XJJRefresh.contentOffsetKey, options: [.new, .old], context: nil)
+        self.scrollView?.addObserver(self, forKeyPath: XJJRefresh.contentSizeKey, options: [.new], context: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         switch keyPath {
-        case "contentOffset":
-            //print("object:", object ?? "未知")
+        case XJJRefresh.contentOffsetKey:
             guard XJJRefresh.refreshState == .ready else {return}
+            //print("object:", object ?? "未知")
+            let new_offset = change?[.newKey] as? CGPoint ?? CGPoint.zero
+            //let old_offset = change?[.oldKey] as? CGPoint ?? CGPoint.zero
             if let scroll = object as? UIScrollView {
-                let new_offset = change?[.newKey] as? CGPoint ?? CGPoint.zero
-                //let old_offset = change?[.oldKey] as? CGPoint ?? CGPoint.zero
                 self.checkDataForObserve(offset: new_offset, scroll: scroll)
+            }else if let table = object as? UITableView {
+                self.checkDataForObserve(offset: new_offset, scroll: table)
+            }
+        case XJJRefresh.contentSizeKey:
+            let size = change?[.newKey] as? CGSize ?? CGSize.zero
+            if let scroll = object as? UIScrollView {
+                self.frame = CGRect(x: 0, y: size.height, width: scroll.bounds.width, height: XJJRefresh.loadMoreHeight)
+            }else if let table = object as? UITableView {
+                self.frame = CGRect(x: 0, y: size.height, width: table.bounds.width, height: XJJRefresh.loadMoreHeight)
             }
         default:
-            break
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
     
     private func checkDataForObserve(offset: CGPoint, scroll: UIScrollView) {
         let offsetMaxY: CGFloat = scroll.contentInset.bottom + XJJRefresh.loadMoreHeight
         
-        //print("offset:", offset, "max:", offsetMaxY, "inset:", scroll.contentInset)
         if scroll.isDragging { // 正在拖拽
+            //print("offset:", offset, "max:", offsetMaxY)
             if offset.y <= offsetMaxY, self.loadState == .runing {
                 self.lState = .normal
             }else if offset.y > offsetMaxY, self.loadState == .normal {

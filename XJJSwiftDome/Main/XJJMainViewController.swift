@@ -20,16 +20,16 @@ class XJJMainViewController: XJJTabBarController {
     
     override func setupTheme() {
         self.setupChildViewController(first,
-                                      image: XJJThemeConfig.config.theme.bar_icon[XJJPageIcon.tabbar_icon1_0]?.image,
-                                      selectedImage: XJJThemeConfig.config.theme.bar_icon[XJJPageIcon.tabbar_icon1_1]?.image,
+                                      image: XJJThemeConfig.share.theme.bar_icon[.tabbar_icon1_0]?.image,
+                                      selectedImage: XJJThemeConfig.share.theme.bar_icon[.tabbar_icon1_1]?.image,
                                       title: "新闻")
         self.setupChildViewController(second,
-                                      image: XJJThemeConfig.config.theme.bar_icon[XJJPageIcon.tabbar_icon2_0]?.image,
-                                      selectedImage: XJJThemeConfig.config.theme.bar_icon[XJJPageIcon.tabbar_icon2_1]?.image,
+                                      image: XJJThemeConfig.share.theme.bar_icon[.tabbar_icon2_0]?.image,
+                                      selectedImage: XJJThemeConfig.share.theme.bar_icon[.tabbar_icon2_1]?.image,
                                       title: "定时器")
         self.setupChildViewController(third,
-                                      image: XJJThemeConfig.config.theme.bar_icon[XJJPageIcon.tabbar_icon3_0]?.image,
-                                      selectedImage: XJJThemeConfig.config.theme.bar_icon[XJJPageIcon.tabbar_icon3_1]?.image,
+                                      image: XJJThemeConfig.share.theme.bar_icon[.tabbar_icon3_0]?.image,
+                                      selectedImage: XJJThemeConfig.share.theme.bar_icon[.tabbar_icon3_1]?.image,
                                       title: "我的")
     }
     

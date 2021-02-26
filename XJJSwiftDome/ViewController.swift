@@ -27,7 +27,7 @@ class ViewController: XJJBaseViewController {
     private func initData() {
         self.page = .first
         
-        if let text = XJJThemeConfig.config.theme.page_text[XJJPageText.randomText] {
+        if let text = XJJThemeConfig.share.theme.page_text[.randomText] {
             self.tableData.append(TableInfo(text: text.newText("打开主页"), id: "主页"))
             self.tableData.append(TableInfo(text: text.newText("切换主题"), id: "主题"))
         }
@@ -96,10 +96,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 guard let sself = self else {return}
                 switch text {
                 case "默认主题":
-                    XJJThemeConfig.config.switchTheme(style: .normal)
+                    XJJThemeConfig.share.switchTheme(style: .normal)
                     sself.updateUI()
                 case "新年主题":
-                    XJJThemeConfig.config.switchTheme(style: .xin_nian)
+                    XJJThemeConfig.share.switchTheme(style: .xin_nian)
                     sself.updateUI()
                 default:
                     break

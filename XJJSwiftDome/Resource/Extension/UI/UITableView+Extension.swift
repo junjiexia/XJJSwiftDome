@@ -10,11 +10,12 @@ import UIKit
 
 extension UITableView {
     
-    func setupStyle(backgroundColor: UIColor? = nil) {
+    func setupStyle(backgroundColor: UIColor? = nil, footerView: UIView? = nil) {
         self.backgroundColor = backgroundColor ?? UIColor.lightGray
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
         self.separatorStyle = .none
+        self.tableFooterView = footerView ?? UIView()
     }
     
     func setupLine(lineColor: UIColor? = nil) {

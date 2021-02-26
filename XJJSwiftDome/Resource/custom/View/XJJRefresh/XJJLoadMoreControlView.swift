@@ -9,18 +9,28 @@ import UIKit
 
 class XJJLoadMoreControlView: UIView {
     
+    var needHidden: Bool = true // 是否需要结束后隐藏
+    
+    func setupPageNumber(number: Int? = nil) {
+        if let num = number {
+            self.updatePage = num
+        }else {
+            self.updatePage += 1
+        }
+    }
+    
     func updateState(l_state: XJJLoadMoreControl.LState, old_state: XJJLoadMoreControl.LState?, scroll: UIScrollView?, loadMoreBlock: (() -> Void)?) {
         switch l_state {
         case .normal:
             if old_state == .loading {
-                self.updatePage += 1
                 self.updateText(self.textSet.3)
                 self.aiView.stopAnimating()
                 UIView.animate(withDuration: 0.25, animations: {
                     scroll?.contentInset.bottom -= XJJRefresh.loadMoreHeight
-                }, completion: { (_) in
-                    self.updateText(self.textSet.4 + "\(self.updatePage)")
-                    //self.isHidden = true
+                }, completion: {[weak self] _ in
+                    guard let sself = self else {return}
+                    sself.updateText(sself.textSet.4 + "\(sself.updatePage)")
+                    sself.isHidden = sself.needHidden
                 })
             }else {
                 self.updateText(self.textSet.0)
@@ -33,7 +43,7 @@ class XJJLoadMoreControlView: UIView {
             self.aiView.startAnimating()
             UIView.animate(withDuration: 0.25, animations: {
                 scroll?.contentInset.bottom += XJJRefresh.loadMoreHeight
-            }, completion: { (_) in
+            }, completion: { _ in
                 loadMoreBlock?()
             })
         }

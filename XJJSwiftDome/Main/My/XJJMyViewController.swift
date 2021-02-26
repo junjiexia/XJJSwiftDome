@@ -25,9 +25,9 @@ class XJJMyViewController: XJJBaseViewController {
     private var tableData: [TableInfo] = []
     
     private func initData() {
-        XJJCheck.checkFont("JSuHunTi", perfectMatch: false)
+        //XJJCheck.checkFont("JSuHunTi", perfectMatch: false)
         
-        if let text = XJJThemeConfig.config.theme.page_text[XJJPageText.randomText] {
+        if let text = XJJThemeConfig.share.theme.page_text[.randomText] {
             self.tableData.append(TableInfo(text: text.newText("设置"), id: "设置"))
             self.tableData.append(TableInfo(text: text.newText("退出主页"), id: "退出主页"))
         }
