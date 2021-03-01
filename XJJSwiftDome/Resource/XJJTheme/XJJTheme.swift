@@ -100,11 +100,31 @@ final class XJJThemeConfig {
     
     var theme: XJJTheme = XJJTheme()
     
+    var needSaveThemeStyle: Bool = true
+    
+    private let themeStyleKey: String = "XJJThemeStyle"
+    
     init() {
-        normalStyle()
+        if let themeStyleText = XJJFile.string(forKey: themeStyleKey) {
+            if let themeStyle = XJJThemeStyle(rawValue: themeStyleText) {
+                self.theme.style = themeStyle
+            }
+        }
+        
+        setupTheme()
+    }
+    
+    func setupTheme() {
+        switch theme.style {
+        case .normal:
+            normalStyle()
+        case .xin_nian:
+            xinNianStyle()
+        }
     }
         
     func switchTheme(style: XJJThemeStyle) {
+        XJJFile.save(stringValue: style.rawValue, forKey: themeStyleKey)
         switch style {
         case .normal:
             normalStyle()

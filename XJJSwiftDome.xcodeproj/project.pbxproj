@@ -16,6 +16,7 @@
 		F92DDB6425CD48F300B390FE /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB6325CD48F300B390FE /* UILabel+Extension.swift */; };
 		F930DA9D25E8A0DB007459FC /* XJJNewsTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F930DA9C25E8A0DB007459FC /* XJJNewsTableItem.swift */; };
 		F930DAA625E8A11F007459FC /* XJJNewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F930DAA525E8A11F007459FC /* XJJNewsItem.swift */; };
+		F943955425EC9CD400C56E3C /* XJJFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943955325EC9CD400C56E3C /* XJJFile.swift */; };
 		F969619025C7FEEB00CE461B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969618F25C7FEEB00CE461B /* AppDelegate.swift */; };
 		F969619425C7FEEB00CE461B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969619325C7FEEB00CE461B /* ViewController.swift */; };
 		F969619925C7FEF400CE461B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F969619825C7FEF400CE461B /* Assets.xcassets */; };
@@ -90,6 +91,7 @@
 		F92DDB6325CD48F300B390FE /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		F930DA9C25E8A0DB007459FC /* XJJNewsTableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsTableItem.swift; sourceTree = "<group>"; };
 		F930DAA525E8A11F007459FC /* XJJNewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsItem.swift; sourceTree = "<group>"; };
+		F943955325EC9CD400C56E3C /* XJJFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJFile.swift; sourceTree = "<group>"; };
 		F969618C25C7FEEB00CE461B /* XJJSwiftDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XJJSwiftDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F969618F25C7FEEB00CE461B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F969619325C7FEEB00CE461B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +218,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F943954F25EC9C0400C56E3C /* XJJTheme */ = {
+			isa = PBXGroup;
+			children = (
+				F96961D125C8004400CE461B /* XJJTheme.swift */,
+				F9EA8ABE25E64DEB00FE563B /* XJJTheme+Normal.swift */,
+				F9EA8AC325E64E4400FE563B /* XJJTheme+XinNian.swift */,
+			);
+			path = XJJTheme;
+			sourceTree = "<group>";
+		};
 		F969618325C7FEEB00CE461B = {
 			isa = PBXGroup;
 			children = (
@@ -272,9 +284,7 @@
 		F96961D025C8004400CE461B /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				F96961D125C8004400CE461B /* XJJTheme.swift */,
-				F9EA8ABE25E64DEB00FE563B /* XJJTheme+Normal.swift */,
-				F9EA8AC325E64E4400FE563B /* XJJTheme+XinNian.swift */,
+				F943954F25EC9C0400C56E3C /* XJJTheme */,
 				F96961D225C8004400CE461B /* Extension */,
 				F96961D625C8004400CE461B /* Fonts */,
 				F96961D725C8004400CE461B /* custom */,
@@ -352,6 +362,7 @@
 				F96961DD25C8004400CE461B /* XJJText.swift */,
 				F92DDB4025CD2EC400B390FE /* XJJTimer.swift */,
 				F9EA8ACE25E655EB00FE563B /* XJJProtocol.swift */,
+				F943955325EC9CD400C56E3C /* XJJFile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -586,6 +597,7 @@
 				F9E8B8BD25CBE859002E2664 /* TestViewController.swift in Sources */,
 				F930DA9D25E8A0DB007459FC /* XJJNewsTableItem.swift in Sources */,
 				F96961E125C8004400CE461B /* XJJBaseViewController.swift in Sources */,
+				F943955425EC9CD400C56E3C /* XJJFile.swift in Sources */,
 				F9FA20A725E4A83700DC0421 /* Date+ Extension.swift in Sources */,
 				F92DDB5A25CD40CB00B390FE /* XJJNewsViewController.swift in Sources */,
 				F98950D325E0BD6000538A29 /* UIDevice+Extension.swift in Sources */,
