@@ -18,8 +18,10 @@ class XJJTabBarController: UITabBarController {
         
         let text = XJJThemeConfig.share.theme.bar_text
         let text_h = XJJThemeConfig.share.theme.bar_text_h
+        
+        // setTitleTextAttributes 设置为 .highlighted 会有警告，改为 .selected
         navVC.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : text.color, NSAttributedString.Key.font: text.font], for: .normal)
-        navVC.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : text_h.color, NSAttributedString.Key.font: text_h.font], for: .highlighted)
+        navVC.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : text_h.color, NSAttributedString.Key.font: text_h.font], for: .selected)
         
         self.addChild(navVC)
     }

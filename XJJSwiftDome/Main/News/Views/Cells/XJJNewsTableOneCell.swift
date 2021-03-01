@@ -14,6 +14,40 @@ import UIKit
  */
 
 class XJJNewsTableOneCell: UITableViewCell {
+    
+    var titleText: XJJText? {
+        didSet {
+            guard let text = titleText else {return}
+            self.titleLabel.setText(text)
+        }
+    }
+    
+    var originText: XJJText? {
+        didSet {
+            guard let text = originText else {return}
+            self.originLabel.setText(text)
+        }
+    }
+    
+    var tipText: XJJText? {
+        didSet {
+            guard let text = tipText else {return}
+            self.tipLabel.setText(text)
+        }
+    }
+    
+    var images: [UIImage]? {
+        didSet {
+            guard let arr = images, arr.count > 0 else {return}
+            if arr.count >= imageSet.count {
+                self.imageSet.forEach { $0.image = arr[$0.tag - 1] }
+            }else {
+                for i in 0..<arr.count {
+                    self.imageSet[i].image = arr[i]
+                }
+            }
+        }
+    }
         
     static let identifier: String = "XJJNewsTableOneCell"
     
@@ -37,6 +71,11 @@ class XJJNewsTableOneCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.setupSubviewsLayout()
+    }
+    
     private var titleLabel: UILabel! // 标题
     private var originLabel: UILabel! // 来源
     private var tipLabel: UILabel! // 小提示
@@ -49,6 +88,7 @@ class XJJNewsTableOneCell: UITableViewCell {
         self.initOrigin()
         self.initTip()
         self.initImageSet()
+        self.initCancel()
         self.initLine()
     }
     
@@ -111,18 +151,18 @@ class XJJNewsTableOneCell: UITableViewCell {
         self.bottomLine.backgroundColor = XJJThemeConfig.share.theme.page_color[.tableLine]
     }
     
-    private let border_H: CGFloat = 10
+    private let border_H: CGFloat = 16
     private let border_V: CGFloat = 5
     private let merge_H: CGFloat = 5
     private let merge_V: CGFloat = 5
     private let titleHeight: CGFloat = 50
-    private let imageHeight: CGFloat = 60
+    private var imageHeight: CGFloat = 80
     private let tipHeight: CGFloat = 30
     
     private func setupSubviewsLayout() {
         self.contentView.removeConstraints(self.contentView.constraints)
         
-        UIView.setupNeedLayout([titleLabel, originLabel, tipLabel, cancelBtn])
+        UIView.setupNeedLayout([titleLabel, originLabel, tipLabel, cancelBtn, bottomLine])
         
         let contentWidth: CGFloat = self.bounds.width - border_H * 2
         
@@ -134,7 +174,9 @@ class XJJNewsTableOneCell: UITableViewCell {
         if self.imageSet.count > 0 {
             let count: CGFloat = 3
             let imageWidth: CGFloat = (contentWidth - merge_H * (count - 1)) / count
+            self.imageHeight = imageWidth / 4 * 3
             for i in 0..<imageSet.count {
+                self.imageSet[i].translatesAutoresizingMaskIntoConstraints = false
                 self.imageSet[i].autoLayoutTopRelative(merge_V, .equal, titleLabel)
                 self.imageSet[i].autoLayoutLeft(border_H + imageWidth * CGFloat(i), .equal)
                 self.imageSet[i].autoLayoutWidth(imageWidth, .equal)
@@ -168,7 +210,7 @@ class XJJNewsTableOneCell: UITableViewCell {
         self.bottomLine.autoLayoutBottom(0, .equal)
         self.bottomLine.autoLayoutLeft(border_H, .equal)
         self.bottomLine.autoLayoutRight(-border_H, .equal)
-        self.bottomLine.autoLayoutHeight(2, .equal)
+        self.bottomLine.autoLayoutHeight(1, .equal)
     }
     
 }

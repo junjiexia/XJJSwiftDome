@@ -24,7 +24,7 @@ enum XJJPage: String { // 页面  页面key = 页面名称
 enum XJJPageText: String { // 页面文字格式 文字格式key = 文字格式说明
     case text = "正文"
     case randomText = "正文随机颜色、字体"
-    case newsTitle = "新闻标题"
+    case newsMenuTitle = "新闻标题"
 }
 
 enum XJJPageIcon: String { // 页面图片  图片key = 图片说明
@@ -42,6 +42,8 @@ enum XJJPageColor: String { // 页面颜色  颜色key = 颜色用途说明
     case theme = "主题颜色"
     case backgroud = "背景色"
     case tableLine = "列表底部横线"
+    case tip = "小提示"
+    case newsMenuBackgroud = "新闻页面菜单栏背景色"
 }
 
 struct XJJPageModel { // 单个页面模型

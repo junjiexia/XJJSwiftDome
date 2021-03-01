@@ -161,3 +161,9 @@ extension UIView {
     }
     
 }
+
+extension UIView {
+    func asView<T>(_ cs: T.Type) -> T? {
+        return self as? T
+    }
+}

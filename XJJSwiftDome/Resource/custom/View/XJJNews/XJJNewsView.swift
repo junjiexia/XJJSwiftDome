@@ -11,6 +11,20 @@ class XJJNewsView: UIView {
         
     var titleHeight: CGFloat = 50
     
+    var titleBackgroundColor: UIColor? {
+        didSet {
+            guard let color = titleBackgroundColor else {return}
+            self.titleView.backgroundColor = color
+        }
+    }
+    
+    var contentBackgroundColor: UIColor? {
+        didSet {
+            guard let color = contentBackgroundColor else {return}
+            self.contentView.backgroundColor = color
+        }
+    }
+    
     // 更新内容
     func updateContent() {
         

@@ -27,8 +27,17 @@ class XJJLoadMoreControl: UIControl {
         }
     }
     
-    func endLoad() {
+    var page: Int? {
+        didSet {
+            guard let _p = page else {return}
+            self.setupPage(page: _p)
+        }
+    }
+    var limit: Int = 10
+    
+    func endLoad(haveNew: Bool? = nil) {
         self.lState = .normal
+        if haveNew == true { self.setupPage() }
     }
     
     enum LState: String {
@@ -91,6 +100,14 @@ class XJJLoadMoreControl: UIControl {
             }
         }else {
             self.loadMoreBlock?(l_state, old_state)
+        }
+    }
+    
+    private func setupPage(page: Int? = nil) {
+        if let _view = self.content as? XJJLoadMoreControlView {
+            _view.setupPageNumber(number: page)
+        }else {
+            
         }
     }
     

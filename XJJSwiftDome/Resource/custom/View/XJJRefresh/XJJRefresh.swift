@@ -47,10 +47,10 @@ class XJJRefresh {
 // 加载可重写 loadMore 方法，获取数据后，使用 control.endLoad() 结束加载动画及状态更新
 extension UIScrollView {
     // 添加默认刷新、加载控件，并设置scrollView的部分属性
-    func addDefaultRefreshAndLoad() {
+    func addDefaultRefreshAndLoad(pageLimit: Int? = nil) {
         self.setupRefreshUI()
         self.addDefaultRefresh()
-        self.addDefaultLoadMore()
+        self.addDefaultLoadMore(pageLimit: pageLimit)
     }
     
     // 添加默认刷新控件
@@ -64,13 +64,14 @@ extension UIScrollView {
     
     // 默认刷新事件
     @objc func refresh(_ control: XJJRefreshControl) {
-        control.endRefresh()
+        //control.endRefresh()
     }
     
     // 添加默认加载控件
-    func addDefaultLoadMore() {
+    func addDefaultLoadMore(pageLimit: Int? = nil) {
         let loadMoreControl = XJJRefresh.defaultLoadMore()
         loadMoreControl.tag = XJJRefresh.loadMoreTag
+        if let num = pageLimit { loadMoreControl.limit = num }
         self.addSubview(loadMoreControl)
         
         loadMoreControl.addTarget(self, action: #selector(loadMore), for: .valueChanged)
@@ -78,7 +79,7 @@ extension UIScrollView {
     
     // 默认加载事件
     @objc func loadMore(_ control: XJJLoadMoreControl) {
-        control.endLoad()
+        //control.endLoad(haveNew: false)
     }
     
     // 默认 scrollView 属性设置

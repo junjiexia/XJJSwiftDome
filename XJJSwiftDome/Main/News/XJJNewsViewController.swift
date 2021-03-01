@@ -18,29 +18,32 @@ class XJJNewsViewController: XJJBaseViewController {
     
     private var newsView: XJJNewsView!
     private var titleData: [XJJNewsTitleCellItem] = []
+    private var contentViews: [UIView] = []
+    
+    private var dataSource: XJJNewsModel = XJJNewsModel()
     
     private func initData() {
-        let text = XJJThemeConfig.share.theme.page_text[.newsTitle]
+        let text = XJJThemeConfig.share.theme.page_text[.newsMenuTitle]
         self.titleData = [
             XJJNewsTitleCellItem(text: XJJText("推荐", color: text?.color, font: text?.font, alignment: .center), isSelect: true),
             XJJNewsTitleCellItem(text: XJJText("体育", color: text?.color, font: text?.font, alignment: .center)),
             XJJNewsTitleCellItem(text: XJJText("教育", color: text?.color, font: text?.font, alignment: .center)),
-            XJJNewsTitleCellItem(text: XJJText("政治", color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText("外交", color: text?.color, font: text?.font, alignment: .center)),
             XJJNewsTitleCellItem(text: XJJText("财经", color: text?.color, font: text?.font, alignment: .center)),
             XJJNewsTitleCellItem(text: XJJText("旅游", color: text?.color, font: text?.font, alignment: .center)),
             XJJNewsTitleCellItem(text: XJJText("美食", color: text?.color, font: text?.font, alignment: .center)),
-            XJJNewsTitleCellItem(text: XJJText("爱好", color: text?.color, font: text?.font, alignment: .center)),
-            XJJNewsTitleCellItem(text: XJJText("美化", color: text?.color, font: text?.font, alignment: .center)),
-            XJJNewsTitleCellItem(text: XJJText("建筑", color: text?.color, font: text?.font, alignment: .center)),
             XJJNewsTitleCellItem(text: XJJText("开心一刻", color: text?.color, font: text?.font, alignment: .center)),
             XJJNewsTitleCellItem(text: XJJText("猜你喜欢", color: text?.color, font: text?.font, alignment: .center))
         ]
+        
+        self.dataSource.getDataSource()
     }
     
     private func initUI() {
         self.page = .news
     
         self.initNews()
+        self.updateData()
     }
     
     private func initNews() {
@@ -48,9 +51,24 @@ class XJJNewsViewController: XJJBaseViewController {
         self.view.addSubview(newsView)
         
         let recommendTable = XJJNewsTableView(frame: CGRect.zero, style: .plain)
-        recommendTable.addDefaultRefreshAndLoad()
+        recommendTable.tag = 0
+        self.contentViews = [recommendTable]
         
-        self.newsView.setup(titles: titleData, contents: [recommendTable])
+        self.newsView.titleBackgroundColor = XJJThemeConfig.share.theme.page_color[.newsMenuBackgroud]
+        self.newsView.setup(titles: titleData, contents: contentViews)
+    }
+    
+    private func updateData() {
+        guard self.contentViews.count > 0 else {return}
+        
+        for view in contentViews {
+            switch view.tag {
+            case 0:
+                view.asView(XJJNewsTableView.self)?.data = dataSource.dataSource[.first]?.asTable()
+            default:
+                break
+            }
+        }
     }
 
     /*

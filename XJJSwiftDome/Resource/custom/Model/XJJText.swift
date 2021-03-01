@@ -196,6 +196,9 @@ class XJJText {
         return attrText
     }
     
+    static let designatedAll: String = "~~~!!!@@@$$$%%%"
+    static let numbers: String = "0123456789"
+    
     private func designatedAttrForText() -> NSAttributedString {
         let attrText: NSMutableAttributedString = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: font])
         self.totalRange = text.map {[weak self] _ in
@@ -204,6 +207,8 @@ class XJJText {
         }
         
         if designatedAttrArr.count > 0, text.count > 0 {
+            self.designatedAttrArr.forEach {[weak self] in guard let sself = self else {return}; if $0.designated == XJJText.designatedAll { sself.color = $0.color; sself.font = $0.font } }
+            
             for i in 0..<designatedAttrArr.count {
                 let attr = designatedAttrArr[i]
                 for i in 0..<text.characters().count {

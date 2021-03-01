@@ -35,7 +35,7 @@ extension XJJThemeConfig {
         self.theme.page_text =  [
             XJJPageText.text: XJJText(type: UIColor.darkText, font: UIFont(name: fontName, size: 15)),
             XJJPageText.randomText: XJJText(randomType: XJJText.TRandom(fontSize: (14, 15), fontArr: [fontName])),
-            XJJPageText.newsTitle: XJJText(type: UIColor.blue, font: UIFont(name: fontName, size: 15))
+            XJJPageText.newsMenuTitle: XJJText(type: UIColor.blue, font: UIFont(name: fontName, size: 15))
         ]
         
         self.theme.page_icon = [
@@ -44,8 +44,11 @@ extension XJJThemeConfig {
         ]
         
         self.theme.page_color = [
+            XJJPageColor.theme: #colorLiteral(red: 0.2274509804, green: 0.4549019608, blue: 0.6901960784, alpha: 1),
             XJJPageColor.backgroud: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1),
-            XJJPageColor.tableLine: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+            XJJPageColor.tableLine: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1),
+            XJJPageColor.tip: #colorLiteral(red: 0.798948832, green: 0.815658381, blue: 1, alpha: 1),
+            XJJPageColor.newsMenuBackgroud: #colorLiteral(red: 1, green: 0.8367277184, blue: 0.8067481887, alpha: 1)
         ]
         
         let randomColor = UIColor.randomColor
