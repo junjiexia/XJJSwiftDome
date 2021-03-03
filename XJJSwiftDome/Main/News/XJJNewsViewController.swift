@@ -52,7 +52,11 @@ class XJJNewsViewController: XJJBaseViewController {
         
         let recommendTable = XJJNewsTableView(frame: CGRect.zero, style: .plain)
         recommendTable.tag = 0
-        self.contentViews = [recommendTable]
+        
+        let sportsVideo = XJJNewsVideoView()
+        sportsVideo.tag = 1
+        
+        self.contentViews = [recommendTable, sportsVideo]
         
         self.newsView.titleBackgroundColor = XJJThemeConfig.share.theme.page_color[.newsMenuBackgroud]
         self.newsView.setup(titles: titleData, contents: contentViews)

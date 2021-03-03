@@ -18,9 +18,14 @@ class TestViewController: XJJBaseViewController {
     private func initUI() {
         self.page = .test
         
-        self.gradientLayer()
+        //self.gradientLayer()
+        self.videoSource()
+        
+        
+        
     }
-
+    
+    // 渐变 - CAGradientLayer
     private func gradientLayer() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = CGRect(x: 100, y: 100, width: 200, height: 100)
@@ -29,6 +34,10 @@ class TestViewController: XJJBaseViewController {
         gradientLayer.startPoint = CGPoint.zero
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         self.view.layer.addSublayer(gradientLayer)
+    }
+    
+    private func videoSource() {
+        _ = XJJVideo()
     }
 
 }
