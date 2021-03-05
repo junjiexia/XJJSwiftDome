@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E3071FB8AEF29415BEBC7336 /* libPods-XJJSwiftDome.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF7785B451716AA12F73CC3 /* libPods-XJJSwiftDome.a */; };
 		F92DDB3C25CD2D0C00B390FE /* XJJTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB3B25CD2D0C00B390FE /* XJJTabBarController.swift */; };
 		F92DDB4125CD2EC400B390FE /* XJJTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB4025CD2EC400B390FE /* XJJTimer.swift */; };
 		F92DDB4825CD34C200B390FE /* XJJTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB4725CD34C200B390FE /* XJJTimerViewController.swift */; };
@@ -57,6 +58,8 @@
 		F9BAF48325E3967C00A16B47 /* XJJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BAF48225E3967C00A16B47 /* XJJRefresh.swift */; };
 		F9BAF49525E3AF1F00A16B47 /* XJJRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BAF49425E3AF1F00A16B47 /* XJJRefreshControl.swift */; };
 		F9C31F6825E2121C00097909 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C31F6725E2121C00097909 /* Array+Extension.swift */; };
+		F9D8836725F0DFA700C52B18 /* XJJTCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8836625F0DFA700C52B18 /* XJJTCP.swift */; };
+		F9D8836C25F0E16200C52B18 /* XJJTCPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8836B25F0E16200C52B18 /* XJJTCPRequest.swift */; };
 		F9E8B8A625CBC421002E2664 /* 迷你简书魏.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9E8B8A525CBC421002E2664 /* 迷你简书魏.ttf */; };
 		F9E8B8AB25CBCFCC002E2664 /* 汉仪秦川飞影体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9E8B8AA25CBCFCC002E2664 /* 汉仪秦川飞影体.ttf */; };
 		F9E8B8B825CBD1E3002E2664 /* 字体说明 in Resources */ = {isa = PBXBuildFile; fileRef = F9E8B8B725CBD1E3002E2664 /* 字体说明 */; };
@@ -95,6 +98,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3364065CDC2F4E9C1DA9DC1F /* Pods-XJJSwiftDome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJJSwiftDome.release.xcconfig"; path = "Target Support Files/Pods-XJJSwiftDome/Pods-XJJSwiftDome.release.xcconfig"; sourceTree = "<group>"; };
+		5AF7785B451716AA12F73CC3 /* libPods-XJJSwiftDome.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJJSwiftDome.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD3212D92F355CAFBD016880 /* Pods-XJJSwiftDome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJJSwiftDome.debug.xcconfig"; path = "Target Support Files/Pods-XJJSwiftDome/Pods-XJJSwiftDome.debug.xcconfig"; sourceTree = "<group>"; };
 		F92DDB3B25CD2D0C00B390FE /* XJJTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTabBarController.swift; sourceTree = "<group>"; };
 		F92DDB4025CD2EC400B390FE /* XJJTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTimer.swift; sourceTree = "<group>"; };
 		F92DDB4725CD34C200B390FE /* XJJTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTimerViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +157,8 @@
 		F9BAF48225E3967C00A16B47 /* XJJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJRefresh.swift; sourceTree = "<group>"; };
 		F9BAF49425E3AF1F00A16B47 /* XJJRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJRefreshControl.swift; sourceTree = "<group>"; };
 		F9C31F6725E2121C00097909 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		F9D8836625F0DFA700C52B18 /* XJJTCP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTCP.swift; sourceTree = "<group>"; };
+		F9D8836B25F0E16200C52B18 /* XJJTCPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTCPRequest.swift; sourceTree = "<group>"; };
 		F9E8B8A525CBC421002E2664 /* 迷你简书魏.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "迷你简书魏.ttf"; sourceTree = "<group>"; };
 		F9E8B8AA25CBCFCC002E2664 /* 汉仪秦川飞影体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "汉仪秦川飞影体.ttf"; sourceTree = "<group>"; };
 		F9E8B8B725CBD1E3002E2664 /* 字体说明 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "字体说明"; sourceTree = "<group>"; };
@@ -176,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3071FB8AEF29415BEBC7336 /* libPods-XJJSwiftDome.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +205,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6ACBFCD4A8CEC816B15B1D2C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD3212D92F355CAFBD016880 /* Pods-XJJSwiftDome.debug.xcconfig */,
+				3364065CDC2F4E9C1DA9DC1F /* Pods-XJJSwiftDome.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C3C2FA2CD6A2CA6B8B5A089B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5AF7785B451716AA12F73CC3 /* libPods-XJJSwiftDome.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F92DDB4525CD346C00B390FE /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +309,7 @@
 		F95CBB5025EDEE1C008A758D /* NetworkServer */ = {
 			isa = PBXGroup;
 			children = (
+				F9D8836525F0DF6C00C52B18 /* XJJTCP */,
 				F95CBB5125EDEE43008A758D /* XJJHTTP */,
 			);
 			path = NetworkServer;
@@ -308,6 +336,8 @@
 				F96961A525C7FEF400CE461B /* XJJSwiftDomeTests */,
 				F96961B025C7FEF400CE461B /* XJJSwiftDomeUITests */,
 				F969618D25C7FEEB00CE461B /* Products */,
+				6ACBFCD4A8CEC816B15B1D2C /* Pods */,
+				C3C2FA2CD6A2CA6B8B5A089B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -514,6 +544,15 @@
 			path = XJJRefresh;
 			sourceTree = "<group>";
 		};
+		F9D8836525F0DF6C00C52B18 /* XJJTCP */ = {
+			isa = PBXGroup;
+			children = (
+				F9D8836625F0DFA700C52B18 /* XJJTCP.swift */,
+				F9D8836B25F0E16200C52B18 /* XJJTCPRequest.swift */,
+			);
+			path = XJJTCP;
+			sourceTree = "<group>";
+		};
 		F9EA8AAA25E6261D00FE563B /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,6 +586,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F96961B625C7FEF400CE461B /* Build configuration list for PBXNativeTarget "XJJSwiftDome" */;
 			buildPhases = (
+				75F53BEEAE303FCF22C61C0D /* [CP] Check Pods Manifest.lock */,
 				F969618825C7FEEB00CE461B /* Sources */,
 				F969618925C7FEEB00CE461B /* Frameworks */,
 				F969618A25C7FEEB00CE461B /* Resources */,
@@ -669,6 +709,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		75F53BEEAE303FCF22C61C0D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XJJSwiftDome-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F969618825C7FEEB00CE461B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -692,6 +757,7 @@
 				F95CBB4C25EDD9FB008A758D /* Data+Extension.swift in Sources */,
 				F95CBB5325EDEE63008A758D /* XJJHTTP.swift in Sources */,
 				F9BAF48325E3967C00A16B47 /* XJJRefresh.swift in Sources */,
+				F9D8836725F0DFA700C52B18 /* XJJTCP.swift in Sources */,
 				F96961DF25C8004400CE461B /* XJJTheme.swift in Sources */,
 				F9EA8ACA25E651B500FE563B /* XJJSheet.swift in Sources */,
 				F96961E325C8004400CE461B /* XJJCheck.swift in Sources */,
@@ -700,6 +766,7 @@
 				F9FA20A225E4A06600DC0421 /* XJJRefreshControlView.swift in Sources */,
 				F9EA8AB425E62AA600FE563B /* XJJNewsTableView.swift in Sources */,
 				F98950CE25E0A59900538A29 /* UIScrollView+Extension.swift in Sources */,
+				F9D8836C25F0E16200C52B18 /* XJJTCPRequest.swift in Sources */,
 				F9C31F6825E2121C00097909 /* Array+Extension.swift in Sources */,
 				F98950C925E0A57E00538A29 /* UITableView+Extension.swift in Sources */,
 				F92DDB5025CD391800B390FE /* XJJMainViewController.swift in Sources */,
@@ -897,12 +964,14 @@
 		};
 		F96961B725C7FEF400CE461B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD3212D92F355CAFBD016880 /* Pods-XJJSwiftDome.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UHYD65M29B;
 				INFOPLIST_FILE = XJJSwiftDome/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -916,12 +985,14 @@
 		};
 		F96961B825C7FEF400CE461B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3364065CDC2F4E9C1DA9DC1F /* Pods-XJJSwiftDome.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UHYD65M29B;
 				INFOPLIST_FILE = XJJSwiftDome/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

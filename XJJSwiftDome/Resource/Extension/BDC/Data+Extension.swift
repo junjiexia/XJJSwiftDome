@@ -6,6 +6,87 @@
 //
 
 import Foundation
+import UIKit
+
+extension Dictionary {
+    
+    /// 将字典转为 JSON  data
+    ///
+    /// - Returns: JSON data
+    func toJSONData() -> Data? {
+        guard JSONSerialization.isValidJSONObject(self) else {return nil}
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
+            return jsonData
+        }catch {
+            return nil
+        }
+    }
+}
+
+extension Array {
+    
+    /// 将数组转为 JSON data
+    ///
+    /// - Returns: JSON data
+    func toJSONData() -> Data? {
+        guard JSONSerialization.isValidJSONObject(self) else {return nil}
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
+            return jsonData
+        }catch {
+            return nil
+        }
+    }
+}
+
+
+extension String {
+    func toJSONData() -> Data? {
+        return self.data(using: .utf8)
+    }
+}
+
+extension Data {
+    
+    func JSONToStr() -> String {
+        return String(data: self, encoding: .utf8) ?? ""
+    }
+    
+    /// JSON 解析
+    ///
+    /// - Returns: JSON 解析后的对象
+    func JSONToAny() -> Any {
+        do {
+            let result = try JSONSerialization.jsonObject(with: self, options: .mutableContainers)
+            return result
+        } catch  {
+            return self
+        }
+    }
+    
+    static func JSONData(filePath: String) -> Data? {
+        let url = URL(fileURLWithPath: filePath)
+        
+        do {
+            let jsonData = try Data(contentsOf: url)
+            return jsonData
+        }catch {
+            return nil
+        }
+    }
+    
+}
+
+extension Data {
+    func compressImage(maxKB: CGFloat? = 1024.0) -> UIImage? {
+        let size = CGFloat(self.count) / 1024.0 / maxKB!
+        var rate: CGFloat = 1.0 - 0.1 * size
+        if rate < 0.1 { rate = 0.1 }
+        
+        return UIImage(data: self, scale: rate)
+    }
+}
 
 /*
  Codable（json 编码、解码） 协议数据转换扩展

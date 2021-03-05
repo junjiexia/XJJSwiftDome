@@ -1,0 +1,6 @@
+module Pods_XJJSwiftDome {
+  umbrella header "Pods-XJJSwiftDome-umbrella.h"
+
+  export *
+  module * { export * }
+}
