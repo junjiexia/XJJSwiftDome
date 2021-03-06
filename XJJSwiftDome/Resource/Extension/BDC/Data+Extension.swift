@@ -167,8 +167,8 @@ extension Data {
         return result
     }
     
-    static func dataToModel<T: Decodable>(_ data: Data) -> T? {
-        guard let result = try? JSONDecoder().decode(T.self, from: data) else {return nil}
+    func dataToModel<T: Decodable>() -> T? {
+        guard let result = try? JSONDecoder().decode(T.self, from: self) else {return nil}
         
         return result
     }

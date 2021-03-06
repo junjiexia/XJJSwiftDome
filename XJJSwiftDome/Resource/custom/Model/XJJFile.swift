@@ -111,7 +111,7 @@ class XJJFile {
         
     // fileName: JPEG格式图片
     class func saveImage(temp image: UIImage, _ fileName: String) -> String? {
-        let now = Date.date("yyyyMMddHHmmss")
+        let now = file_date("yyyyMMddHHmmss")
         let path = tempFilesPath + now + "-" + fileName
         
         if FileManager.default.fileExists(atPath: path) {
@@ -120,18 +120,32 @@ class XJJFile {
         
         guard createFolder(tempFilesPath) else {return nil}
         
-        let isSuccess = FileManager.default.createFile(atPath: path, contents: image.jpegData(compressionQuality: 1), attributes: nil)
-        if isSuccess {
-            print(" 💫 ", "保存图片png成功！ filePath: ", path)
-            return path
+        return self.saveData(data: image.jpegData(compressionQuality: 1), toPath: path)
+    }
+    
+    class func saveData(data: Data?, withFileName: String?) -> String? {
+        let toPath: String = tempFilesPath + (withFileName ?? file_date("yyyyMMddHHmmss"))
+        return self.saveData(data: data, toPath: toPath)
+    }
+    
+    class func saveData(data: Data?, toPath: String) -> String? {
+        if let _d = data {
+            let isSuccess: Bool = FileManager.default.createFile(atPath: toPath, contents: _d, attributes: nil)
+            if isSuccess {
+                print(" 💫 ", "保存数据成功！ filePath: ", toPath)
+                return toPath
+            }else {
+                print(" 💫 ", "保存数据失败！")
+                return nil
+            }
         }else {
-            print(" 💫 ", "保存图片png失败！")
+            print(" 💫 ", "保存数据为空！")
             return nil
         }
     }
     
     class func saveFile(from filePath: String, _ fileName: String) -> String? {
-        let now = Date.date("yyyyMMddHHmmss")
+        let now = file_date("yyyyMMddHHmmss")
         let path = tempFilesPath + now + "-" + fileName
         
         if FileManager.default.fileExists(atPath: path) {
@@ -266,8 +280,8 @@ class XJJFile {
     }
 }
 
-extension Date {
-    static func date(_ format: String) -> String {
+extension XJJFile {
+    static func file_date(_ format: String) -> String {
         
         let formatter = DateFormatter()
         formatter.dateFormat = format
