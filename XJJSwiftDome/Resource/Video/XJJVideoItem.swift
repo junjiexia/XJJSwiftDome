@@ -9,11 +9,20 @@ import Foundation
 
 class XJJVideoItem: Codable {
     
-    var OldVideoUrls: [String: String]? // 2015年 获取视频url
-    var VideoUrls: [String: String]? // 2020年 获取视频url
+    var HTTPVideoUrls: [String: String]? // http 视频资源
+    var MMSVideoUrls: [String: String]? // mms 视频资源
     
-    func url(forKey: String) -> URL? {
-        guard let urlString: String = self.VideoUrls?[forKey] else {return nil}
+    func http_source(forKey: String) -> String? {
+        return self.HTTPVideoUrls?[forKey]
+    }
+    
+    func http_url(forKey: String) -> URL? {
+        guard let urlString: String = self.HTTPVideoUrls?[forKey] else {return nil}
+        return URL(string: urlString)
+    }
+    
+    func mms_url(forKey: String) -> URL? {
+        guard let urlString: String = self.MMSVideoUrls?[forKey] else {return nil}
         return URL(string: urlString)
     }
 }

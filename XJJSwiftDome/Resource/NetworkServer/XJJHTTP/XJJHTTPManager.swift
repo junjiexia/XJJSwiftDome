@@ -43,13 +43,13 @@ final class XJJHTTPManager {
         self.reachability?.whenUnreachable = {[weak self] _ in
             guard let sself = self else {return}
             sself.networkEnable = false
-            print("Not reachable")
+            http_print("Not reachable")
         }
 
         do {
             try reachability?.startNotifier()
         } catch {
-            print("Unable to start notifier")
+            http_print("Unable to start notifier")
         }
     }
     
@@ -74,18 +74,7 @@ final class XJJHTTPManager {
         
         XJJHTTPRequest.share.request(urlStr, contentType: contentType!, method: "GET", params: params, header: header, body: body, callback: callback)
     }
-    // 1、没有默认 header 和 param 的 post 方法
-    // 2、没有默认返回格式，直接按照 T 类型返回
-    func emptyFormat_post<T: Codable>(_ urlStr: String, contentType: XJJHTTPDataType.TType? = .JSON, params: XJJHTTPParams, header: XJJHTTPHeader, body: Data? = nil, callback: ((_ isSuccess: Bool,_ result: T?, _ d: String?, _ errorCode: Int?) -> Void)?) {
-        
-        XJJHTTPRequest.share.request(urlStr, contentType: contentType!, method: "POST", params: params, header: header, body: body, emptyFormat: true, callback: callback)
-    }
-    // 1、没有默认 header 和 param 的 get 方法
-    // 2、没有默认返回格式，直接按照 T 类型返回
-    func emptyFormat_get<T: Codable>(_ urlStr: String, contentType: XJJHTTPDataType.TType? = .JSON, params: XJJHTTPParams, header: XJJHTTPHeader, body: Data? = nil, callback: ((_ isSuccess: Bool,_ result: T?, _ d: String?, _ errorCode: Int?) -> Void)?) {
-        
-        XJJHTTPRequest.share.request(urlStr, contentType: contentType!, method: "GET", params: params, header: header, body: body, emptyFormat: true, callback: callback)
-    }
+    
     // 下载
     func download(_ urlStr: String, _ fileName: String, saveFileType: XJJHTTPFileSaveType? = nil, needCache: Bool? = true, _ callback: ((_ isSuccess: Bool, _ filePath: String?, _ data: Data?) -> Void)?) {
         XJJHTTPRequest.share.download(urlStr, fileName, saveFileType: saveFileType, needCache: needCache, callback)
@@ -94,6 +83,7 @@ final class XJJHTTPManager {
     func batchDownload(_ arr: [XJJHTTPDownloadWorkerItem], _ callback: ((_ isSuccess: Bool, _ filePath: String?, _ data: Data?, _ index: Int) -> Void)?) {
         XJJHTTPRequest.share.batchDownload(arr, callback)
     }
+    
     // 上传
     func upload(_ uploadItem: XJJHTTPUploadWorkerItem, _ progressBlock: ((_ progress: Float) -> Void)?, _ finishedBlock: ((_ isSuccess: Bool, _ result: String) -> Void)?) {
         XJJHTTPRequest.share.upload(uploadItem, progressBlock, finishedBlock)
@@ -101,6 +91,11 @@ final class XJJHTTPManager {
     // 批量上传
     func batchUpload(_ arr: [XJJHTTPUploadWorkerItem], _ progressBlock: ((_ progress: Float, _ index: Int) -> Void)?, _ finishedBlock: ((_ isSuccess: Bool, _ index: Int, _ result: String) -> Void)?) {
         XJJHTTPRequest.share.batchUpload(arr, progressBlock, finishedBlock)
+    }
+    
+    // stream read & write
+    func stream(_ item: XJJHTTPStreamWorkerTask, resultBlock: ((_ currentData: Data?, _ cumulativeData: Data?, _ error: Error?) -> Void)?, completionBlock: ((_ data: Data?, _ error: Error?) -> Void)?) {
+        XJJHTTPRequest.share.stream(item, resultBlock: resultBlock, completionBlock: completionBlock)
     }
     
     private func setupHeader(_ headers: XJJHTTPHeader) -> XJJHTTPHeader {

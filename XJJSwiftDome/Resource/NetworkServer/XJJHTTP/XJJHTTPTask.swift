@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 enum XJJHTTPFileType: String {
+    case NONE = ""
     case PNG = "png"
     case JPG = "jpg"
     case PDF = "pdf"
@@ -31,6 +32,7 @@ enum XJJHTTPFileSaveType {
     case tmp // 临时文件 app退出就自动删除
 }
 
+//MARK: - download - item
 class XJJHTTPDownloadItem {
     var downloadResultblock: ((_ isSuccess: Bool, _ filePath: String?) -> Void)?
     
@@ -39,7 +41,7 @@ class XJJHTTPDownloadItem {
             self.setupFileType()
         }
     }
-    var fileType: XJJHTTPFileType = .PNG
+    var fileType: XJJHTTPFileType = .NONE
     
     var url: URL!
     
@@ -49,9 +51,8 @@ class XJJHTTPDownloadItem {
     var fileSaveType: XJJHTTPFileSaveType = .tmp
     var needCache: Bool = true
     
-    init(_ fileName: String, _ fileType: XJJHTTPFileType) {
+    init(_ fileName: String) {
         self.fileName = fileName
-        self.fileType = fileType
     }
     
     init(_ fileType: XJJHTTPFileType) {
@@ -102,6 +103,8 @@ class XJJHTTPDownloadItem {
             self.fileName = "text." + fileType.rawValue
         case .PPT:
             self.fileName = "powerpoint." + fileType.rawValue
+        case .NONE:
+            break
         }
     }
     
@@ -162,6 +165,7 @@ class XJJHTTPDownloadWorkerItem {
     }
 }
 
+//MARK: - upload - item
 class XJJHTTPUploadItem {
     var uploadProgressBlock: ((_ progress: Float) -> Void)?
     var uploadCompleteBlock: ((_ isSuccess: Bool, _ result: String) -> Void)?
@@ -206,5 +210,68 @@ class XJJHTTPUploadWorkerItem {
         self.fileName = fileName
         self.data = image.jpegData(compressionQuality: 1.0)
         self.uploadFileType = uploadFileType!
+    }
+}
+
+//MARK: - stream - item
+enum XJJHTTPStreamType {
+    case read // 读 -- InputStream
+    case write // 写 -- OutputStream
+}
+
+class XJJHTTPStreamTask {
+    var isStreaming: Bool = false // 流是否在运行
+    var task: URLSessionStreamTask? //
+    var input: InputStream? // 输入流（read 获取服务器数据）
+    var output: OutputStream? // 输出流（write 写数据入服务器）
+    var type: XJJHTTPStreamType = .read
+    
+    var readData: Data? // 读取数据
+    var writeData: Data? // 写入数据
+    
+    func close() {
+        self.closeInput()
+        self.closeOutput()
+    }
+    
+    func closeInput() {
+        if self.input != nil {
+            self.input?.close()
+            self.input = nil
+        }
+    }
+    
+    func closeOutput() {
+        if self.output != nil {
+            self.output?.close()
+            self.output = nil
+        }
+    }
+}
+
+class XJJHTTPStreamWorkerTask {
+    var type: XJJHTTPStreamType = .read
+    // input //
+    var urlStr: String?
+    var port: Int = 8080
+    var minLength: Int = 0 // 最小获取量
+    var maxLength: Int = 2048 // 最大获取量
+    var timeOut: TimeInterval = 60 // 超时时间
+    
+    // output //
+    var filePath: String?
+    var data: Data?
+    
+    init(read urlStr: String, port: Int? = nil, minLength: Int? = nil, maxLength: Int? = nil, timeOut: TimeInterval? = nil) {
+        self.type = .read
+        self.urlStr = urlStr
+        self.port = port ?? 8080
+        self.minLength = minLength ?? 0
+        self.maxLength = maxLength ?? 2048
+        self.timeOut = timeOut ?? 60
+    }
+    
+    init(write filePath: String) {
+        self.filePath = filePath
     }
 }

@@ -12,7 +12,7 @@
 import Foundation
 import UIKit
 
-class XJJFTP {
+final class XJJFTP {
     
     static let share = XJJFTP()
     

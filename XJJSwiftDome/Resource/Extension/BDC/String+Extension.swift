@@ -27,6 +27,10 @@ extension String {
         
         return result
     }
+    
+    static func isEmpty(_ string: String?) -> Bool {
+        return string == nil || string == ""
+    }
 }
 
 extension String {

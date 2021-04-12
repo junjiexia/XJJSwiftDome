@@ -9,6 +9,15 @@ import Foundation
 
 class XJJHTTPResult<T: Codable>: Codable {
     var data: T?
+    
+    // 以下字段根据服务器返回设置
+    var isSuccess: Bool?
+    var error: Error?
+    
+    struct Error: Codable {
+        var code: Int = 0
+        var text: String = ""
+    }
 }
 
 // 任何类型的数据：字符串、整型、浮点型、百分比

@@ -20,9 +20,6 @@ class TestViewController: XJJBaseViewController {
         
         //self.gradientLayer()
         self.videoSource()
-        
-        
-        
     }
     
     // 渐变 - CAGradientLayer
@@ -37,7 +34,10 @@ class TestViewController: XJJBaseViewController {
     }
     
     private func videoSource() {
-        _ = XJJVideo()
+        guard let host = XJJVideo().list?.http_source(forKey: "CCTV1") else {return}
+        XJJMMS.share.creatClient(host: host)
+        
+        
     }
 
 }

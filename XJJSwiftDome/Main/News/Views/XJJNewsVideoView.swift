@@ -16,6 +16,7 @@ class XJJNewsVideoView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.initData()
         self.initUI()
     }
     
@@ -28,29 +29,36 @@ class XJJNewsVideoView: UIView {
         self.setupSubviewsLayout()
     }
     
-    private var player: AVPlayer!
-    private var playerLayer: AVPlayerLayer!
+    private var player: XJJVideoPlayer!
+        
+    private func initData() {
+        
+    }
     
     private func initUI() {
         self.initPlayer()
     }
     
     private func initPlayer() {
-        if let url = XJJVideo().list?.url(forKey: "CCTV1") {
-            self.player = AVPlayer(url: url)
-            self.player.rate = 1.0 // 播放速度
-            
-            self.playerLayer = AVPlayerLayer(player: player)
-            self.playerLayer.videoGravity = .resizeAspect
-            self.layer.addSublayer(playerLayer)
-
-            self.player.play()
-        }
+        self.player = XJJVideoPlayer()
+        self.addSubview(player)
         
+        if let url = XJJVideo().list?.http_source(forKey: "CCTV2") {
+            self.player.urlList = [url]
+        }
     }
     
+    private let playerHeight: CGFloat = 300
+    
     private func setupSubviewsLayout() {
-        self.playerLayer.frame = self.bounds
+        self.removeConstraints(self.constraints)
+        
+        UIView.setupNeedLayout([player])
+        
+        self.player.autoLayoutTop(1, .equal)
+        self.player.autoLayoutLeft(1, .equal)
+        self.player.autoLayoutRight(-1, .equal)
+        self.player.autoLayoutHeight(playerHeight, .equal)
     }
     
     /*

@@ -75,6 +75,7 @@ class XJJFile {
         return NSTemporaryDirectory()
     }()
     
+    //MARK: - 删除数据
     class func removeFile(_ path: String) -> Bool {
         if FileManager.default.fileExists(atPath: path) {
             do {
@@ -104,11 +105,21 @@ class XJJFile {
         return removeAllFile(with: cachesPath)
     }
     
+    //MARK: - 获取数据
+    class func getData(filePath: String) -> Data? {
+        if FileManager.default.fileExists(atPath: filePath) {
+            return FileManager.default.contents(atPath: filePath)
+        }
+        
+        return nil
+    }
+    
     class func getImage(temp fileName: String) -> UIImage? {
         let path = tempFilesPath + fileName
         return UIImage(contentsOfFile: path)
     }
-        
+    
+    //MARK: - 保存数据
     // fileName: JPEG格式图片
     class func saveImage(temp image: UIImage, _ fileName: String) -> String? {
         let now = file_date("yyyyMMddHHmmss")

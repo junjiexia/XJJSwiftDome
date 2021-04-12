@@ -31,6 +31,11 @@
 		F95CBB6725EDF051008A758D /* XJJHTTPDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CBB6625EDF051008A758D /* XJJHTTPDataType.swift */; };
 		F95CBB6C25EDF080008A758D /* XJJHTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CBB6B25EDF080008A758D /* XJJHTTPResponse.swift */; };
 		F95CBB7125EDF09A008A758D /* XJJHTTPResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CBB7025EDF09A008A758D /* XJJHTTPResult.swift */; };
+		F9649EFE26005EDF00DC0E47 /* XJJMMSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9649EFD26005EDF00DC0E47 /* XJJMMSModel.swift */; };
+		F9649F0B2600611B00DC0E47 /* XJJGUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9649F0A2600611B00DC0E47 /* XJJGUID.swift */; };
+		F9649F1C2600A52200DC0E47 /* XJJMMSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9649F1B2600A52200DC0E47 /* XJJMMSClient.swift */; };
+		F9649F212600A55B00DC0E47 /* XJJMMS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9649F202600A55B00DC0E47 /* XJJMMS.swift */; };
+		F96954032623E19300E4D41B /* XJJVideoPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96954022623E19300E4D41B /* XJJVideoPlayerItem.swift */; };
 		F969619025C7FEEB00CE461B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969618F25C7FEEB00CE461B /* AppDelegate.swift */; };
 		F969619425C7FEEB00CE461B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969619325C7FEEB00CE461B /* ViewController.swift */; };
 		F969619925C7FEF400CE461B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F969619825C7FEF400CE461B /* Assets.xcassets */; };
@@ -53,6 +58,8 @@
 		F98950E825E0E99900538A29 /* XJJNewsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98950E725E0E99900538A29 /* XJJNewsContentView.swift */; };
 		F98950EE25E0EB6F00538A29 /* XJJNewsTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98950ED25E0EB6F00538A29 /* XJJNewsTitleCell.swift */; };
 		F98950F325E0F95400538A29 /* XJJNewsTitleCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98950F225E0F95400538A29 /* XJJNewsTitleCellItem.swift */; };
+		F9A53B642616C5320019824A /* XJJVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A53B632616C5320019824A /* XJJVideoPlayer.swift */; };
+		F9A53B692616FD830019824A /* XJJVideoAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A53B682616FD830019824A /* XJJVideoAsset.swift */; };
 		F9A77B4B25F218E200142266 /* XJJFTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A77B4A25F218E200142266 /* XJJFTP.swift */; };
 		F9A77B5025F2195900142266 /* XJJFTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A77B4F25F2195900142266 /* XJJFTPClient.swift */; };
 		F9A77B5525F21AD500142266 /* XJJFTPConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A77B5425F21AD500142266 /* XJJFTPConfig.swift */; };
@@ -64,6 +71,8 @@
 		F9BAF48325E3967C00A16B47 /* XJJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BAF48225E3967C00A16B47 /* XJJRefresh.swift */; };
 		F9BAF49525E3AF1F00A16B47 /* XJJRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BAF49425E3AF1F00A16B47 /* XJJRefreshControl.swift */; };
 		F9C31F6825E2121C00097909 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C31F6725E2121C00097909 /* Array+Extension.swift */; };
+		F9D6915D260B161100089B8F /* XJJStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D6915C260B161100089B8F /* XJJStream.swift */; };
+		F9D69168260B2CAA00089B8F /* XJJMMSConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D69167260B2CAA00089B8F /* XJJMMSConfig.swift */; };
 		F9E8B8A625CBC421002E2664 /* 迷你简书魏.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9E8B8A525CBC421002E2664 /* 迷你简书魏.ttf */; };
 		F9E8B8AB25CBCFCC002E2664 /* 汉仪秦川飞影体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9E8B8AA25CBCFCC002E2664 /* 汉仪秦川飞影体.ttf */; };
 		F9E8B8B825CBD1E3002E2664 /* 字体说明 in Resources */ = {isa = PBXBuildFile; fileRef = F9E8B8B725CBD1E3002E2664 /* 字体说明 */; };
@@ -128,6 +137,11 @@
 		F95CBB6625EDF051008A758D /* XJJHTTPDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJHTTPDataType.swift; sourceTree = "<group>"; };
 		F95CBB6B25EDF080008A758D /* XJJHTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJHTTPResponse.swift; sourceTree = "<group>"; };
 		F95CBB7025EDF09A008A758D /* XJJHTTPResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJHTTPResult.swift; sourceTree = "<group>"; };
+		F9649EFD26005EDF00DC0E47 /* XJJMMSModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJMMSModel.swift; sourceTree = "<group>"; };
+		F9649F0A2600611B00DC0E47 /* XJJGUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJGUID.swift; sourceTree = "<group>"; };
+		F9649F1B2600A52200DC0E47 /* XJJMMSClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJMMSClient.swift; sourceTree = "<group>"; };
+		F9649F202600A55B00DC0E47 /* XJJMMS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJMMS.swift; sourceTree = "<group>"; };
+		F96954022623E19300E4D41B /* XJJVideoPlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoPlayerItem.swift; sourceTree = "<group>"; };
 		F969618C25C7FEEB00CE461B /* XJJSwiftDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XJJSwiftDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F969618F25C7FEEB00CE461B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F969619325C7FEEB00CE461B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +170,8 @@
 		F98950E725E0E99900538A29 /* XJJNewsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsContentView.swift; sourceTree = "<group>"; };
 		F98950ED25E0EB6F00538A29 /* XJJNewsTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsTitleCell.swift; sourceTree = "<group>"; };
 		F98950F225E0F95400538A29 /* XJJNewsTitleCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsTitleCellItem.swift; sourceTree = "<group>"; };
+		F9A53B632616C5320019824A /* XJJVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoPlayer.swift; sourceTree = "<group>"; };
+		F9A53B682616FD830019824A /* XJJVideoAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoAsset.swift; sourceTree = "<group>"; };
 		F9A77B3A25F20E1300142266 /* XJJSwiftDome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XJJSwiftDome-Bridging-Header.h"; sourceTree = "<group>"; };
 		F9A77B4A25F218E200142266 /* XJJFTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJFTP.swift; sourceTree = "<group>"; };
 		F9A77B4F25F2195900142266 /* XJJFTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJFTPClient.swift; sourceTree = "<group>"; };
@@ -168,6 +184,8 @@
 		F9BAF48225E3967C00A16B47 /* XJJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJRefresh.swift; sourceTree = "<group>"; };
 		F9BAF49425E3AF1F00A16B47 /* XJJRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJRefreshControl.swift; sourceTree = "<group>"; };
 		F9C31F6725E2121C00097909 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		F9D6915C260B161100089B8F /* XJJStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJStream.swift; sourceTree = "<group>"; };
+		F9D69167260B2CAA00089B8F /* XJJMMSConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJMMSConfig.swift; sourceTree = "<group>"; };
 		F9E8B8A525CBC421002E2664 /* 迷你简书魏.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "迷你简书魏.ttf"; sourceTree = "<group>"; };
 		F9E8B8AA25CBCFCC002E2664 /* 汉仪秦川飞影体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "汉仪秦川飞影体.ttf"; sourceTree = "<group>"; };
 		F9E8B8B725CBD1E3002E2664 /* 字体说明 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "字体说明"; sourceTree = "<group>"; };
@@ -269,13 +287,6 @@
 			path = My;
 			sourceTree = "<group>";
 		};
-		F92E5B2525EF7B2C00B01700 /* ThirdPart */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ThirdPart;
-			sourceTree = "<group>";
-		};
 		F930DAA125E8A0EB007459FC /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +311,9 @@
 				F937FB8325ECEC240073351E /* XJJVideoSource.plist */,
 				F937FB8825ECEF190073351E /* XJJVideo.swift */,
 				F937FB8D25ECF08C0073351E /* XJJVideoItem.swift */,
+				F9A53B632616C5320019824A /* XJJVideoPlayer.swift */,
+				F96954022623E19300E4D41B /* XJJVideoPlayerItem.swift */,
+				F9A53B682616FD830019824A /* XJJVideoAsset.swift */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -317,6 +331,9 @@
 		F95CBB5025EDEE1C008A758D /* NetworkServer */ = {
 			isa = PBXGroup;
 			children = (
+				F9D6915B260B15EB00089B8F /* XJJStream */,
+				F9649F282600A6E200DC0E47 /* XJJSocket */,
+				F9649F1A2600A47900DC0E47 /* XJJMMS */,
 				F9D8836525F0DF6C00C52B18 /* XJJFTP */,
 				F95CBB5125EDEE43008A758D /* XJJHTTP */,
 			);
@@ -335,6 +352,26 @@
 				F95CBB7025EDF09A008A758D /* XJJHTTPResult.swift */,
 			);
 			path = XJJHTTP;
+			sourceTree = "<group>";
+		};
+		F9649F1A2600A47900DC0E47 /* XJJMMS */ = {
+			isa = PBXGroup;
+			children = (
+				F9649F202600A55B00DC0E47 /* XJJMMS.swift */,
+				F9649F1B2600A52200DC0E47 /* XJJMMSClient.swift */,
+				F9649EFD26005EDF00DC0E47 /* XJJMMSModel.swift */,
+				F9D69167260B2CAA00089B8F /* XJJMMSConfig.swift */,
+				F9649F0A2600611B00DC0E47 /* XJJGUID.swift */,
+			);
+			path = XJJMMS;
+			sourceTree = "<group>";
+		};
+		F9649F282600A6E200DC0E47 /* XJJSocket */ = {
+			isa = PBXGroup;
+			children = (
+				F976C55025F369C700C4B3CB /* XJJAsyncSocket.swift */,
+			);
+			path = XJJSocket;
 			sourceTree = "<group>";
 		};
 		F969618325C7FEEB00CE461B = {
@@ -396,7 +433,6 @@
 		F96961D025C8004400CE461B /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				F92E5B2525EF7B2C00B01700 /* ThirdPart */,
 				F95CBB5025EDEE1C008A758D /* NetworkServer */,
 				F937FB8225ECEBC00073351E /* Video */,
 				F937FB7C25ECEB0E0073351E /* Other */,
@@ -553,12 +589,19 @@
 			path = XJJRefresh;
 			sourceTree = "<group>";
 		};
+		F9D6915B260B15EB00089B8F /* XJJStream */ = {
+			isa = PBXGroup;
+			children = (
+				F9D6915C260B161100089B8F /* XJJStream.swift */,
+			);
+			path = XJJStream;
+			sourceTree = "<group>";
+		};
 		F9D8836525F0DF6C00C52B18 /* XJJFTP */ = {
 			isa = PBXGroup;
 			children = (
 				F9A77B4A25F218E200142266 /* XJJFTP.swift */,
 				F9A77B5425F21AD500142266 /* XJJFTPConfig.swift */,
-				F976C55025F369C700C4B3CB /* XJJAsyncSocket.swift */,
 				F9A77B4F25F2195900142266 /* XJJFTPClient.swift */,
 				F9A77B5925F21CB900142266 /* XJJFTPServer.swift */,
 				F9A77B5E25F2283200142266 /* XJJFTPModel.swift */,
@@ -761,11 +804,13 @@
 				F943955425EC9CD400C56E3C /* XJJFile.swift in Sources */,
 				F9FA20A725E4A83700DC0421 /* Date+ Extension.swift in Sources */,
 				F92DDB5A25CD40CB00B390FE /* XJJNewsViewController.swift in Sources */,
+				F9D6915D260B161100089B8F /* XJJStream.swift in Sources */,
 				F98950D325E0BD6000538A29 /* UIDevice+Extension.swift in Sources */,
 				F937FB7825ECE7160073351E /* XJJNewsVideoView.swift in Sources */,
 				F98950EE25E0EB6F00538A29 /* XJJNewsTitleCell.swift in Sources */,
 				F9EA8ABA25E62B5C00FE563B /* XJJNewsTableOneCell.swift in Sources */,
 				F9A77B4B25F218E200142266 /* XJJFTP.swift in Sources */,
+				F9A53B642616C5320019824A /* XJJVideoPlayer.swift in Sources */,
 				F96961E225C8004400CE461B /* XJJNavigationController.swift in Sources */,
 				F95CBB6725EDF051008A758D /* XJJHTTPDataType.swift in Sources */,
 				F95CBB4C25EDD9FB008A758D /* Data+Extension.swift in Sources */,
@@ -793,6 +838,7 @@
 				F9EA8ABF25E64DEB00FE563B /* XJJTheme+Normal.swift in Sources */,
 				F9E8B8C225CBEDE0002E2664 /* XJJNavigationTitleView.swift in Sources */,
 				F930DAA625E8A11F007459FC /* XJJNewsItem.swift in Sources */,
+				F9D69168260B2CAA00089B8F /* XJJMMSConfig.swift in Sources */,
 				F98950F325E0F95400538A29 /* XJJNewsTitleCellItem.swift in Sources */,
 				F9A77B5A25F21CB900142266 /* XJJFTPServer.swift in Sources */,
 				F9BAF46C25E3648000A16B47 /* XJJNewsContentCell.swift in Sources */,
@@ -800,20 +846,26 @@
 				F95CBB7125EDF09A008A758D /* XJJHTTPResult.swift in Sources */,
 				F969619425C7FEEB00CE461B /* ViewController.swift in Sources */,
 				F92DDB3C25CD2D0C00B390FE /* XJJTabBarController.swift in Sources */,
+				F9649EFE26005EDF00DC0E47 /* XJJMMSModel.swift in Sources */,
 				F96961CC25C8003C00CE461B /* XJJConfig.swift in Sources */,
 				F9EA8AC425E64E4400FE563B /* XJJTheme+XinNian.swift in Sources */,
 				F9EA8ACF25E655EB00FE563B /* XJJProtocol.swift in Sources */,
 				F9A77B5F25F2283200142266 /* XJJFTPModel.swift in Sources */,
+				F9649F0B2600611B00DC0E47 /* XJJGUID.swift in Sources */,
 				F96961E025C8004400CE461B /* String+Extension.swift in Sources */,
 				F9BAF47125E364E000A16B47 /* XJJNewsContentCellItem.swift in Sources */,
 				F9FA20AC25E4AE7700DC0421 /* UIImage+Extension.swift in Sources */,
+				F9649F1C2600A52200DC0E47 /* XJJMMSClient.swift in Sources */,
 				F95CBB6C25EDF080008A758D /* XJJHTTPResponse.swift in Sources */,
 				F92DDB4125CD2EC400B390FE /* XJJTimer.swift in Sources */,
 				F9FA20B425E4FA0D00DC0421 /* XJJLoadMoreControl.swift in Sources */,
 				F976C55125F369C700C4B3CB /* XJJAsyncSocket.swift in Sources */,
+				F9A53B692616FD830019824A /* XJJVideoAsset.swift in Sources */,
 				F92DDB5F25CD40EF00B390FE /* XJJMyViewController.swift in Sources */,
 				F95CBB6225EDF020008A758D /* XJJHTTPTask.swift in Sources */,
+				F96954032623E19300E4D41B /* XJJVideoPlayerItem.swift in Sources */,
 				F98950D925E0E83D00538A29 /* XJJNewsView.swift in Sources */,
+				F9649F212600A55B00DC0E47 /* XJJMMS.swift in Sources */,
 				F969619025C7FEEB00CE461B /* AppDelegate.swift in Sources */,
 				F92DDB4825CD34C200B390FE /* XJJTimerViewController.swift in Sources */,
 				F9F3A14D25E8CB8700213C98 /* XJJNewsModel.swift in Sources */,
