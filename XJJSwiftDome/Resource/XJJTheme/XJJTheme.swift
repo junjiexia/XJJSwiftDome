@@ -101,6 +101,8 @@ final class XJJThemeConfig {
     var theme: XJJTheme = XJJTheme()
     
     var needSaveThemeStyle: Bool = true
+    let returnImage: UIImage? = UIImage.backArrow
+    let settingImage: UIImage? = UIImage.spanner
     
     private let themeStyleKey: String = "XJJThemeStyle"
     

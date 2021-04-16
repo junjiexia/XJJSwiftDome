@@ -17,7 +17,7 @@ extension XJJThemeConfig {
         self.theme.nav_text = XJJText(type: UIColor.darkText, font: UIFont(name: fontName, size: 14))
         self.theme.nav_image = nil
         self.theme.nav_color = nil
-        self.theme.nav_return = XJJPageIconModel(text: nil, image: UIImage(named: "icon_return"))
+        self.theme.nav_return = XJJPageIconModel(text: nil, image: returnImage)
         
         self.theme.bar_color = nil
         self.theme.bar_image = nil

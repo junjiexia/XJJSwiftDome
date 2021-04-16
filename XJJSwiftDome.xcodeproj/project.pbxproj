@@ -71,6 +71,11 @@
 		F9BAF48325E3967C00A16B47 /* XJJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BAF48225E3967C00A16B47 /* XJJRefresh.swift */; };
 		F9BAF49525E3AF1F00A16B47 /* XJJRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BAF49425E3AF1F00A16B47 /* XJJRefreshControl.swift */; };
 		F9C31F6825E2121C00097909 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C31F6725E2121C00097909 /* Array+Extension.swift */; };
+		F9D54EC62626D036008BEE30 /* XJJVideoPlayerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D54EC52626D036008BEE30 /* XJJVideoPlayerMenu.swift */; };
+		F9D54ECB2626D289008BEE30 /* XJJVideoPlayerMenuTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D54ECA2626D289008BEE30 /* XJJVideoPlayerMenuTopView.swift */; };
+		F9D54ED02626D2B1008BEE30 /* XJJVideoPlayerMenuLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D54ECF2626D2B1008BEE30 /* XJJVideoPlayerMenuLeftView.swift */; };
+		F9D54ED52626D2C5008BEE30 /* XJJVideoPlayerMenuRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D54ED42626D2C5008BEE30 /* XJJVideoPlayerMenuRightView.swift */; };
+		F9D54EDA2626D2DA008BEE30 /* XJJVideoPlayerMenuBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D54ED92626D2DA008BEE30 /* XJJVideoPlayerMenuBottomView.swift */; };
 		F9D6915D260B161100089B8F /* XJJStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D6915C260B161100089B8F /* XJJStream.swift */; };
 		F9D69168260B2CAA00089B8F /* XJJMMSConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D69167260B2CAA00089B8F /* XJJMMSConfig.swift */; };
 		F9E8B8A625CBC421002E2664 /* 迷你简书魏.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9E8B8A525CBC421002E2664 /* 迷你简书魏.ttf */; };
@@ -184,6 +189,11 @@
 		F9BAF48225E3967C00A16B47 /* XJJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJRefresh.swift; sourceTree = "<group>"; };
 		F9BAF49425E3AF1F00A16B47 /* XJJRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJRefreshControl.swift; sourceTree = "<group>"; };
 		F9C31F6725E2121C00097909 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		F9D54EC52626D036008BEE30 /* XJJVideoPlayerMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoPlayerMenu.swift; sourceTree = "<group>"; };
+		F9D54ECA2626D289008BEE30 /* XJJVideoPlayerMenuTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoPlayerMenuTopView.swift; sourceTree = "<group>"; };
+		F9D54ECF2626D2B1008BEE30 /* XJJVideoPlayerMenuLeftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoPlayerMenuLeftView.swift; sourceTree = "<group>"; };
+		F9D54ED42626D2C5008BEE30 /* XJJVideoPlayerMenuRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoPlayerMenuRightView.swift; sourceTree = "<group>"; };
+		F9D54ED92626D2DA008BEE30 /* XJJVideoPlayerMenuBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoPlayerMenuBottomView.swift; sourceTree = "<group>"; };
 		F9D6915C260B161100089B8F /* XJJStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJStream.swift; sourceTree = "<group>"; };
 		F9D69167260B2CAA00089B8F /* XJJMMSConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJMMSConfig.swift; sourceTree = "<group>"; };
 		F9E8B8A525CBC421002E2664 /* 迷你简书魏.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "迷你简书魏.ttf"; sourceTree = "<group>"; };
@@ -282,7 +292,6 @@
 			isa = PBXGroup;
 			children = (
 				F92DDB5E25CD40EF00B390FE /* XJJMyViewController.swift */,
-				F9E8B8BC25CBE859002E2664 /* TestViewController.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -308,12 +317,9 @@
 		F937FB8225ECEBC00073351E /* Video */ = {
 			isa = PBXGroup;
 			children = (
-				F937FB8325ECEC240073351E /* XJJVideoSource.plist */,
-				F937FB8825ECEF190073351E /* XJJVideo.swift */,
-				F937FB8D25ECF08C0073351E /* XJJVideoItem.swift */,
+				F9D54EC42626D00B008BEE30 /* Views */,
+				F9D54EC32626CFD9008BEE30 /* Source */,
 				F9A53B632616C5320019824A /* XJJVideoPlayer.swift */,
-				F96954022623E19300E4D41B /* XJJVideoPlayerItem.swift */,
-				F9A53B682616FD830019824A /* XJJVideoAsset.swift */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -402,6 +408,7 @@
 				F96961D025C8004400CE461B /* Resource */,
 				F969618F25C7FEEB00CE461B /* AppDelegate.swift */,
 				F969619325C7FEEB00CE461B /* ViewController.swift */,
+				F9E8B8BC25CBE859002E2664 /* TestViewController.swift */,
 				F96961CB25C8003C00CE461B /* XJJConfig.swift */,
 				F92DDB4525CD346C00B390FE /* Main */,
 				F969619825C7FEF400CE461B /* Assets.xcassets */,
@@ -587,6 +594,30 @@
 				F9FA20B825E4FD9900DC0421 /* XJJLoadMoreControlView.swift */,
 			);
 			path = XJJRefresh;
+			sourceTree = "<group>";
+		};
+		F9D54EC32626CFD9008BEE30 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				F937FB8325ECEC240073351E /* XJJVideoSource.plist */,
+				F937FB8825ECEF190073351E /* XJJVideo.swift */,
+				F937FB8D25ECF08C0073351E /* XJJVideoItem.swift */,
+				F96954022623E19300E4D41B /* XJJVideoPlayerItem.swift */,
+				F9A53B682616FD830019824A /* XJJVideoAsset.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		F9D54EC42626D00B008BEE30 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F9D54EC52626D036008BEE30 /* XJJVideoPlayerMenu.swift */,
+				F9D54ECA2626D289008BEE30 /* XJJVideoPlayerMenuTopView.swift */,
+				F9D54ECF2626D2B1008BEE30 /* XJJVideoPlayerMenuLeftView.swift */,
+				F9D54ED42626D2C5008BEE30 /* XJJVideoPlayerMenuRightView.swift */,
+				F9D54ED92626D2DA008BEE30 /* XJJVideoPlayerMenuBottomView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F9D6915B260B15EB00089B8F /* XJJStream */ = {
@@ -806,6 +837,7 @@
 				F92DDB5A25CD40CB00B390FE /* XJJNewsViewController.swift in Sources */,
 				F9D6915D260B161100089B8F /* XJJStream.swift in Sources */,
 				F98950D325E0BD6000538A29 /* UIDevice+Extension.swift in Sources */,
+				F9D54ED02626D2B1008BEE30 /* XJJVideoPlayerMenuLeftView.swift in Sources */,
 				F937FB7825ECE7160073351E /* XJJNewsVideoView.swift in Sources */,
 				F98950EE25E0EB6F00538A29 /* XJJNewsTitleCell.swift in Sources */,
 				F9EA8ABA25E62B5C00FE563B /* XJJNewsTableOneCell.swift in Sources */,
@@ -828,6 +860,7 @@
 				F9C31F6825E2121C00097909 /* Array+Extension.swift in Sources */,
 				F9A77B5525F21AD500142266 /* XJJFTPConfig.swift in Sources */,
 				F98950C925E0A57E00538A29 /* UITableView+Extension.swift in Sources */,
+				F9D54ECB2626D289008BEE30 /* XJJVideoPlayerMenuTopView.swift in Sources */,
 				F92DDB5025CD391800B390FE /* XJJMainViewController.swift in Sources */,
 				F92DDB6425CD48F300B390FE /* UILabel+Extension.swift in Sources */,
 				F98950E825E0E99900538A29 /* XJJNewsContentView.swift in Sources */,
@@ -844,6 +877,7 @@
 				F9BAF46C25E3648000A16B47 /* XJJNewsContentCell.swift in Sources */,
 				F9BAF46625E3622900A16B47 /* UIColor+Extension.swift in Sources */,
 				F95CBB7125EDF09A008A758D /* XJJHTTPResult.swift in Sources */,
+				F9D54EC62626D036008BEE30 /* XJJVideoPlayerMenu.swift in Sources */,
 				F969619425C7FEEB00CE461B /* ViewController.swift in Sources */,
 				F92DDB3C25CD2D0C00B390FE /* XJJTabBarController.swift in Sources */,
 				F9649EFE26005EDF00DC0E47 /* XJJMMSModel.swift in Sources */,
@@ -858,6 +892,8 @@
 				F9649F1C2600A52200DC0E47 /* XJJMMSClient.swift in Sources */,
 				F95CBB6C25EDF080008A758D /* XJJHTTPResponse.swift in Sources */,
 				F92DDB4125CD2EC400B390FE /* XJJTimer.swift in Sources */,
+				F9D54EDA2626D2DA008BEE30 /* XJJVideoPlayerMenuBottomView.swift in Sources */,
+				F9D54ED52626D2C5008BEE30 /* XJJVideoPlayerMenuRightView.swift in Sources */,
 				F9FA20B425E4FA0D00DC0421 /* XJJLoadMoreControl.swift in Sources */,
 				F976C55125F369C700C4B3CB /* XJJAsyncSocket.swift in Sources */,
 				F9A53B692616FD830019824A /* XJJVideoAsset.swift in Sources */,

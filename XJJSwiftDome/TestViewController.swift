@@ -19,7 +19,8 @@ class TestViewController: XJJBaseViewController {
         self.page = .test
         
         //self.gradientLayer()
-        self.videoSource()
+        //self.videoSource()
+        self.testImage()
     }
     
     // 渐变 - CAGradientLayer
@@ -33,6 +34,7 @@ class TestViewController: XJJBaseViewController {
         self.view.layer.addSublayer(gradientLayer)
     }
     
+    // video
     private func videoSource() {
         guard let host = XJJVideo().list?.http_source(forKey: "CCTV1") else {return}
         XJJMMS.share.creatClient(host: host)
@@ -40,4 +42,13 @@ class TestViewController: XJJBaseViewController {
         
     }
 
+    // image
+    private func testImage() {
+        let imageView = UIImageView(frame: CGRect(x: 50, y: 100, width: 200, height: 200))
+        self.view.addSubview(imageView)
+        
+        imageView.backgroundColor = UIColor.white
+        imageView.image = UIImage.drawSpanner(size: imageView.bounds.size)
+    }
+    
 }

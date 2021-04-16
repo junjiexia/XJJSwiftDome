@@ -43,9 +43,7 @@ class XJJNewsVideoView: UIView {
         self.player = XJJVideoPlayer()
         self.addSubview(player)
         
-        if let url = XJJVideo().list?.http_source(forKey: "CCTV2") {
-            self.player.urlList = [url]
-        }
+        self.player.urlString = XJJVideo().list?.http_source(forKey: "TEST1")
     }
     
     private let playerHeight: CGFloat = 300

@@ -35,16 +35,10 @@ class XJJMyViewController: XJJBaseViewController {
         
     private func initUI() {
         self.page = .my
-        self.addRightTextItem("测试")
         
         self.initTable()
     }
-    
-    override func rightItemAction(_ item: UIBarButtonItem) {
-        let vc = TestViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
+        
     private func initTable() {
         self.table = UITableView(frame: CGRect.zero, style: .plain)
         self.view.addSubview(table)

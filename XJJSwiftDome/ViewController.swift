@@ -18,7 +18,13 @@ class ViewController: XJJBaseViewController {
         super.viewDidLoad()
         self.initData()
         self.initUI()
+        self.addRightImageItem(XJJThemeConfig.share.settingImage!)
         // Do any additional setup after loading the view.
+    }
+    
+    override func rightItemAction(_ item: UIBarButtonItem) {
+        let vc = TestViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
         
     private var table: UITableView!

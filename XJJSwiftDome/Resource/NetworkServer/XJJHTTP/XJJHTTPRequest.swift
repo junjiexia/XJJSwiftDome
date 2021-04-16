@@ -505,7 +505,7 @@ extension XJJHTTPRequest: URLSessionDownloadDelegate {
                 }
                 
                 sself.cache.setObject(data as AnyObject, forKey: urlStr as AnyObject, cost: data?.count ?? 0)
-                http_print("request base:", "-download-result:", data?.count ?? "0")
+                http_print("request base:", "-download-result:", data?.JSONToStr() ?? "", "data count: ", data?.count ?? "0")
                 callback?(true, nil, data)
             }
             item.dataTask = task

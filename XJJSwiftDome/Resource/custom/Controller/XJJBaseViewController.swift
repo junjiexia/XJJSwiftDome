@@ -30,6 +30,10 @@ class XJJBaseViewController: UIViewController {
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: navText?.color ?? UIColor.darkText, NSAttributedString.Key.font: navText?.font ?? UIFont.systemFont(ofSize: 14)], for: .normal)
     }
     
+    func addRightImageItem(_ image: UIImage) {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, landscapeImagePhone: nil, style: .done, target: self, action: #selector(rightItemAction))
+    }
+    
     @objc func rightItemAction(_ item: UIBarButtonItem) {
         
     }
