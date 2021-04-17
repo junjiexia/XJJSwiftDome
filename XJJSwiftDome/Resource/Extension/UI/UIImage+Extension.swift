@@ -318,4 +318,168 @@ extension UIImage {
         
         return image
     }
+    
+    /*
+        * 闭锁 🔐
+     */
+    static var lockOfClose: UIImage? {
+        get {
+            return drawLockOfClose()
+        }
+    }
+    
+    class func drawLockOfClose(size: CGSize? = nil,
+                               strokeColor: UIColor? = nil,
+                               latchFillColor: UIColor? = nil,
+                               bodyFillColor: UIColor? = nil,
+                               strokeWidth: CGFloat? = 1) -> UIImage? {
+        let _size = size ?? CGSize(width: 25, height: 25)
+        let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
+        let _bodyFillColor = bodyFillColor?.cgColor ?? UIColor.gray.cgColor
+        let _latchFillColor = latchFillColor?.cgColor ?? UIColor.lightGray.cgColor
+        
+        let center = CGPoint(x: _size.width / 2, y: _size.height / 2)
+        let b_width = _size.width * 0.5 // 锁身宽度
+        let b_height = _size.height * 0.4 // 锁身高度
+        let l_height = _size.height * 0.1 // 锁扣伸直部分高度
+        let lo_radius = _size.width * 0.4 / 2 // 锁扣外圈半径
+        let li_radius = _size.width * 0.25 / 2 // 锁扣里圈半径
+        let l_center = CGPoint(x: center.x, y: center.y - l_height) // 锁扣半圆圆心
+        
+        let tl_point = CGPoint(x: center.x - b_width / 2, y: center.y) // 锁身左上点
+        let tr_point = CGPoint(x: center.x + b_width / 2, y: center.y) // 锁身右上点
+        let bl_point = CGPoint(x: tl_point.x, y: tl_point.y + b_height) // 锁身左下点
+        let br_point = CGPoint(x: tr_point.x, y: tr_point.y + b_height) // 锁身右下点
+        
+        let lol_point = CGPoint(x: center.x - lo_radius, y: center.y) // 锁扣外圈左边点
+        let lor_point = CGPoint(x: center.x + lo_radius, y: center.y) // 锁扣外圈右边点
+        let lil_point = CGPoint(x: center.x - li_radius, y: center.y) // 锁扣里圈左边点
+        let lir_point = CGPoint(x: center.x + li_radius, y: center.y) // 锁扣里圈右边点
+        let llol_point = CGPoint(x: lol_point.x, y: lol_point.y - l_height) // 锁扣外圈左边向上延伸点
+        let llor_point = CGPoint(x: lor_point.x, y: lor_point.y - l_height) // 锁扣外圈右边向上延伸点
+        let llil_point = CGPoint(x: lil_point.x, y: lil_point.y - l_height) // 锁扣里圈左边向上延伸点
+        let llir_point = CGPoint(x: lir_point.x, y: lir_point.y - l_height) // 锁扣里圈右边向上延伸点
+        
+        UIGraphicsBeginImageContextWithOptions(_size, false, UIScreen.main.scale)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setStrokeColor(_strokeColor)
+        context?.setLineWidth(strokeWidth!)
+        
+        context?.setFillColor(_bodyFillColor)
+        context?.move(to: tl_point)
+        context?.addLine(to: tr_point)
+        context?.addLine(to: br_point)
+        context?.addLine(to: bl_point)
+        context?.closePath()
+        context?.fillPath()
+        
+        context?.setFillColor(_latchFillColor)
+        context?.move(to: lol_point)
+        context?.addLine(to: llol_point)
+        context?.move(to: llol_point)
+        context?.addArc(center: l_center, radius: lo_radius, startAngle: CGFloat.pi, endAngle: 0, clockwise: false)
+        context?.move(to: llor_point)
+        context?.addLine(to: lor_point)
+        context?.addLine(to: lir_point)
+        context?.addLine(to: llir_point)
+        context?.move(to: llir_point)
+        context?.addArc(center: l_center, radius: li_radius, startAngle: 0, endAngle: CGFloat.pi, clockwise: true)
+        context?.move(to: llil_point)
+        context?.addLine(to: lil_point)
+        context?.addLine(to: lol_point)
+        context?.addLine(to: llol_point)
+        context?.fillPath()
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
+    /*
+        * 开锁 🔓
+     */
+    static var lockOfOpen: UIImage? {
+        get {
+            return drawLockOfOpen()
+        }
+    }
+    
+    class func drawLockOfOpen(size: CGSize? = nil,
+                              strokeColor: UIColor? = nil,
+                              latchFillColor: UIColor? = nil,
+                              bodyFillColor: UIColor? = nil,
+                              strokeWidth: CGFloat? = 1,
+                              openRight: Bool? = false) -> UIImage? {
+        let _size = size ?? CGSize(width: 25, height: 25)
+        let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
+        let _bodyFillColor = bodyFillColor?.cgColor ?? UIColor.gray.cgColor
+        let _latchFillColor = latchFillColor?.cgColor ?? UIColor.lightGray.cgColor
+        
+        let center = CGPoint(x: _size.width / 2, y: _size.height / 2)
+        let b_width = _size.width * 0.5 // 锁身宽度
+        let b_height = _size.height * 0.4 // 锁身高度
+        let l_height = _size.height * 0.1 // 锁扣伸直部分高度
+        let ll_height = _size.height * 0.05 // 开锁后两端差值
+        let lo_radius = _size.width * 0.4 / 2 // 锁扣外圈半径
+        let li_radius = _size.width * 0.25 / 2 // 锁扣里圈半径
+        let l_center = openRight! ? CGPoint(x: center.x + lo_radius, y: center.y - l_height - ll_height) : CGPoint(x: center.x, y: center.y - l_height - ll_height) // 锁扣半圆圆心
+        
+        let borber_h = (b_width - li_radius * 2) / 2 // 锁扣内侧到边界的距离
+        let tl_point = openRight! ? CGPoint(x: center.x - (b_width - borber_h), y: center.y) : CGPoint(x: center.x - b_width / 2, y: center.y) // 锁身左上点
+        let tr_point = openRight! ? CGPoint(x: center.x + borber_h, y: center.y) : CGPoint(x: center.x + b_width / 2, y: center.y) // 锁身右上点
+        let bl_point = CGPoint(x: tl_point.x, y: tl_point.y + b_height) // 锁身左下点
+        let br_point = CGPoint(x: tr_point.x, y: tr_point.y + b_height) // 锁身右下点
+        
+        let lol_point = openRight! ? CGPoint(x: center.x, y: center.y) : CGPoint(x: center.x - lo_radius, y: center.y - ll_height) // 锁扣外圈左边点
+        let lor_point = openRight! ? CGPoint(x: l_center.x + lo_radius, y: center.y - ll_height) : CGPoint(x: center.x + lo_radius, y: center.y) // 锁扣外圈右边点
+        let lil_point = openRight! ? CGPoint(x: center.x + (lo_radius - li_radius), y: center.y) : CGPoint(x: center.x - li_radius, y: center.y - ll_height) // 锁扣里圈左边点
+        let lir_point = openRight! ? CGPoint(x: l_center.x + li_radius, y: center.y - ll_height) : CGPoint(x: center.x + li_radius, y: center.y) // 锁扣里圈右边点
+        let llol_point = CGPoint(x: lol_point.x, y: lol_point.y - l_height - (openRight! ? ll_height : 0)) // 锁扣外圈左边向上延伸点
+        let llor_point = CGPoint(x: lor_point.x, y: lor_point.y - l_height - (openRight! ? 0 : ll_height)) // 锁扣外圈右边向上延伸点
+        let llil_point = CGPoint(x: lil_point.x, y: lil_point.y - l_height - (openRight! ? ll_height : 0)) // 锁扣里圈左边向上延伸点
+        let llir_point = CGPoint(x: lir_point.x, y: lir_point.y - l_height - (openRight! ? 0 : ll_height)) // 锁扣里圈右边向上延伸点
+        
+        
+        UIGraphicsBeginImageContextWithOptions(_size, false, UIScreen.main.scale)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setStrokeColor(_strokeColor)
+        context?.setLineWidth(strokeWidth!)
+        
+        context?.setFillColor(_bodyFillColor)
+        context?.move(to: tl_point)
+        context?.addLine(to: tr_point)
+        context?.addLine(to: br_point)
+        context?.addLine(to: bl_point)
+        context?.closePath()
+        context?.fillPath()
+        
+        context?.setFillColor(_latchFillColor)
+        context?.move(to: lol_point)
+        context?.addLine(to: llol_point)
+        context?.move(to: llol_point)
+        context?.addArc(center: l_center, radius: lo_radius, startAngle: CGFloat.pi, endAngle: 0, clockwise: false)
+        context?.move(to: llor_point)
+        context?.addLine(to: lor_point)
+        context?.addLine(to: lir_point)
+        context?.addLine(to: llir_point)
+        context?.move(to: llir_point)
+        context?.addArc(center: l_center, radius: li_radius, startAngle: 0, endAngle: CGFloat.pi, clockwise: true)
+        context?.move(to: llil_point)
+        context?.addLine(to: lil_point)
+        context?.addLine(to: lol_point)
+        context?.addLine(to: llol_point)
+        context?.fillPath()
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
 }

@@ -16,6 +16,13 @@ class XJJVideoPlayer: UIView {
             self.updatePlayerItem(urlStr)
         }
     }
+    
+    var liveUrlString: String? {
+        didSet {
+            guard let urlStr = liveUrlString else {return}
+            self.updatePlayerItem(urlStr, playType: .live)
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,7 +35,7 @@ class XJJVideoPlayer: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.setSubviewsLayout()
+        self.setupSubviewsLayout()
     }
     
     private var player: AVPlayer!
@@ -52,8 +59,8 @@ class XJJVideoPlayer: UIView {
         self.layer.addSublayer(playerLayer)
     }
     
-    private func updatePlayerItem(_ urlStr: String) {
-        self.playerItem = XJJVideoPlayerItem(urlString: urlStr, options: nil, assetKeys: nil)
+    private func updatePlayerItem(_ urlStr: String, playType: XJJVideoAsset.PlayType? = .rb_none) {
+        self.playerItem = XJJVideoPlayerItem(urlString: urlStr, options: nil, assetKeys: nil, playType: playType)
         
         self.playerItem.assetPrepareBlock = {[weak self] in
             guard let sself = self else {return}
@@ -88,7 +95,7 @@ class XJJVideoPlayer: UIView {
         guard !isPlaying else {return}
         
         let rangeArr = values.map { $0 as? CMTimeRange }
-        let pointArr = rangeArr.map { $0?.start ?? CMTime(value: 0, timescale: 0) }
+        let pointArr = rangeArr.map { CMTimeAdd($0?.start ?? CMTime(value: 0, timescale: 0), $0?.duration ?? CMTime(value: 0, timescale: 0))}
         
         let cTime = CMTimeAdd(player.currentTime(), minPlayTime)
         
@@ -118,7 +125,7 @@ class XJJVideoPlayer: UIView {
         self.autoPlay = false
     }
     
-    private func setSubviewsLayout() {
+    private func setupSubviewsLayout() {
         self.playerLayer.frame = self.bounds
     }
     

@@ -102,7 +102,7 @@ final class XJJThemeConfig {
     
     var needSaveThemeStyle: Bool = true
     let returnImage: UIImage? = UIImage.backArrow
-    let settingImage: UIImage? = UIImage.spanner
+    let settingImage: UIImage? = UIImage.mutSixGaps
     
     private let themeStyleKey: String = "XJJThemeStyle"
     

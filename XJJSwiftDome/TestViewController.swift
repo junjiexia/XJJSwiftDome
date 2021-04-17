@@ -43,12 +43,27 @@ class TestViewController: XJJBaseViewController {
     }
 
     // image
+    private var imageView: UIImageView!
+    private var otherImageView: UIImageView!
+    
     private func testImage() {
-        let imageView = UIImageView(frame: CGRect(x: 50, y: 100, width: 200, height: 200))
+        self.imageView = UIImageView(frame: CGRect(x: 50, y: 100, width: 200, height: 200))
         self.view.addSubview(imageView)
         
-        imageView.backgroundColor = UIColor.white
-        imageView.image = UIImage.drawSpanner(size: imageView.bounds.size)
+        self.imageView.backgroundColor = UIColor.white
+        self.imageView.setupLockImage()
+        
+        self.otherImageView = UIImageView(frame: CGRect(x: 50, y: 400, width: 200, height: 200))
+        self.view.addSubview(otherImageView)
+        
+        self.otherImageView.backgroundColor = UIColor.white
+        self.otherImageView.setupLockImage()
+        
+        UIImageView.lockImageOpenBlock = { imageView, isOpen in
+            if self.imageView == imageView {
+                print("锁是否打开：", isOpen)
+            }
+        }
     }
     
 }

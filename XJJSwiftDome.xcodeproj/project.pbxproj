@@ -15,6 +15,7 @@
 		F92DDB5A25CD40CB00B390FE /* XJJNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB5925CD40CB00B390FE /* XJJNewsViewController.swift */; };
 		F92DDB5F25CD40EF00B390FE /* XJJMyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB5E25CD40EF00B390FE /* XJJMyViewController.swift */; };
 		F92DDB6425CD48F300B390FE /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB6325CD48F300B390FE /* UILabel+Extension.swift */; };
+		F930A497262AC01B00710842 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F930A496262AC01B00710842 /* UIImageView+Extension.swift */; };
 		F930DA9D25E8A0DB007459FC /* XJJNewsTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F930DA9C25E8A0DB007459FC /* XJJNewsTableItem.swift */; };
 		F930DAA625E8A11F007459FC /* XJJNewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F930DAA525E8A11F007459FC /* XJJNewsItem.swift */; };
 		F937FB7825ECE7160073351E /* XJJNewsVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F937FB7725ECE7160073351E /* XJJNewsVideoView.swift */; };
@@ -126,6 +127,7 @@
 		F92DDB5925CD40CB00B390FE /* XJJNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsViewController.swift; sourceTree = "<group>"; };
 		F92DDB5E25CD40EF00B390FE /* XJJMyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJMyViewController.swift; sourceTree = "<group>"; };
 		F92DDB6325CD48F300B390FE /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		F930A496262AC01B00710842 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		F930DA9C25E8A0DB007459FC /* XJJNewsTableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsTableItem.swift; sourceTree = "<group>"; };
 		F930DAA525E8A11F007459FC /* XJJNewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsItem.swift; sourceTree = "<group>"; };
 		F937FB7725ECE7160073351E /* XJJNewsVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsVideoView.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 				F98950D225E0BD6000538A29 /* UIDevice+Extension.swift */,
 				F9BAF46525E3622900A16B47 /* UIColor+Extension.swift */,
 				F9FA20AB25E4AE7700DC0421 /* UIImage+Extension.swift */,
+				F930A496262AC01B00710842 /* UIImageView+Extension.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -836,6 +839,7 @@
 				F9FA20A725E4A83700DC0421 /* Date+ Extension.swift in Sources */,
 				F92DDB5A25CD40CB00B390FE /* XJJNewsViewController.swift in Sources */,
 				F9D6915D260B161100089B8F /* XJJStream.swift in Sources */,
+				F930A497262AC01B00710842 /* UIImageView+Extension.swift in Sources */,
 				F98950D325E0BD6000538A29 /* UIDevice+Extension.swift in Sources */,
 				F9D54ED02626D2B1008BEE30 /* XJJVideoPlayerMenuLeftView.swift in Sources */,
 				F937FB7825ECE7160073351E /* XJJNewsVideoView.swift in Sources */,

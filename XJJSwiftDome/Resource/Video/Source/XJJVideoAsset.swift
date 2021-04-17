@@ -207,14 +207,10 @@ extension XJJVideoAsset {
     
     private func downloadM3U8(loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
         let _realUrl = self.realUrl
-        let _redirectErrorCode = self.redirectErrorCode
         let _badRequestErrorCode = self.badRequestErrorCode
         
         DispatchQueue.main.async {
             if let real_url = URL(string: _realUrl) {
-                
-                loadingRequest.redirect = URLRequest(url: real_url)
-                loadingRequest.response = HTTPURLResponse(url: real_url, statusCode: _redirectErrorCode, httpVersion: nil, headerFields: nil)
                 
                 do {
                     let _data = try Data(contentsOf: real_url)

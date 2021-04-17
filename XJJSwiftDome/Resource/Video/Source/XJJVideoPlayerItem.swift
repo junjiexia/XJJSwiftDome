@@ -18,10 +18,10 @@ class XJJVideoPlayerItem: NSObject {
     var xAsset: XJJVideoAsset! // 资源
     var urlStr: String = ""
     
-    init(urlString: String, options: [String : Any]? = nil, assetKeys: [String]? = nil) {
+    init(urlString: String, options: [String : Any]? = nil, assetKeys: [String]? = nil, playType: XJJVideoAsset.PlayType? = .rb_none) {
         super.init()
         self.urlStr = urlString
-        self.xAsset = XJJVideoAsset(urlString: urlString, options: options)
+        self.xAsset = XJJVideoAsset(urlString: urlString, options: options, playType: playType)
         
         self.xAsset.assetPrepareBlock = {[weak self] in
             guard let sself = self else {return}
