@@ -22,6 +22,8 @@ class XJJVideoAsset: NSObject {
     
     private let qResourceLoader = "ASSET_RESOURCE_LOADER"
     private let kPlayable = "playable"
+    private let kDuration = "duration"
+    private let kTracks = "tracks"
     
     private let redirectScheme = "rdtp"
     private let httpScheme = "http"
@@ -47,6 +49,15 @@ class XJJVideoAsset: NSObject {
         case live                       // 直播
         case rb_none                    // 录播，直接播放
         case rb_decode                  // 录播
+        
+        init(vType: XJJVideoSubItem.VType) {
+            switch vType {
+            case .recorded:
+                self = .rb_none
+            case .live:
+                self = .live
+            }
+        }
     }
     
     enum AssetError: Error {
@@ -61,11 +72,12 @@ class XJJVideoAsset: NSObject {
     
     override init() { super.init() }
     
-    init(urlString: String, options: [String : Any]? = nil, playType: PlayType? = .rb_none) {
+    init(videoSource: XJJVideoSubItem, options: [String : Any]? = nil) {
         super.init()
+        guard let urlString = videoSource.urlString else {XJJVideo_print("asset url 为空！"); return}
         // 替换 scheme 用于拦截 asset 协议
         self.realUrl = urlString
-        self.playType = playType!
+        self.playType = PlayType(vType: videoSource.videoType())
         self.setupDType()
         
         if let _options = options {
@@ -84,7 +96,7 @@ class XJJVideoAsset: NSObject {
     }
     
     private func loadPlayableKey() {
-        let keys = [kPlayable]
+        let keys = [kPlayable, kDuration, kTracks]
         self.asset?.loadValuesAsynchronously(forKeys: keys, completionHandler: {[weak self] in
             DispatchQueue.main.async {
                 guard let sself = self else {return}
@@ -98,11 +110,22 @@ class XJJVideoAsset: NSObject {
         for key in requestKeys {
             var error: NSError? = nil
             let status = self.asset?.statusOfValue(forKey: key, error: &error)
-            if status == AVKeyValueStatus.failed {
-                XJJVideo_print("asset prepare error: ", error ?? "unowned")
+            
+            switch status {
+            case .failed:
+                XJJVideo_print("asset prepare", key, " - error: ", error ?? "unowned")
                 return
-            }else {
-                XJJVideo_print("asset prepare success, playable: ", status?.rawValue ?? "unowned")
+            case .loaded:
+                if key == kPlayable {
+                    XJJVideo_print("asset prepare success, playable: loaded！")
+                }else if key == kDuration {
+                    XJJVideo_print("asset prepare success, total time: ", asset?.duration ?? "0")
+                }else if key == kTracks {
+                    XJJVideo_print("asset prepare success, tracks: ", asset?.tracks ?? "")
+                }
+            default:
+                XJJVideo_print("asset prepare", key, " - success, playable: ", status?.rawValue ?? "unowned")
+                return
             }
         }
         

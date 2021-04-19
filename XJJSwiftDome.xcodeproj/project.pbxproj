@@ -59,6 +59,7 @@
 		F98950E825E0E99900538A29 /* XJJNewsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98950E725E0E99900538A29 /* XJJNewsContentView.swift */; };
 		F98950EE25E0EB6F00538A29 /* XJJNewsTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98950ED25E0EB6F00538A29 /* XJJNewsTitleCell.swift */; };
 		F98950F325E0F95400538A29 /* XJJNewsTitleCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98950F225E0F95400538A29 /* XJJNewsTitleCellItem.swift */; };
+		F9985DFE262D20620033BF42 /* XJJVideoProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9985DFD262D20620033BF42 /* XJJVideoProgressBar.swift */; };
 		F9A53B642616C5320019824A /* XJJVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A53B632616C5320019824A /* XJJVideoPlayer.swift */; };
 		F9A53B692616FD830019824A /* XJJVideoAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A53B682616FD830019824A /* XJJVideoAsset.swift */; };
 		F9A77B4B25F218E200142266 /* XJJFTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A77B4A25F218E200142266 /* XJJFTP.swift */; };
@@ -177,6 +178,7 @@
 		F98950E725E0E99900538A29 /* XJJNewsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsContentView.swift; sourceTree = "<group>"; };
 		F98950ED25E0EB6F00538A29 /* XJJNewsTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsTitleCell.swift; sourceTree = "<group>"; };
 		F98950F225E0F95400538A29 /* XJJNewsTitleCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsTitleCellItem.swift; sourceTree = "<group>"; };
+		F9985DFD262D20620033BF42 /* XJJVideoProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoProgressBar.swift; sourceTree = "<group>"; };
 		F9A53B632616C5320019824A /* XJJVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoPlayer.swift; sourceTree = "<group>"; };
 		F9A53B682616FD830019824A /* XJJVideoAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoAsset.swift; sourceTree = "<group>"; };
 		F9A77B3A25F20E1300142266 /* XJJSwiftDome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XJJSwiftDome-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -316,14 +318,14 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
-		F937FB8225ECEBC00073351E /* Video */ = {
+		F937FB8225ECEBC00073351E /* XJJVideo */ = {
 			isa = PBXGroup;
 			children = (
 				F9D54EC42626D00B008BEE30 /* Views */,
 				F9D54EC32626CFD9008BEE30 /* Source */,
 				F9A53B632616C5320019824A /* XJJVideoPlayer.swift */,
 			);
-			path = Video;
+			path = XJJVideo;
 			sourceTree = "<group>";
 		};
 		F943954F25EC9C0400C56E3C /* XJJTheme */ = {
@@ -442,8 +444,6 @@
 		F96961D025C8004400CE461B /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				F95CBB5025EDEE1C008A758D /* NetworkServer */,
-				F937FB8225ECEBC00073351E /* Video */,
 				F937FB7C25ECEB0E0073351E /* Other */,
 				F943954F25EC9C0400C56E3C /* XJJTheme */,
 				F96961D225C8004400CE461B /* Extension */,
@@ -501,6 +501,7 @@
 		F96961D725C8004400CE461B /* custom */ = {
 			isa = PBXGroup;
 			children = (
+				F95CBB5025EDEE1C008A758D /* NetworkServer */,
 				F96961D825C8004400CE461B /* Controller */,
 				F96961DB25C8004400CE461B /* Model */,
 				F96961DE25C8004400CE461B /* View */,
@@ -533,6 +534,7 @@
 		F96961DE25C8004400CE461B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F937FB8225ECEBC00073351E /* XJJVideo */,
 				F9EA8AC825E6518D00FE563B /* XJJAlert */,
 				F9BAF48125E3962100A16B47 /* XJJRefresh */,
 				F98950D725E0E7F300538A29 /* XJJNews */,
@@ -578,6 +580,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		F9985DFC262D20330033BF42 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				F9985DFD262D20620033BF42 /* XJJVideoProgressBar.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		F9BAF46A25E3646700A16B47 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -614,6 +624,7 @@
 		F9D54EC42626D00B008BEE30 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F9985DFC262D20330033BF42 /* SubViews */,
 				F9D54EC52626D036008BEE30 /* XJJVideoPlayerMenu.swift */,
 				F9D54ECA2626D289008BEE30 /* XJJVideoPlayerMenuTopView.swift */,
 				F9D54ECF2626D2B1008BEE30 /* XJJVideoPlayerMenuLeftView.swift */,
@@ -854,6 +865,7 @@
 				F9BAF48325E3967C00A16B47 /* XJJRefresh.swift in Sources */,
 				F96961DF25C8004400CE461B /* XJJTheme.swift in Sources */,
 				F9A77B5025F2195900142266 /* XJJFTPClient.swift in Sources */,
+				F9985DFE262D20620033BF42 /* XJJVideoProgressBar.swift in Sources */,
 				F9EA8ACA25E651B500FE563B /* XJJSheet.swift in Sources */,
 				F96961E325C8004400CE461B /* XJJCheck.swift in Sources */,
 				F98950E325E0E98600538A29 /* XJJNewsTitleView.swift in Sources */,

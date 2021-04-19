@@ -51,15 +51,18 @@ class XJJNewsViewController: XJJBaseViewController {
         self.view.addSubview(newsView)
         
         let recommendTable = XJJNewsTableView(frame: CGRect.zero, style: .plain)
-        recommendTable.tag = 0
+        recommendTable.tag = 1
         
         let sportsVideo = XJJNewsVideoView()
-        sportsVideo.tag = 1
+        sportsVideo.tag = 2
         
         self.contentViews = [recommendTable, sportsVideo]
         
         self.newsView.titleBackgroundColor = XJJThemeConfig.share.theme.page_color[.newsMenuBackgroud]
         self.newsView.setup(titles: titleData, contents: contentViews)
+        self.newsView.pageMovedBlock = { index in
+            sportsVideo.isViewAppeared = index == 1
+        }
     }
     
     private func updateData() {
@@ -67,7 +70,7 @@ class XJJNewsViewController: XJJBaseViewController {
         
         for view in contentViews {
             switch view.tag {
-            case 0:
+            case 1:
                 view.asView(XJJNewsTableView.self)?.data = dataSource.dataSource[.first]?.asTable()
             default:
                 break

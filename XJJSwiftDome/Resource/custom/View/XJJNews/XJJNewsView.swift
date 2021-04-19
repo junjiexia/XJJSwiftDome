@@ -8,6 +8,8 @@
 import UIKit
 
 class XJJNewsView: UIView {
+    
+    var pageMovedBlock: ((_ page: Int) -> Void)?
         
     var titleHeight: CGFloat = 50
     
@@ -22,6 +24,12 @@ class XJJNewsView: UIView {
         didSet {
             guard let color = contentBackgroundColor else {return}
             self.contentView.backgroundColor = color
+        }
+    }
+    
+    var currentPage: Int? {
+        get {
+            return currentIndex
         }
     }
     
@@ -111,6 +119,7 @@ class XJJNewsView: UIView {
         guard self.titleCount > 0 else {return}
         self.isTitleTap = true
         self.currentIndex = index
+        self.pageMovedBlock?(index)
         
         UIView.animate(withDuration: 0.5, animations: {
             self.contentView.contentOffset = CGPoint(x: self.contentView.bounds.width * CGFloat(index), y: 0)
@@ -149,6 +158,7 @@ extension XJJNewsView: UIScrollViewDelegate {
             
             if index != self.currentIndex {
                 self.currentIndex = index
+                self.pageMovedBlock?(index)
                 self.titleView.selectIndex = index
             }
         }

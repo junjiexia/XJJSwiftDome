@@ -13,7 +13,7 @@ extension Array {
      边缘求和
      返回对应下标前一个的求和，以及当前下标的求和
      */
-    func edgeValue(and index: Int) -> (CGFloat, CGFloat) where Element == CGFloat {
+    public func edgeValue(and index: Int) -> (CGFloat, CGFloat) where Element == CGFloat {
         var min: CGFloat = 0
         var max: CGFloat = 0
         

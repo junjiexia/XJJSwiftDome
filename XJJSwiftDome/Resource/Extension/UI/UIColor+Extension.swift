@@ -10,14 +10,14 @@ import UIKit
 
 extension UIColor {
     // 随机颜色
-    class var randomColor: UIColor {
+    public class var randomColor: UIColor {
         get {
             return UIColor(red: CGFloat(arc4random() % 255) / 255.0, green: CGFloat(arc4random() % 255) / 255.0, blue: CGFloat(arc4random() % 255) / 255.0, alpha: 1)
         }
     }
     
     // 相对颜色
-    var invertColor: UIColor {
+    public var invertColor: UIColor {
         get {
             var r: CGFloat = 0
             var g: CGFloat = 0
@@ -31,7 +31,7 @@ extension UIColor {
     }
     
     // 十六进制颜色字串
-    var hexText: String {
+    public var hexText: String {
         get {
             var r: CGFloat = 0
             var g: CGFloat = 0

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIImage {
-    func apply(_ color: UIColor, _ imageView: UIImageView) -> UIImage? {
+    public func apply(_ color: UIColor, _ imageView: UIImageView) -> UIImage? {
         imageView.tintColor = color
         return self.withRenderingMode(.alwaysTemplate)
     }
@@ -20,15 +20,15 @@ extension UIImage {
     /*
         * 返回按钮图片
      */
-    static var backArrow: UIImage? {
+    public static var backArrow: UIImage? {
         get {
             return UIImage.drawBackArrow()
         }
     }
     
-    class func drawBackArrow(size: CGSize? = nil,
-                             strokeColor: UIColor? = nil,
-                             strokeWidth: CGFloat? = 1.5) -> UIImage?
+    public class func drawBackArrow(size: CGSize? = nil,
+                                    strokeColor: UIColor? = nil,
+                                    strokeWidth: CGFloat? = 1.5) -> UIImage?
     {
         let _size = size ?? CGSize(width: 25, height: 25)
         let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
@@ -63,18 +63,18 @@ extension UIImage {
         * oScale: 外围圆弧半径比例 0 ~ 0.2
         * lScale: 圆心间距比例 0.3 ~ 0.5
      */
-    static var mutFourGaps: UIImage? {
+    public static var mutFourGaps: UIImage? {
         get {
             return UIImage.drawMutFourGaps()
         }
     }
     
-    class func drawMutFourGaps(size: CGSize? = nil,
-                               strokeColor: UIColor? = nil,
-                               strokeWidth: CGFloat? = 1.5,
-                               cScale: CGFloat? = 0.1,
-                               oScale: CGFloat? = 0.15,
-                               lScale: CGFloat? = 0.4) -> UIImage?
+    public class func drawMutFourGaps(size: CGSize? = nil,
+                                      strokeColor: UIColor? = nil,
+                                      strokeWidth: CGFloat? = 1.5,
+                                      cScale: CGFloat? = 0.1,
+                                      oScale: CGFloat? = 0.15,
+                                      lScale: CGFloat? = 0.4) -> UIImage?
     {
         let _size = size ?? CGSize(width: 25, height: 25)
         let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
@@ -137,18 +137,18 @@ extension UIImage {
         * oScale: 外围圆弧半径比例 0 ~ 0.2
         * lScale: 圆心间距比例 0.3 ~ 0.5
      */
-    static var mutSixGaps: UIImage? {
+    public static var mutSixGaps: UIImage? {
         get {
             return drawMutSixGaps()
         }
     }
     
-    class func drawMutSixGaps(size: CGSize? = nil,
-                               strokeColor: UIColor? = nil,
-                               strokeWidth: CGFloat? = 1.5,
-                               cScale: CGFloat? = 0.1,
-                               oScale: CGFloat? = 0.15,
-                               lScale: CGFloat? = 0.4) -> UIImage?
+    public class func drawMutSixGaps(size: CGSize? = nil,
+                                     strokeColor: UIColor? = nil,
+                                     strokeWidth: CGFloat? = 1.5,
+                                     cScale: CGFloat? = 0.1,
+                                     oScale: CGFloat? = 0.15,
+                                     lScale: CGFloat? = 0.4) -> UIImage?
     {
         let _size = size ?? CGSize(width: 25, height: 25)
         let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
@@ -230,21 +230,21 @@ extension UIImage {
             * 设置大圆尺寸与大圆中间横线长度比例 比值为 2 : 1
             * 设置小圆尺寸与小圆中间横线长度比例 比值为 2 : 1
      */
-    static var spanner: UIImage? {
+    public static var spanner: UIImage? {
         get {
             return drawSpanner()
         }
     }
     
-    class func drawSpanner(size: CGSize? = nil,
-                           strokeColor: UIColor? = nil,
-                           strokeWidth: CGFloat? = 1.5,
-                           bigSizeScale: CGFloat? = 0.3,
-                           smallSizeScale: CGFloat? = 0.2,
-                           bigLineScale: CGFloat? = 0.15,
-                           smallLineScale: CGFloat? = 0.1,
-                           inclination: CGFloat? = nil,
-                           lengthScale: CGFloat? = nil) -> UIImage?
+    public class func drawSpanner(size: CGSize? = nil,
+                                  strokeColor: UIColor? = nil,
+                                  strokeWidth: CGFloat? = 1.5,
+                                  bigSizeScale: CGFloat? = 0.3,
+                                  smallSizeScale: CGFloat? = 0.2,
+                                  bigLineScale: CGFloat? = 0.15,
+                                  smallLineScale: CGFloat? = 0.1,
+                                  inclination: CGFloat? = nil,
+                                  lengthScale: CGFloat? = nil) -> UIImage?
     {
         let _size = size ?? CGSize(width: 25, height: 25)
         let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
@@ -322,17 +322,18 @@ extension UIImage {
     /*
         * 闭锁 🔐
      */
-    static var lockOfClose: UIImage? {
+    public static var lockOfClose: UIImage? {
         get {
             return drawLockOfClose()
         }
     }
     
-    class func drawLockOfClose(size: CGSize? = nil,
-                               strokeColor: UIColor? = nil,
-                               latchFillColor: UIColor? = nil,
-                               bodyFillColor: UIColor? = nil,
-                               strokeWidth: CGFloat? = 1) -> UIImage? {
+    public class func drawLockOfClose(size: CGSize? = nil,
+                                      strokeColor: UIColor? = nil,
+                                      latchFillColor: UIColor? = nil,
+                                      bodyFillColor: UIColor? = nil,
+                                      strokeWidth: CGFloat? = 1) -> UIImage?
+    {
         let _size = size ?? CGSize(width: 25, height: 25)
         let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
         let _bodyFillColor = bodyFillColor?.cgColor ?? UIColor.gray.cgColor
@@ -402,18 +403,19 @@ extension UIImage {
     /*
         * 开锁 🔓
      */
-    static var lockOfOpen: UIImage? {
+    public static var lockOfOpen: UIImage? {
         get {
             return drawLockOfOpen()
         }
     }
     
-    class func drawLockOfOpen(size: CGSize? = nil,
-                              strokeColor: UIColor? = nil,
-                              latchFillColor: UIColor? = nil,
-                              bodyFillColor: UIColor? = nil,
-                              strokeWidth: CGFloat? = 1,
-                              openRight: Bool? = false) -> UIImage? {
+    public class func drawLockOfOpen(size: CGSize? = nil,
+                                     strokeColor: UIColor? = nil,
+                                     latchFillColor: UIColor? = nil,
+                                     bodyFillColor: UIColor? = nil,
+                                     strokeWidth: CGFloat? = 1,
+                                     openRight: Bool? = false) -> UIImage?
+    {
         let _size = size ?? CGSize(width: 25, height: 25)
         let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
         let _bodyFillColor = bodyFillColor?.cgColor ?? UIColor.gray.cgColor
@@ -482,4 +484,210 @@ extension UIImage {
         
         return image
     }
+    
+    /*
+        * 列表菜单（三道横线）
+            *
+                - ----
+                - ----
+                - ----
+            *
+     */
+    public static var listMenuThreeLines: UIImage? {
+        get {
+            return drawListMenuThreeLines()
+        }
+    }
+    
+    public class func drawListMenuThreeLines(size: CGSize? = nil,
+                                             strokeColor: UIColor? = nil,
+                                             strokeWidth: CGFloat? = 3) -> UIImage?
+    {
+        let _size = size ?? CGSize(width: 25, height: 25)
+        let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
+        
+        let short_length = _size.width * 0.1 // 短线长度
+        let long_length = _size.width * 0.4 // 长线长度
+        let merge_h = _size.width * 0.1 // 短线与长线之间的间隔
+        let first_x = (_size.width - short_length - merge_h - long_length) / 2
+        
+        let fsl_point = CGPoint(x: first_x, y: _size.height / 4) // 第一行短线左边点
+        let fsr_point = CGPoint(x: fsl_point.x + short_length, y: _size.height / 4) // 第一行短线右边点
+        let fll_point = CGPoint(x: fsr_point.x + merge_h, y: _size.height / 4) // 第一行长线左边点
+        let flr_point = CGPoint(x: fll_point.x + long_length, y: _size.height / 4) // 第一行长线右边点
+        
+        let ssl_point = CGPoint(x: first_x, y: _size.height / 2) // 第一行短线左边点
+        let ssr_point = CGPoint(x: ssl_point.x + short_length, y: _size.height / 2) // 第二行短线右边点
+        let sll_point = CGPoint(x: ssr_point.x + merge_h, y: _size.height / 2) // 第二行长线左边点
+        let slr_point = CGPoint(x: sll_point.x + long_length, y: _size.height / 2) // 第二行长线右边点
+        
+        let tsl_point = CGPoint(x: first_x, y: _size.height / 4 * 3) // 第三行短线左边点
+        let tsr_point = CGPoint(x: tsl_point.x + short_length, y: _size.height / 4 * 3) // 第三行短线右边点
+        let tll_point = CGPoint(x: tsr_point.x + merge_h, y: _size.height / 4 * 3) // 第三行长线左边点
+        let tlr_point = CGPoint(x: tll_point.x + long_length, y: _size.height / 4 * 3) // 第三行长线右边点
+        
+        UIGraphicsBeginImageContextWithOptions(_size, false, UIScreen.main.scale)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setStrokeColor(_strokeColor)
+        context?.setLineWidth(strokeWidth!)
+
+        context?.addLines(between: [fsl_point, fsr_point])
+        context?.addLines(between: [fll_point, flr_point])
+        context?.addLines(between: [ssl_point, ssr_point])
+        context?.addLines(between: [sll_point, slr_point])
+        context?.addLines(between: [tsl_point, tsr_point])
+        context?.addLines(between: [tll_point, tlr_point])
+        context?.strokePath()
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
+    /*
+        * 全屏
+     */
+    public static var fullScreen: UIImage? {
+        get {
+            return drawFullScreen()
+        }
+    }
+    
+    public static func drawFullScreen(size: CGSize? = nil,
+                                      strokeColor: UIColor? = nil,
+                                      strokeWidth: CGFloat? = 1.5) -> UIImage?
+    {
+        let _size = size ?? CGSize(width: 25, height: 25)
+        let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
+        
+        let center = CGPoint(x: _size.width / 2, y: _size.height / 2)
+        let min_length = min(_size.width, _size.height)
+        let short_length = min_length * 0.25
+        let long_length = min_length * 0.4
+        let arrow_length = min_length * 0.3
+        
+        let tl_point = CGPoint(x: center.x - long_length, y: center.y - long_length) // 左上箭头箭尖
+        let tlb_point = CGPoint(x: tl_point.x, y: tl_point.y + arrow_length) // 左上箭头下方点
+        let tlr_point = CGPoint(x: tl_point.x + arrow_length, y: tl_point.y) // 左上箭头右方点
+        let tr_point = CGPoint(x: center.x + long_length, y: center.y - long_length) // 右上箭头箭尖
+        let trl_point = CGPoint(x: tr_point.x - arrow_length, y: tr_point.y) // 右上箭头左方点
+        let trb_point = CGPoint(x: tr_point.x, y: tr_point.y + arrow_length) // 右上箭头下方点
+        let bl_point = CGPoint(x: center.x - long_length, y: center.y + long_length) // 左下箭头箭尖
+        let blt_point = CGPoint(x: bl_point.x, y: bl_point.y - arrow_length) // 左下箭头上方点
+        let blr_point = CGPoint(x: bl_point.x + arrow_length, y: bl_point.y) // 左下箭头右方点
+        let br_point = CGPoint(x: center.x + long_length, y: center.y + long_length) // 右下箭头箭尖
+        let brt_point = CGPoint(x: br_point.x, y: br_point.y - arrow_length) // 右下箭头上方点
+        let brl_point = CGPoint(x: br_point.x - arrow_length, y: br_point.y) // 右下箭头左方点
+        
+        let otl_point = CGPoint(x: center.x - short_length, y: center.y - short_length) // 中间方框左上点
+        let otr_point = CGPoint(x: center.x + short_length, y: center.y - short_length) // 中间方框右上点
+        let obl_point = CGPoint(x: center.x - short_length, y: center.y + short_length) // 中间方框左下点
+        let obr_point = CGPoint(x: center.x + short_length, y: center.y + short_length) // 中间方框右下点
+        
+        UIGraphicsBeginImageContextWithOptions(_size, false, UIScreen.main.scale)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setStrokeColor(_strokeColor)
+        context?.setLineWidth(strokeWidth!)
+        
+        context?.move(to: tlb_point)
+        context?.addLine(to: tl_point)
+        context?.addLine(to: tlr_point)
+        
+        context?.move(to: trl_point)
+        context?.addLine(to: tr_point)
+        context?.addLine(to: trb_point)
+        
+        context?.move(to: brt_point)
+        context?.addLine(to: br_point)
+        context?.addLine(to: brl_point)
+        
+        context?.move(to: blr_point)
+        context?.addLine(to: bl_point)
+        context?.addLine(to: blt_point)
+        
+        context?.move(to: otl_point)
+        context?.addLine(to: otr_point)
+        context?.addLine(to: obr_point)
+        context?.addLine(to: obl_point)
+        context?.closePath()
+        context?.strokePath()
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
+    /*
+        * 取消全屏
+     */
+    public static var cancelFullScreen: UIImage? {
+        get {
+            return drawCancelFullScreen()
+        }
+    }
+    
+    public static func drawCancelFullScreen(size: CGSize? = nil,
+                                            strokeColor: UIColor? = nil,
+                                            strokeWidth: CGFloat? = 1.5) -> UIImage?
+    {
+        let _size = size ?? CGSize(width: 25, height: 25)
+        let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
+        
+        let center = CGPoint(x: _size.width / 2, y: _size.height / 2)
+        let min_length = min(_size.width, _size.height)
+        let long_length = min_length * 0.15
+        let arrow_length = min_length * 0.2
+        
+        let tl_point = CGPoint(x: center.x - long_length, y: center.y - long_length) // 左上箭头箭尖
+        let tlt_point = CGPoint(x: tl_point.x, y: tl_point.y - arrow_length) // 左上箭头上方点
+        let tll_point = CGPoint(x: tl_point.x - arrow_length, y: tl_point.y) // 左上箭头左方点
+        let tr_point = CGPoint(x: center.x + long_length, y: center.y - long_length) // 右上箭头箭尖
+        let trt_point = CGPoint(x: tr_point.x, y: tr_point.y - arrow_length) // 右上箭头上方点
+        let trr_point = CGPoint(x: tr_point.x + arrow_length, y: tr_point.y) // 右上箭头右方点
+        let bl_point = CGPoint(x: center.x - long_length, y: center.y + long_length) // 左下箭头箭尖
+        let bll_point = CGPoint(x: bl_point.x - arrow_length, y: bl_point.y) // 左下箭头左方点
+        let blb_point = CGPoint(x: bl_point.x, y: bl_point.y + arrow_length) // 左下箭头下方点
+        let br_point = CGPoint(x: center.x + long_length, y: center.y + long_length) // 右下箭头箭尖
+        let brb_point = CGPoint(x: br_point.x, y: br_point.y + arrow_length) // 右下箭头下方点
+        let brr_point = CGPoint(x: br_point.x + arrow_length, y: br_point.y) // 右下箭头右方点
+        
+        UIGraphicsBeginImageContextWithOptions(_size, false, UIScreen.main.scale)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setStrokeColor(_strokeColor)
+        context?.setLineWidth(strokeWidth!)
+        
+        context?.move(to: tll_point)
+        context?.addLine(to: tl_point)
+        context?.addLine(to: tlt_point)
+        
+        context?.move(to: trt_point)
+        context?.addLine(to: tr_point)
+        context?.addLine(to: trr_point)
+        
+        context?.move(to: brr_point)
+        context?.addLine(to: br_point)
+        context?.addLine(to: brb_point)
+        
+        context?.move(to: blb_point)
+        context?.addLine(to: bl_point)
+        context?.addLine(to: bll_point)
+        context?.strokePath()
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
 }

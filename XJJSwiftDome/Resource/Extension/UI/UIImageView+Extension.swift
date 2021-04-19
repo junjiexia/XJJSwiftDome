@@ -14,16 +14,17 @@ extension UIImageView {
         * 需要 UIImage+Extension 中，关于锁的方法支持
         * 征用了 isHighlighted 属性
             * 若需要对 isHighlighted 属性赋值，不要使用关于 lockImage 的任何方法（这个 extension 中的属性及方法），可以仿写代码实现
+        * lockImageOpenBlock 为 UIImageView 共有，使用时需要判断 imageView
      */
     public static var lockImageOpenBlock: ((_ imageView: UIImageView, _ open: Bool) -> Void)?
     
-    public func setupLockImage() {
-        self.image = UIImage.drawLockOfClose(size: self.bounds.size)
+    public func setupLockImage(size: CGSize? = nil) {
+        self.image = UIImage.drawLockOfClose(size: size ?? self.bounds.size)
         self.isUserInteractionEnabled = true
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(lockImageTapAction)))
     }
     
-    @objc func lockImageTapAction(_ tap: UITapGestureRecognizer) {
+    @objc private func lockImageTapAction(_ tap: UITapGestureRecognizer) {
         guard !isAnimating else {return}
         self.isHighlighted = !self.isHighlighted
         self.lockAnimation()

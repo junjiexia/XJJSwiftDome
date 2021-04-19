@@ -13,7 +13,7 @@ extension Dictionary {
     /// 将字典转为 JSON  data
     ///
     /// - Returns: JSON data
-    func toJSONData() -> Data? {
+    public func toJSONData() -> Data? {
         guard JSONSerialization.isValidJSONObject(self) else {return nil}
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
@@ -29,7 +29,7 @@ extension Array {
     /// 将数组转为 JSON data
     ///
     /// - Returns: JSON data
-    func toJSONData() -> Data? {
+    public func toJSONData() -> Data? {
         guard JSONSerialization.isValidJSONObject(self) else {return nil}
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
@@ -42,21 +42,21 @@ extension Array {
 
 
 extension String {
-    func toJSONData() -> Data? {
+    public func toJSONData() -> Data? {
         return self.data(using: .utf8)
     }
 }
 
 extension Data {
     
-    func JSONToStr() -> String {
+    public func JSONToStr() -> String {
         return String(data: self, encoding: .utf8) ?? ""
     }
     
     /// JSON 解析
     ///
     /// - Returns: JSON 解析后的对象
-    func JSONToAny() -> Any {
+    public func JSONToAny() -> Any {
         do {
             let result = try JSONSerialization.jsonObject(with: self, options: .mutableContainers)
             return result
@@ -65,7 +65,7 @@ extension Data {
         }
     }
     
-    static func JSONData(filePath: String) -> Data? {
+    public static func JSONData(filePath: String) -> Data? {
         let url = URL(fileURLWithPath: filePath)
         
         do {
@@ -79,7 +79,7 @@ extension Data {
 }
 
 extension Data {
-    func compressImage(maxKB: CGFloat? = 1024.0) -> UIImage? {
+    public func compressImage(maxKB: CGFloat? = 1024.0) -> UIImage? {
         let size = CGFloat(self.count) / 1024.0 / maxKB!
         var rate: CGFloat = 1.0 - 0.1 * size
         if rate < 0.1 { rate = 0.1 }
@@ -94,7 +94,7 @@ extension Data {
  Codable 包含 Encodable（json 编码协议）和 Decodable（json 解码协议）
  */
 extension Data {
-    static func arrToDict<T: Encodable>(_ arr: [T], _ key: String? = "1") -> [String: Any]? {
+    public static func arrToDict<T: Encodable>(_ arr: [T], _ key: String? = "1") -> [String: Any]? {
         let encode = JSONEncoder()
         encode.outputFormatting = .prettyPrinted
         
@@ -116,7 +116,7 @@ extension Data {
         return dict
     }
     
-    static func modelToDict<T: Encodable>(_ model: T) -> [String: Any]? {
+    public static func modelToDict<T: Encodable>(_ model: T) -> [String: Any]? {
         let encode = JSONEncoder()
         encode.outputFormatting = .prettyPrinted
         guard let data = try? encode.encode(model) else {return nil}
@@ -125,7 +125,7 @@ extension Data {
         return dic
     }
     
-    static func modelToStr<T: Encodable>(_ model: T) -> String? {
+    public static func modelToStr<T: Encodable>(_ model: T) -> String? {
         let encode = JSONEncoder()
         encode.outputFormatting = .prettyPrinted
         guard let data = try? encode.encode(model) else {return nil}
@@ -134,7 +134,7 @@ extension Data {
         return dic
     }
     
-    static func dictToArr<T: Decodable>(_ dic: [String: Any], _ key: String? = "1") -> [T]? {
+    public static func dictToArr<T: Decodable>(_ dic: [String: Any], _ key: String? = "1") -> [T]? {
         guard let arr = dic[key!] as? [Any] else {return nil}
         
         var result: [T] = []
@@ -153,21 +153,21 @@ extension Data {
         return result
     }
     
-    static func dictToModel<T: Decodable>(_ dic: [String: Any]) -> T? {
+    public static func dictToModel<T: Decodable>(_ dic: [String: Any]) -> T? {
         guard let data = try? JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted) else {return nil}
         guard let result = try? JSONDecoder().decode(T.self, from: data) else {return nil}
         
         return result
     }
     
-    static func strToModel<T: Decodable>(_ str: String) -> T? {
+    public static func strToModel<T: Decodable>(_ str: String) -> T? {
         guard let data = try? JSONSerialization.data(withJSONObject: str, options: .prettyPrinted) else {return nil}
         guard let result = try? JSONDecoder().decode(T.self, from: data) else {return nil}
         
         return result
     }
     
-    func dataToModel<T: Decodable>() -> T? {
+    public func dataToModel<T: Decodable>() -> T? {
         guard let result = try? JSONDecoder().decode(T.self, from: self) else {return nil}
         
         return result

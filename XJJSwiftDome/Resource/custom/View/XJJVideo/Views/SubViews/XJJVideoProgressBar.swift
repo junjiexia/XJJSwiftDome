@@ -1,13 +1,13 @@
 //
-//  XJJVideoPlayerMenuLeftView.swift
+//  XJJVideoProgressBar.swift
 //  XJJSwiftDome
 //
-//  Created by Levy on 2021/4/14.
+//  Created by Levy on 2021/4/19.
 //
 
 import UIKit
 
-class XJJVideoPlayerMenuLeftView: UIView {
+class XJJVideoProgressBar: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,7 +17,7 @@ class XJJVideoPlayerMenuLeftView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
+            
     private func initUI() {
         
     }

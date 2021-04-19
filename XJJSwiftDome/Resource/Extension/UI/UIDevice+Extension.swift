@@ -10,7 +10,7 @@ import UIKit
 
 extension UIDevice {
     
-    var modelName: String {
+    public var modelName: String {
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
@@ -91,7 +91,7 @@ final class EDevice {
         case unown
     }
     
-    class func getIphoneType() -> UIType {
+    public class func getIphoneType() -> UIType {
         let str = UIDevice.current.modelName
         switch str {
         case "iPhone 5", "iPhone 5c", "iPhone 5s":
@@ -115,11 +115,11 @@ final class EDevice {
         }
     }
     
-    class func isMoreX() -> Bool {
+    public class func isMoreX() -> Bool {
         return EDevice.getIphoneType() == .x || EDevice.getIphoneType() == .eleven || EDevice.getIphoneType() == .twelve
     }
     
-    class func getCurrentVersion() -> String { // 登录需要使用
+    public class func getCurrentVersion() -> String { // 登录需要使用
         if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
             return version
         }
@@ -133,7 +133,7 @@ final class EDevice {
      *此uuid是唯一的，但应用删除再重新安装后会变化，采取的措施是：只获取一次保存在钥匙串中，之后就从钥匙串中获取
      
      **/
-    class func getUUID() -> String {
+    public class func getUUID() -> String {
         if let uuid = UIDevice.current.identifierForVendor?.uuidString {
             return uuid
         }

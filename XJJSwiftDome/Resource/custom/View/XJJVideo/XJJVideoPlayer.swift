@@ -10,19 +10,14 @@ import AVKit
 
 class XJJVideoPlayer: UIView {
     
-    var urlString: String? {
+    var videoSource: XJJVideoSubItem? {
         didSet {
-            guard let urlStr = urlString else {return}
-            self.updatePlayerItem(urlStr)
+            guard let source = videoSource else {return}
+            self.updatePlayerItem(source)
         }
     }
     
-    var liveUrlString: String? {
-        didSet {
-            guard let urlStr = liveUrlString else {return}
-            self.updatePlayerItem(urlStr, playType: .live)
-        }
-    }
+    var isViewAppeared: Bool = false // 是否显示在最前
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,8 +54,8 @@ class XJJVideoPlayer: UIView {
         self.layer.addSublayer(playerLayer)
     }
     
-    private func updatePlayerItem(_ urlStr: String, playType: XJJVideoAsset.PlayType? = .rb_none) {
-        self.playerItem = XJJVideoPlayerItem(urlString: urlStr, options: nil, assetKeys: nil, playType: playType)
+    private func updatePlayerItem(_ videoSource: XJJVideoSubItem) {
+        self.playerItem = XJJVideoPlayerItem(videoSource: videoSource, options: nil, assetKeys: nil)
         
         self.playerItem.assetPrepareBlock = {[weak self] in
             guard let sself = self else {return}
@@ -115,11 +110,13 @@ class XJJVideoPlayer: UIView {
     }
     
     private func play() {
+        guard isViewAppeared else {return}
         self.player.play()
         self.isPlaying = true
     }
     
     private func pause() {
+        guard isViewAppeared else {return}
         self.player.pause()
         self.isPlaying = false
         self.autoPlay = false

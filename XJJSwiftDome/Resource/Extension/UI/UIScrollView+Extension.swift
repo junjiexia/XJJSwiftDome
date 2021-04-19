@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIScrollView {
-    func needSubviewTouches() {
+    public func needSubviewTouches() {
         self.canCancelContentTouches = true
         self.delaysContentTouches = false
     }

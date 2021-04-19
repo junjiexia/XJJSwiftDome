@@ -18,7 +18,7 @@ class ViewController: XJJBaseViewController {
         super.viewDidLoad()
         self.initData()
         self.initUI()
-        self.addRightImageItem(XJJThemeConfig.share.settingImage!)
+        self.addRightImageItem(XJJThemeConfig.share.cancelFullScreen!)
         // Do any additional setup after loading the view.
     }
     

@@ -36,10 +36,8 @@ class TestViewController: XJJBaseViewController {
     
     // video
     private func videoSource() {
-        guard let host = XJJVideo().list?.http_source(forKey: "CCTV1") else {return}
+        guard let host = XJJVideo().list?.http_source(forKey: "CCTV1")?.urlString else {return}
         XJJMMS.share.creatClient(host: host)
-        
-        
     }
 
     // image

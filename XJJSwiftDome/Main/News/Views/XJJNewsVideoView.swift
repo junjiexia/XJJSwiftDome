@@ -13,6 +13,13 @@ import UIKit
 import AVKit
 
 class XJJNewsVideoView: UIView {
+    
+    var isViewAppeared: Bool? {
+        didSet {
+            guard let isAppear = isViewAppeared else {return}
+            self.player.isViewAppeared = isAppear
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,7 +50,7 @@ class XJJNewsVideoView: UIView {
         self.player = XJJVideoPlayer()
         self.addSubview(player)
         
-        self.player.liveUrlString = XJJVideo().list?.http_source(forKey: "CCTV1")
+        self.player.videoSource = XJJVideo().list?.http_source(forKey: "TEST1")
     }
     
     private let playerHeight: CGFloat = 300
