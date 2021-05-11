@@ -40,7 +40,7 @@ class XJJVideoPlayerMenuRightView: UIView {
         self.addSubview(imageView)
         
         self.imageView.isUserInteractionEnabled = true
-        self.imageView.image = XJJThemeConfig.share.listMenuImage
+        self.imageView.image = XJJImages.listMenuImage
         self.imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageViewAction)))
     }
     

@@ -52,7 +52,7 @@ class XJJNewsTitleCell: UIView {
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapClick)))
     }
     
-    @objc func tapClick(_ tap: UITapGestureRecognizer) {
+    @objc private func tapClick(_ tap: UITapGestureRecognizer) {
         self.cellTapBlock?(item)
     }
     

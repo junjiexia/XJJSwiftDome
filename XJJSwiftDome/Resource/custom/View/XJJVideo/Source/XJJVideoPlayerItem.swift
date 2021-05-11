@@ -52,7 +52,7 @@ class XJJVideoPlayerItem: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: .AVPlayerItemDidPlayToEndTime, object: self.item)
     }
     
-    @objc func playerItemDidReachEnd(_ noti: Notification) {
+    @objc private func playerItemDidReachEnd(_ noti: Notification) {
         
     }
     

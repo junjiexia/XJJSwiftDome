@@ -101,13 +101,8 @@ final class XJJThemeConfig {
     var theme: XJJTheme = XJJTheme()
     
     var needSaveThemeStyle: Bool = true
-    let returnImage: UIImage? = UIImage.backArrow
-    let settingImage: UIImage? = UIImage.mutSixGaps
-    let listMenuImage: UIImage? = UIImage.listMenuThreeLines
-    let fullScreen: UIImage? = UIImage.fullScreen
-    let cancelFullScreen: UIImage? = UIImage.cancelFullScreen
-    
-    private let themeStyleKey: String = "XJJThemeStyle"
+        
+    private let themeStyleKey: String = "XJJThemeStyle" // 本地存储风格类型 key
     
     init() {
         if let themeStyleText = XJJFile.string(forKey: themeStyleKey) {

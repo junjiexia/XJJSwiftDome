@@ -43,25 +43,35 @@ class TestViewController: XJJBaseViewController {
     // image
     private var imageView: UIImageView!
     private var otherImageView: UIImageView!
+    private var thirdImageView: UIImageView!
     
     private func testImage() {
-        self.imageView = UIImageView(frame: CGRect(x: 50, y: 100, width: 200, height: 200))
+        self.imageView = UIImageView(frame: CGRect(x: 50, y: 100, width: 100, height: 100))
         self.view.addSubview(imageView)
         
         self.imageView.backgroundColor = UIColor.white
-        self.imageView.setupLockImage()
+        self.imageView.setupPlayAndPause()
         
-        self.otherImageView = UIImageView(frame: CGRect(x: 50, y: 400, width: 200, height: 200))
+        self.otherImageView = UIImageView(frame: CGRect(x: 200, y: 100, width: 100, height: 100))
         self.view.addSubview(otherImageView)
         
         self.otherImageView.backgroundColor = UIColor.white
-        self.otherImageView.setupLockImage()
+        self.otherImageView.setupPlayAndPause()
         
-        UIImageView.lockImageOpenBlock = { imageView, isOpen in
+        UIImageView.playAndPauseBlock = { imageView, isPlay in
             if self.imageView == imageView {
-                print("锁是否打开：", isOpen)
+                print("播放：", isPlay)
             }
         }
+        
+        self.thirdImageView = UIImageView(frame: CGRect(x: 0, y: 300, width: self.view.bounds.width, height: 300))
+        self.view.addSubview(thirdImageView)
+        
+        self.thirdImageView.backgroundColor = UIColor.white
+        self.thirdImageView.image = XJJImages.image01?.grayImage
+        
+//        let maskView = UIImageView(image: UIImage.drawPlay(size: CGSize(width: 100, height: 100))?.grayImage)
+//        self.thirdImageView.mask = maskView
     }
     
 }

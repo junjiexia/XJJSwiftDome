@@ -56,11 +56,11 @@ class XJJVideoPlayerMenuTopView: UIView {
         self.backBtn = UIButton(type: .custom)
         self.addSubview(backBtn)
         
-        self.backBtn.setImage(XJJThemeConfig.share.returnImage, for: .normal)
+        self.backBtn.setImage(XJJImages.returnImage, for: .normal)
         self.backBtn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     }
     
-    @objc func backAction(_ btn: UIButton) {
+    @objc private func backAction(_ btn: UIButton) {
         self.backBlock?()
     }
     
@@ -77,11 +77,11 @@ class XJJVideoPlayerMenuTopView: UIView {
         self.settingBtn = UIButton(type: .custom)
         self.addSubview(settingBtn)
         
-        self.settingBtn.setImage(XJJThemeConfig.share.settingImage, for: .normal)
+        self.settingBtn.setImage(XJJImages.settingImage, for: .normal)
         self.settingBtn.addTarget(self, action: #selector(settingAction), for: .touchUpInside)
     }
     
-    @objc func settingAction(_ btn: UIButton) {
+    @objc private func settingAction(_ btn: UIButton) {
         self.settingBlock?()
     }
     

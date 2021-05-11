@@ -69,7 +69,7 @@ class XJJNavigationController: UINavigationController {
         super.pushViewController(viewController, animated: animated)
     }
     
-    @objc func back(_ item: UIBarButtonItem) {
+    @objc private func back(_ item: UIBarButtonItem) {
         if customPop {
             self.eDelegate?.customPop?(self)
         }else {

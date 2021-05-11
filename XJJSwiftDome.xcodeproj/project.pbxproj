@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E3071FB8AEF29415BEBC7336 /* libPods-XJJSwiftDome.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF7785B451716AA12F73CC3 /* libPods-XJJSwiftDome.a */; };
+		F924CC4A2649335D00D94946 /* XJJScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F924CC492649335D00D94946 /* XJJScreen.swift */; };
+		F9274851264A686B00CE1928 /* XJJImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9274850264A686B00CE1928 /* XJJImages.swift */; };
 		F92DDB3C25CD2D0C00B390FE /* XJJTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB3B25CD2D0C00B390FE /* XJJTabBarController.swift */; };
 		F92DDB4125CD2EC400B390FE /* XJJTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB4025CD2EC400B390FE /* XJJTimer.swift */; };
 		F92DDB4825CD34C200B390FE /* XJJTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB4725CD34C200B390FE /* XJJTimerViewController.swift */; };
@@ -50,6 +52,7 @@
 		F96961E225C8004400CE461B /* XJJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961DA25C8004400CE461B /* XJJNavigationController.swift */; };
 		F96961E325C8004400CE461B /* XJJCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961DC25C8004400CE461B /* XJJCheck.swift */; };
 		F96961E425C8004400CE461B /* XJJText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96961DD25C8004400CE461B /* XJJText.swift */; };
+		F96B6688264A718000020BF5 /* xjj_image01.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F96B6687264A718000020BF5 /* xjj_image01.jpeg */; };
 		F976C55125F369C700C4B3CB /* XJJAsyncSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F976C55025F369C700C4B3CB /* XJJAsyncSocket.swift */; };
 		F98950C925E0A57E00538A29 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98950C825E0A57E00538A29 /* UITableView+Extension.swift */; };
 		F98950CE25E0A59900538A29 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98950CD25E0A59900538A29 /* UIScrollView+Extension.swift */; };
@@ -121,6 +124,8 @@
 		3364065CDC2F4E9C1DA9DC1F /* Pods-XJJSwiftDome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJJSwiftDome.release.xcconfig"; path = "Target Support Files/Pods-XJJSwiftDome/Pods-XJJSwiftDome.release.xcconfig"; sourceTree = "<group>"; };
 		5AF7785B451716AA12F73CC3 /* libPods-XJJSwiftDome.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XJJSwiftDome.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD3212D92F355CAFBD016880 /* Pods-XJJSwiftDome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XJJSwiftDome.debug.xcconfig"; path = "Target Support Files/Pods-XJJSwiftDome/Pods-XJJSwiftDome.debug.xcconfig"; sourceTree = "<group>"; };
+		F924CC492649335D00D94946 /* XJJScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJScreen.swift; sourceTree = "<group>"; };
+		F9274850264A686B00CE1928 /* XJJImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJImages.swift; sourceTree = "<group>"; };
 		F92DDB3B25CD2D0C00B390FE /* XJJTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTabBarController.swift; sourceTree = "<group>"; };
 		F92DDB4025CD2EC400B390FE /* XJJTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTimer.swift; sourceTree = "<group>"; };
 		F92DDB4725CD34C200B390FE /* XJJTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTimerViewController.swift; sourceTree = "<group>"; };
@@ -167,8 +172,9 @@
 		F96961D525C8004400CE461B /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		F96961D925C8004400CE461B /* XJJBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJBaseViewController.swift; sourceTree = "<group>"; };
 		F96961DA25C8004400CE461B /* XJJNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJNavigationController.swift; sourceTree = "<group>"; };
-		F96961DC25C8004400CE461B /* XJJCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJCheck.swift; sourceTree = "<group>"; };
+		F96961DC25C8004400CE461B /* XJJCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XJJCheck.swift; path = ../Other/XJJCheck.swift; sourceTree = "<group>"; };
 		F96961DD25C8004400CE461B /* XJJText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XJJText.swift; sourceTree = "<group>"; };
+		F96B6687264A718000020BF5 /* xjj_image01.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xjj_image01.jpeg; sourceTree = "<group>"; };
 		F976C55025F369C700C4B3CB /* XJJAsyncSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJAsyncSocket.swift; sourceTree = "<group>"; };
 		F98950C825E0A57E00538A29 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		F98950CD25E0A59900538A29 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
@@ -261,6 +267,27 @@
 				5AF7785B451716AA12F73CC3 /* libPods-XJJSwiftDome.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F924CC47264932FE00D94946 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				F96961DC25C8004400CE461B /* XJJCheck.swift */,
+				F943955325EC9CD400C56E3C /* XJJFile.swift */,
+				F92DDB4025CD2EC400B390FE /* XJJTimer.swift */,
+				F9EA8ACE25E655EB00FE563B /* XJJProtocol.swift */,
+				F924CC492649335D00D94946 /* XJJScreen.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		F9274831264A66F400CE1928 /* XJJImage */ = {
+			isa = PBXGroup;
+			children = (
+				F96B667B264A713200020BF5 /* source */,
+				F9274850264A686B00CE1928 /* XJJImages.swift */,
+			);
+			path = XJJImage;
 			sourceTree = "<group>";
 		};
 		F92DDB4525CD346C00B390FE /* Main */ = {
@@ -444,6 +471,7 @@
 		F96961D025C8004400CE461B /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F9274831264A66F400CE1928 /* XJJImage */,
 				F937FB7C25ECEB0E0073351E /* Other */,
 				F943954F25EC9C0400C56E3C /* XJJTheme */,
 				F96961D225C8004400CE461B /* Extension */,
@@ -501,6 +529,7 @@
 		F96961D725C8004400CE461B /* custom */ = {
 			isa = PBXGroup;
 			children = (
+				F924CC47264932FE00D94946 /* Tools */,
 				F95CBB5025EDEE1C008A758D /* NetworkServer */,
 				F96961D825C8004400CE461B /* Controller */,
 				F96961DB25C8004400CE461B /* Model */,
@@ -522,11 +551,7 @@
 		F96961DB25C8004400CE461B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F96961DC25C8004400CE461B /* XJJCheck.swift */,
 				F96961DD25C8004400CE461B /* XJJText.swift */,
-				F92DDB4025CD2EC400B390FE /* XJJTimer.swift */,
-				F9EA8ACE25E655EB00FE563B /* XJJProtocol.swift */,
-				F943955325EC9CD400C56E3C /* XJJFile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -541,6 +566,14 @@
 				F9E8B8C125CBEDE0002E2664 /* XJJNavigationTitleView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F96B667B264A713200020BF5 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				F96B6687264A718000020BF5 /* xjj_image01.jpeg */,
+			);
+			path = source;
 			sourceTree = "<group>";
 		};
 		F98950D725E0E7F300538A29 /* XJJNews */ = {
@@ -786,6 +819,7 @@
 			files = (
 				F969619C25C7FEF400CE461B /* LaunchScreen.storyboard in Resources */,
 				F9E8B8A625CBC421002E2664 /* 迷你简书魏.ttf in Resources */,
+				F96B6688264A718000020BF5 /* xjj_image01.jpeg in Resources */,
 				F937FB8425ECEC240073351E /* XJJVideoSource.plist in Resources */,
 				F937FB7E25ECEB3A0073351E /* VideoUrls in Resources */,
 				F969619925C7FEF400CE461B /* Assets.xcassets in Resources */,
@@ -866,6 +900,7 @@
 				F96961DF25C8004400CE461B /* XJJTheme.swift in Sources */,
 				F9A77B5025F2195900142266 /* XJJFTPClient.swift in Sources */,
 				F9985DFE262D20620033BF42 /* XJJVideoProgressBar.swift in Sources */,
+				F924CC4A2649335D00D94946 /* XJJScreen.swift in Sources */,
 				F9EA8ACA25E651B500FE563B /* XJJSheet.swift in Sources */,
 				F96961E325C8004400CE461B /* XJJCheck.swift in Sources */,
 				F98950E325E0E98600538A29 /* XJJNewsTitleView.swift in Sources */,
@@ -916,6 +951,7 @@
 				F92DDB5F25CD40EF00B390FE /* XJJMyViewController.swift in Sources */,
 				F95CBB6225EDF020008A758D /* XJJHTTPTask.swift in Sources */,
 				F96954032623E19300E4D41B /* XJJVideoPlayerItem.swift in Sources */,
+				F9274851264A686B00CE1928 /* XJJImages.swift in Sources */,
 				F98950D925E0E83D00538A29 /* XJJNewsView.swift in Sources */,
 				F9649F212600A55B00DC0E47 /* XJJMMS.swift in Sources */,
 				F969619025C7FEEB00CE461B /* AppDelegate.swift in Sources */,

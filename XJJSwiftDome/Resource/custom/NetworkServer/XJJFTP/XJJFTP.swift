@@ -89,7 +89,7 @@ extension XJJFTP {
                                        nil)
     }
     
-    @objc func image(_ image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject)
+    @objc private func image(_ image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject)
     {
         print("=====save image...=====")
         if let error = didFinishSavingWithError {
@@ -107,7 +107,7 @@ extension XJJFTP {
                                             nil)
     }
     
-    @objc func video(_ videoPath: String, didFinishSavingWithError: NSError?, contextInfo: AnyObject)
+    @objc private func video(_ videoPath: String, didFinishSavingWithError: NSError?, contextInfo: AnyObject)
     {
         print("=====save video...=====")
         print("=====video path:", videoPath)

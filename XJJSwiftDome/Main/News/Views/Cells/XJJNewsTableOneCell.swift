@@ -140,7 +140,7 @@ class XJJNewsTableOneCell: UITableViewCell {
         self.cancelBtn.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
     }
     
-    @objc func cancelAction(_ btn: UIButton) {
+    @objc private func cancelAction(_ btn: UIButton) {
         
     }
     

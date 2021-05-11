@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 extension UIImage {
+    /* 单色图变换颜色
+        * 临时设置单色图片颜色
+     */
     public func apply(_ color: UIColor, _ imageView: UIImageView) -> UIImage? {
         imageView.tintColor = color
         return self.withRenderingMode(.alwaysTemplate)
@@ -690,4 +693,289 @@ extension UIImage {
         return image
     }
     
+    /*
+        * 播放
+     */
+    public static var play: UIImage? {
+        get {
+            return drawPlay()
+        }
+    }
+    
+    public static func drawPlay(size: CGSize? = nil,
+                                strokeColor: UIColor? = nil,
+                                fillColor: UIColor? = nil,
+                                strokeWidth: CGFloat? = 1,
+                                scale: CGFloat? = 1,
+                                hasRound: Bool? = false) -> UIImage?
+    {
+        let _size = size ?? CGSize(width: 25, height: 25)
+        let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
+        let _fillColor = fillColor?.cgColor ?? UIColor.black.cgColor
+        
+        let center = CGPoint(x: _size.width / 2, y: _size.height / 2)
+        let min_length = min(_size.width, _size.height)
+        let radius = min_length * (hasRound! ? 0.25 : 0.35) * scale!
+        let radian = CGFloat.pi / 3
+        let round_radius = min_length * 0.4 * scale!
+        
+        let lt_point = CGPoint(x: center.x - radius * cos(radian), y: center.y - radius * sin(radian))
+        let lb_point = CGPoint(x: center.x - radius * cos(radian), y: center.y + radius * sin(radian))
+        let r_point = CGPoint(x: center.x + radius, y: center.y)
+        
+        UIGraphicsBeginImageContextWithOptions(_size, false, UIScreen.main.scale)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setStrokeColor(_strokeColor)
+        context?.setLineWidth(strokeWidth!)
+        context?.setFillColor(_fillColor)
+        
+        context?.move(to: lt_point)
+        context?.addLine(to: lb_point)
+        context?.addLine(to: r_point)
+        context?.closePath()
+        context?.fillPath()
+        
+        if hasRound == true {
+            context?.addArc(center: center, radius: round_radius, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: false)
+            context?.strokePath()
+        }
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
+    /*
+        * 暂停
+     */
+    public static var pause: UIImage? {
+        get {
+            return drawPause()
+        }
+    }
+    
+    public static func drawPause(size: CGSize? = nil,
+                                 strokeColor: UIColor? = nil,
+                                 strokeWidth: CGFloat? = 1,
+                                 scale: CGFloat? = 1,
+                                 hasRound: Bool? = false) -> UIImage?
+    {
+        let _size = size ?? CGSize(width: 25, height: 25)
+        let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
+        
+        let center = CGPoint(x: _size.width / 2, y: _size.height / 2)
+        let min_length = min(_size.width, _size.height)
+        let radius = min_length * (hasRound! ? 0.25 : 0.35) * scale!
+        let radian = CGFloat.pi / 3
+        let round_radius = min_length * 0.4 * scale!
+        
+        let lt_point = CGPoint(x: center.x - radius * cos(radian), y: center.y - radius * sin(radian))
+        let lb_point = CGPoint(x: center.x - radius * cos(radian), y: center.y + radius * sin(radian))
+        let rt_point = CGPoint(x: center.x + radius * cos(radian), y: center.y - radius * sin(radian))
+        let rb_point = CGPoint(x: center.x + radius * cos(radian), y: center.y + radius * sin(radian))
+        
+        UIGraphicsBeginImageContextWithOptions(_size, false, UIScreen.main.scale)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setStrokeColor(_strokeColor)
+        context?.setLineWidth(strokeWidth! * min_length * 0.1)
+        
+        context?.move(to: lt_point)
+        context?.addLine(to: lb_point)
+        context?.move(to: rt_point)
+        context?.addLine(to: rb_point)
+        context?.strokePath()
+        
+        if hasRound == true {
+            context?.setLineWidth(strokeWidth!)
+            context?.addArc(center: center, radius: round_radius, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: false)
+            context?.strokePath()
+        }
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
+    /*
+        * 进度条按钮
+     */
+    public static var progressBarButton: UIImage? {
+        get {
+            return drawProgressBarButton()
+        }
+    }
+    
+    // rate: 0 ~ 1，圆形的比例，1 为整个圆
+    public static func drawProgressBarButton(size: CGSize? = nil,
+                                             strokeColor: UIColor? = nil,
+                                             strokeWidth: CGFloat? = 1,
+                                             fillColor: UIColor? = nil,
+                                             rate: CGFloat? = 1,
+                                             scale: CGFloat? = 1) -> UIImage?
+    {
+        let _size = size ?? CGSize(width: 25, height: 25)
+        let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
+        let _fillColor = fillColor?.cgColor ?? UIColor.black.cgColor
+        
+        let center = CGPoint(x: _size.width / 2, y: _size.height / 2)
+        let min_length = min(_size.width, _size.height)
+        let radius = min_length * 0.35 * scale!
+        
+        UIGraphicsBeginImageContextWithOptions(_size, false, UIScreen.main.scale)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setStrokeColor(_strokeColor)
+        context?.setLineWidth(strokeWidth!)
+        context?.setFillColor(_fillColor)
+        
+        if rate == 1 {
+            context?.addArc(center: center, radius: radius, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: false)
+            context?.fillPath()
+        }else {
+            let radian = CGFloat.pi * rate! * 0.5
+            
+            let lt_point = CGPoint(x: center.x - radius * cos(radian), y: center.y - radius * sin(radian))
+            let lb_point = CGPoint(x: center.x - radius * cos(radian), y: center.y + radius * sin(radian))
+            let rt_point = CGPoint(x: center.x + radius * cos(radian), y: center.y - radius * sin(radian))
+            let rb_point = CGPoint(x: center.x + radius * cos(radian), y: center.y + radius * sin(radian))
+            
+            context?.move(to: lt_point)
+            context?.addArc(center: center, radius: radius, startAngle: CGFloat.pi / 2 + radian, endAngle: CGFloat.pi / 2 - radian, clockwise: true)
+            context?.move(to: rt_point)
+            context?.addLine(to: rb_point)
+            context?.move(to: rb_point)
+            context?.addArc(center: center, radius: radius, startAngle: CGFloat.pi / 2 * 3 + radian, endAngle: CGFloat.pi / 2 * 3 - radian, clockwise: true)
+            context?.move(to: lb_point)
+            context?.addLine(to: lt_point)
+            context?.fillPath()
+        }
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+}
+
+//MARK: - 位图应用（bitmap）
+extension UIImage {
+    /* CGContext(data: T##UnsafeMutableRawPointer?, width: T##Int, height: T##Int, bitsPerComponent: T##Int, bytesPerRow: T##Int, space: T##CGColorSpace, bitmapInfo: T##UInt32)
+        * 创建位图上下文
+        * data - 要渲染的绘制内存的地址指针，大小应该为（一行占用字节数 * height）个字节
+        * width、height - 上下文长宽
+        * bitsPerComponent - 每个通道占用字节数（一般分为：红色通道，绿色通道，蓝色通道，透明通道）
+        * bytesPerRow - 每一行占用字节数，一般设为0，系统会自动计算
+        * space - 色彩空间 常用的三种
+            * CGColorSpaceCreateDeviceRGB() - 依赖于设备的RGB颜色空间（红色，绿色和蓝色）
+            * CGColorSpaceCreateDeviceGray() - 依赖于设备的灰度颜色空间（黑色到白色）
+            * CGColorSpaceCreateDeviceCMYK() - 依赖于设备的CMYK颜色空间（青色，品红色，黄色和黑色）
+        * bitmapInfo - 上下文配置（位图像素布局）
+            * CGImageByteOrderInfo - 代表字节顺序，采用大端还是小端，以及数据单位宽度
+                * kCGImageByteOrderMask
+                * kCGImageByteOrderDefault - 默认
+                * kCGImageByteOrder16Little - 16位小端
+                * kCGImageByteOrder32Little - 32位小端
+                * kCGImageByteOrder16Big - 16位大端
+                * kCGImageByteOrder32Big - 32位大端
+                **** iOS 一般采用 32 位小端模式，用 orderDefault 就好 ****
+            * CGImageAlphaInfo - 对于透明通道的设置
+                * kCGImageAlphaNone - 不包含透明度
+                * kCGImageAlphaPremultipliedLast - 预乘、透明度分量在低位
+                * kCGImageAlphaPremultipliedFirst - 预乘、透明度分量在高位
+                * kCGImageAlphaLast - 不预乘、透明度分量在低位
+                * kCGImageAlphaFirst - 不预乘、透明度分量在高位
+                * kCGImageAlphaNoneSkipLast - 忽略透明度分量、透明度分量在低位
+                * kCGImageAlphaNoneSkipFirst - 忽略透明度分量、透明度分量在高位
+                * kCGImageAlphaOnly - 只包含透明度
+                **** 预乘：每个颜色分量乘以 alpha 的值，可以加速图片的渲染（渲染时，每个颜色分量需要乘以alpha） ****
+            * floatComponents - 是否有浮点数，有就加上这个值（.floatComponents），没有就不加
+        ****
+            * 没有用到的值：bitsPerPixel - 色彩深度，表示每个像素点占用位数
+                * 8 位灰度（只有透明度：A8）<ALPHA_8> - bitsPerPixel 为 8
+                * 16 位色（R5+G6+R5）<RGB_565> - bitsPerPixel 为 16（5+6+5）
+                * 32 位色（A8+R8+G8+B8）<ARGB_8888> - bitsPerPixel 为 32（8+8+8+8）
+                * 64 位色（R16+G16+B16+A16 但使用半精度减少一半储存空间）用于宽色域或HDR <RGBA_F16> - bitsPerPixel 为 64（16+16+16+16）
+                ****
+     */
+    
+    /* 反向蒙版图片
+        * 获取图片透明度（非0即1），反转图片透明度，用于制作反向蒙版
+        * 如果需要获取数据 data，就必须填写 bytesPerRow（每行字节数）
+        * data 数据位数，由每像素字节数决定
+        * 每像素字节数（bitsPerComponent * 通道数） -- 例：bitsPerComponent = 8 时， 'rgba or argb' = 4 * 8   /   'a' = 1 * 8   /   'rgb' = 3 * 8
+        * 每行字节数必须是每像素字节数的倍数
+     */
+    var negationImage: UIImage? {
+        get {
+            return negationImageCreate()
+        }
+    }
+    
+    public func negationImageCreate() -> UIImage? {
+        guard let _cgImage = self.cgImage else {return nil}
+        let size = self.size
+        
+        let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceGray()
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.alphaOnly.rawValue)
+        let bytesPerRow = Int(size.width) * 1
+        var data = Array<UInt8>(repeating: 0, count: bytesPerRow * Int(size.height))
+        
+        let context = CGContext(data: &data, width: Int(size.width), height: Int(size.height), bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
+        
+        context?.draw(_cgImage, in: CGRect(origin: CGPoint.zero, size: size))
+        //print(context ?? "no context!", "\ndata: ", data)
+        
+        for y in 0..<Int(size.height) {
+            for x in 0..<Int(size.width) {
+                let char = data[y * bytesPerRow + x]
+                let temp = 255 - char
+                data[y * bytesPerRow + x] = temp
+            }
+        }
+        
+        //print(context ?? "no context!", "\ndata: ", data)
+ 
+        guard let image = context?.makeImage() else {return nil}
+        
+        return UIImage(cgImage: image)
+    }
+    
+    /* 灰度图片
+        * 使用系统颜色空间设置 CGColorSpaceCreateDeviceGray
+        * 还有另一种做法，就是每一个像素点都进行灰度换算，三原色大致权重比 R：G：B = 3：6：1
+            * 浮点算法：Gray = R*0.3+G*0.59+B*0.11
+            * 整数方法：Gray =(R*30+G*59+B*11)/100
+            * 移位方法：Gray =(R*77+G*151+B*28)>>8
+            * 平均值法：Gray =（R+G+B）/3
+            * 仅取绿色：Gray = G
+     */
+    var grayImage: UIImage? {
+        get {
+            return grayImageCreate()
+        }
+    }
+    
+    public func grayImageCreate() -> UIImage? {
+        guard let _cgImage = self.cgImage else {return nil}
+        let size = self.size
+        
+        let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceGray()
+        let bitmapInfo = CGImageAlphaInfo.none.rawValue
+        let context = CGContext(data: nil, width: Int(size.width), height: Int(size.height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo)
+                
+        context?.draw(_cgImage, in: CGRect(origin: CGPoint.zero, size: size))
+        guard let image = context?.makeImage() else {return nil}
+        
+        return UIImage(cgImage: image)
+    }
 }
