@@ -750,6 +750,103 @@ extension UIImage {
     }
     
     /*
+        * 进带 or 倒带
+        * rewind - 倒带
+        * forward - 进带
+        * type - 0 倒带   1 进带
+     */
+    public static var rewind: UIImage? {
+        get {
+            return drawTapeChange(type: 0)
+        }
+    }
+    
+    public static var forward: UIImage? {
+        get {
+            return drawTapeChange(type: 1)
+        }
+    }
+    
+    public static func drawTapeChange(type: Int,
+                                      size: CGSize? = nil,
+                                      strokeColor: UIColor? = nil,
+                                      fillColor: UIColor? = nil,
+                                      strokeWidth: CGFloat? = 1,
+                                      scale: CGFloat? = 1,
+                                      hasRound: Bool? = false) -> UIImage?
+    {
+        let _size = size ?? CGSize(width: 25, height: 25)
+        let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
+        let _fillColor = fillColor?.cgColor ?? UIColor.black.cgColor
+        
+        let center = CGPoint(x: _size.width / 2, y: _size.height / 2)
+        let min_length = min(_size.width, _size.height)
+        let length = min_length * (hasRound! ? 0.6 : 0.8) * scale!
+        let radian = CGFloat.pi / 3
+        let round_radius = min_length * 0.4 * scale!
+        let diff_y = length / 3 * 2 / tan(radian)
+        
+        var corner_one: CGPoint = CGPoint.zero
+        var corner_two: CGPoint = CGPoint.zero
+        var corner_three: CGPoint = CGPoint.zero
+        var corner_four: CGPoint = CGPoint.zero
+        var corner_five: CGPoint = CGPoint.zero
+        
+        var link_up: CGPoint = CGPoint.zero
+        var link_down: CGPoint = CGPoint.zero
+        
+        switch type {
+        case 0:
+            corner_one = CGPoint(x: center.x - length / 2, y: center.y)
+            corner_two = CGPoint(x: center.x + length / 6, y: center.y - diff_y)
+            corner_three = CGPoint(x: center.x + length / 2, y: center.y - diff_y)
+            corner_four = CGPoint(x: center.x + length / 2, y: center.y + diff_y)
+            corner_five = CGPoint(x: center.x + length / 6, y: center.y + diff_y)
+            link_up = CGPoint(x: center.x + length / 6, y: center.y - diff_y / 2)
+            link_down = CGPoint(x: center.x + length / 6, y: center.y + diff_y / 2)
+        case 1:
+            corner_one = CGPoint(x: center.x + length / 2, y: center.y)
+            corner_two = CGPoint(x: center.x - length / 6, y: center.y - diff_y)
+            corner_three = CGPoint(x: center.x - length / 2, y: center.y - diff_y)
+            corner_four = CGPoint(x: center.x - length / 2, y: center.y + diff_y)
+            corner_five = CGPoint(x: center.x - length / 6, y: center.y + diff_y)
+            link_up = CGPoint(x: center.x - length / 6, y: center.y - diff_y / 2)
+            link_down = CGPoint(x: center.x - length / 6, y: center.y + diff_y / 2)
+        default:
+            return nil
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(_size, false, UIScreen.main.scale)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setStrokeColor(_strokeColor)
+        context?.setLineWidth(strokeWidth!)
+        context?.setFillColor(_fillColor)
+        
+        context?.move(to: corner_one)
+        context?.addLine(to: corner_two)
+        context?.addLine(to: link_up)
+        context?.addLine(to: corner_three)
+        context?.addLine(to: corner_four)
+        context?.addLine(to: link_down)
+        context?.addLine(to: corner_five)
+        context?.closePath()
+        context?.fillPath()
+        
+        if hasRound == true {
+            context?.addArc(center: center, radius: round_radius, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: false)
+            context?.strokePath()
+        }
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
+    /*
         * 暂停
      */
     public static var pause: UIImage? {
@@ -909,7 +1006,7 @@ extension UIImage {
      */
     
     /* 反向蒙版图片
-        * 获取图片透明度（非0即1），反转图片透明度，用于制作反向蒙版
+        * 获取图片透明度，反转图片透明度，用于制作反向蒙版
         * 如果需要获取数据 data，就必须填写 bytesPerRow（每行字节数）
         * data 数据位数，由每像素字节数决定
         * 每像素字节数（bitsPerComponent * 通道数） -- 例：bitsPerComponent = 8 时， 'rgba or argb' = 4 * 8   /   'a' = 1 * 8   /   'rgb' = 3 * 8

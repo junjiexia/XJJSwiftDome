@@ -45,7 +45,7 @@ class XJJVideoPlayerMenuTopView: UIView {
     private var settingBtn: UIButton! // 设置按钮
         
     private func initUI() {
-        self.backgroundColor = UIColor(white: 0, alpha: 0.2)
+        self.backgroundColor = UIColor(white: 1, alpha: 0.4)
         
         self.initBack()
         self.initTitle()

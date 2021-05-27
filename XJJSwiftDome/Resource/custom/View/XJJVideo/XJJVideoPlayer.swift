@@ -33,9 +33,20 @@ class XJJVideoPlayer: UIView {
         self.setupSubviewsLayout()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.superTable()?.isScrollEnabled = false
+        self.superScroll()?.isScrollEnabled = false
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.superTable()?.isScrollEnabled = true
+        self.superScroll()?.isScrollEnabled = true
+    }
+    
     private var player: AVPlayer!
     private var playerItem: XJJVideoPlayerItem! // 播放项
     private var playerLayer: AVPlayerLayer!
+    private var playerMenu: XJJVideoPlayerMenu!
     
     private var autoPlay: Bool = true // 是否缓冲到最小时长时，自动播放
     private var isPlaying: Bool = false // 是否正在播放
@@ -45,6 +56,7 @@ class XJJVideoPlayer: UIView {
         self.backgroundColor = UIColor.black
     
         self.initPlayer()
+        self.initPlayerMenu()
     }
     
     private func initPlayer() {
@@ -52,6 +64,11 @@ class XJJVideoPlayer: UIView {
         
         self.playerLayer = AVPlayerLayer(player: player)
         self.layer.addSublayer(playerLayer)
+    }
+    
+    private func initPlayerMenu() {
+        self.playerMenu = XJJVideoPlayerMenu()
+        self.addSubview(playerMenu)
     }
     
     private func updatePlayerItem(_ videoSource: XJJVideoSubItem) {
@@ -124,6 +141,7 @@ class XJJVideoPlayer: UIView {
     
     private func setupSubviewsLayout() {
         self.playerLayer.frame = self.bounds
+        self.playerMenu.frame = self.bounds
     }
     
 }

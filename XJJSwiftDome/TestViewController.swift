@@ -21,6 +21,8 @@ class TestViewController: XJJBaseViewController {
         //self.gradientLayer()
         //self.videoSource()
         self.testImage()
+        
+        self.addRightImageItem(XJJImages.forward!)
     }
     
     // 渐变 - CAGradientLayer

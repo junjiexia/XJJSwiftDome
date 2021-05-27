@@ -36,4 +36,6 @@ class XJJImages {
     static let play: UIImage? = UIImage.play
     static let pause: UIImage? = UIImage.pause
     static let progressBarButton: UIImage? = UIImage.progressBarButton
+    static let rewind: UIImage? = UIImage.rewind
+    static let forward: UIImage? = UIImage.forward
 }

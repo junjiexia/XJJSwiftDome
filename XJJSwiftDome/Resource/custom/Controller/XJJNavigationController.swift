@@ -32,6 +32,13 @@ class XJJNavigationController: UINavigationController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // 点击导航，移除当前控制器所有子视图的第一响应
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let vc = XJJTools.currentViewCotroller {
+            vc.view.resignAllFirstResponder()
+        }
+    }
+    
     private var returnItem: XJJPageIconModel? // 返回图片
         
     private func initUI() {

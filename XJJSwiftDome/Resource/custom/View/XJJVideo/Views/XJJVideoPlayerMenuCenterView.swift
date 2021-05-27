@@ -1,15 +1,20 @@
 //
-//  XJJVideoPlayerMenuRightView.swift
+//  XJJVideoPlayerMenuCenterView.swift
 //  XJJSwiftDome
 //
-//  Created by Levy on 2021/4/14.
+//  Created by Levy on 2021/5/15.
 //
 
 import UIKit
 
-class XJJVideoPlayerMenuRightView: UIView {
+class XJJVideoPlayerMenuCenterView: UIView {
     
-    var imageTapBlock: (() -> Void)?
+    var image: UIImage? {
+        didSet {
+            guard let img = image else {return}
+            self.imageView.image = img
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,25 +32,15 @@ class XJJVideoPlayerMenuRightView: UIView {
     
     private var imageView: UIImageView!
     
-    private var imageSize: CGSize = CGSize(width: 30, height: 30)
-        
     private func initUI() {
-        self.backgroundColor = UIColor(white: 1, alpha: 0.4)
-        
         self.initImageView()
     }
-
+    
     private func initImageView() {
         self.imageView = UIImageView()
         self.addSubview(imageView)
         
         self.imageView.isUserInteractionEnabled = true
-        self.imageView.image = XJJImages.listMenuImage
-        self.imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageViewAction)))
-    }
-    
-    @objc private func imageViewAction(_ tap: UITapGestureRecognizer) {
-        self.imageTapBlock?()
     }
     
     private func setupSubviewsLayout() {
@@ -53,9 +48,11 @@ class XJJVideoPlayerMenuRightView: UIView {
         
         UIView.setupNeedLayout([imageView])
         
+        let size = imageView.image?.size ?? CGSize.zero
+    
         self.imageView.autoLayoutCenter(0, 0, .equal)
-        self.imageView.autoLayoutWidth(imageSize.width, .equal)
-        self.imageView.autoLayoutHeight(imageSize.height, .equal)
+        self.imageView.autoLayoutWidth(size.width, .equal)
+        self.imageView.autoLayoutHeight(size.height, .equal)
     }
     
 }

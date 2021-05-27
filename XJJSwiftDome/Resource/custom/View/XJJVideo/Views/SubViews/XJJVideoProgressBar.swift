@@ -65,7 +65,7 @@ class XJJVideoProgressBar: UIView {
         
         self.progressView.autoLayoutCenterY(0, .equal)
         self.progressView.autoLayoutLeft(x, .equal)
-        self.progressView.autoLayoutRight(x, .equal)
+        self.progressView.autoLayoutRight(-x, .equal)
         self.progressView.autoLayoutHeight(self.bounds.height / 5, .equal)
         
         self.pointView.autoLayoutCenterY(0, .equal)

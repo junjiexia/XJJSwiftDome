@@ -25,7 +25,9 @@
 		F937FB8425ECEC240073351E /* XJJVideoSource.plist in Resources */ = {isa = PBXBuildFile; fileRef = F937FB8325ECEC240073351E /* XJJVideoSource.plist */; };
 		F937FB8925ECEF190073351E /* XJJVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F937FB8825ECEF190073351E /* XJJVideo.swift */; };
 		F937FB8E25ECF08C0073351E /* XJJVideoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F937FB8D25ECF08C0073351E /* XJJVideoItem.swift */; };
+		F93BF4BF264F7CE6003E1CDC /* XJJVideoPlayerMenuCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93BF4BE264F7CE6003E1CDC /* XJJVideoPlayerMenuCenterView.swift */; };
 		F943955425EC9CD400C56E3C /* XJJFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943955325EC9CD400C56E3C /* XJJFile.swift */; };
+		F950216C265E316800EDD434 /* XJJTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950216B265E316800EDD434 /* XJJTools.swift */; };
 		F95CBB4C25EDD9FB008A758D /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CBB4B25EDD9FB008A758D /* Data+Extension.swift */; };
 		F95CBB5325EDEE63008A758D /* XJJHTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CBB5225EDEE63008A758D /* XJJHTTP.swift */; };
 		F95CBB5825EDEF46008A758D /* XJJHTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CBB5725EDEF46008A758D /* XJJHTTPManager.swift */; };
@@ -141,7 +143,9 @@
 		F937FB8325ECEC240073351E /* XJJVideoSource.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = XJJVideoSource.plist; sourceTree = "<group>"; };
 		F937FB8825ECEF190073351E /* XJJVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideo.swift; sourceTree = "<group>"; };
 		F937FB8D25ECF08C0073351E /* XJJVideoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoItem.swift; sourceTree = "<group>"; };
+		F93BF4BE264F7CE6003E1CDC /* XJJVideoPlayerMenuCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoPlayerMenuCenterView.swift; sourceTree = "<group>"; };
 		F943955325EC9CD400C56E3C /* XJJFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJFile.swift; sourceTree = "<group>"; };
+		F950216B265E316800EDD434 /* XJJTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTools.swift; sourceTree = "<group>"; };
 		F95CBB4B25EDD9FB008A758D /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		F95CBB5225EDEE63008A758D /* XJJHTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJHTTP.swift; sourceTree = "<group>"; };
 		F95CBB5725EDEF46008A758D /* XJJHTTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJHTTPManager.swift; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 				F92DDB4025CD2EC400B390FE /* XJJTimer.swift */,
 				F9EA8ACE25E655EB00FE563B /* XJJProtocol.swift */,
 				F924CC492649335D00D94946 /* XJJScreen.swift */,
+				F950216B265E316800EDD434 /* XJJTools.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -659,6 +664,7 @@
 			children = (
 				F9985DFC262D20330033BF42 /* SubViews */,
 				F9D54EC52626D036008BEE30 /* XJJVideoPlayerMenu.swift */,
+				F93BF4BE264F7CE6003E1CDC /* XJJVideoPlayerMenuCenterView.swift */,
 				F9D54ECA2626D289008BEE30 /* XJJVideoPlayerMenuTopView.swift */,
 				F9D54ECF2626D2B1008BEE30 /* XJJVideoPlayerMenuLeftView.swift */,
 				F9D54ED42626D2C5008BEE30 /* XJJVideoPlayerMenuRightView.swift */,
@@ -919,6 +925,7 @@
 				F95CBB5825EDEF46008A758D /* XJJHTTPManager.swift in Sources */,
 				F9BAF49525E3AF1F00A16B47 /* XJJRefreshControl.swift in Sources */,
 				F9E8B8C725CBF752002E2664 /* UIView+Extension.swift in Sources */,
+				F950216C265E316800EDD434 /* XJJTools.swift in Sources */,
 				F9EA8ABF25E64DEB00FE563B /* XJJTheme+Normal.swift in Sources */,
 				F9E8B8C225CBEDE0002E2664 /* XJJNavigationTitleView.swift in Sources */,
 				F930DAA625E8A11F007459FC /* XJJNewsItem.swift in Sources */,
@@ -944,6 +951,7 @@
 				F95CBB6C25EDF080008A758D /* XJJHTTPResponse.swift in Sources */,
 				F92DDB4125CD2EC400B390FE /* XJJTimer.swift in Sources */,
 				F9D54EDA2626D2DA008BEE30 /* XJJVideoPlayerMenuBottomView.swift in Sources */,
+				F93BF4BF264F7CE6003E1CDC /* XJJVideoPlayerMenuCenterView.swift in Sources */,
 				F9D54ED52626D2C5008BEE30 /* XJJVideoPlayerMenuRightView.swift in Sources */,
 				F9FA20B425E4FA0D00DC0421 /* XJJLoadMoreControl.swift in Sources */,
 				F976C55125F369C700C4B3CB /* XJJAsyncSocket.swift in Sources */,

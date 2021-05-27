@@ -16,68 +16,132 @@ extension UIView {
         }
     }
     
-    public func autoLayoutTop(_ top: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView? = nil) {
-        guard let superV = self.superview else {return}
-        superV.addConstraint(NSLayoutConstraint(item: self, attribute: .top, relatedBy: related, toItem: other ?? superV, attribute: .top, multiplier: 1, constant: top))
+    @discardableResult public func autoLayoutTop(_ top: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView? = nil) -> NSLayoutConstraint {
+        var layoutConstraint = NSLayoutConstraint(item: self, attribute: .top, relatedBy: related, toItem: superview, attribute: .top, multiplier: 1, constant: top)
+        
+        if let otherView = other {
+            layoutConstraint = NSLayoutConstraint(item: self, attribute: .top, relatedBy: related, toItem: otherView, attribute: .top, multiplier: 1, constant: top)
+        }
+        self.superview?.addConstraint(layoutConstraint)
+        
+        return layoutConstraint
     }
     
-    public func autoLayoutLeft(_ left: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView? = nil) {
-        guard let superV = self.superview else {return}
-        superV.addConstraint(NSLayoutConstraint(item: self, attribute: .left, relatedBy: related, toItem: other ?? superV, attribute: .left, multiplier: 1, constant: left))
+    @discardableResult public func autoLayoutLeft(_ left: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView? = nil) -> NSLayoutConstraint {
+        var layoutConstraint = NSLayoutConstraint(item: self, attribute: .left, relatedBy: related, toItem: superview, attribute: .left, multiplier: 1, constant: left)
+        
+        if let otherView = other {
+            layoutConstraint = NSLayoutConstraint(item: self, attribute: .left, relatedBy: related, toItem: otherView, attribute: .left, multiplier: 1, constant: left)
+        }
+        self.superview?.addConstraint(layoutConstraint)
+        
+        return layoutConstraint
     }
     
-    public func autoLayoutRight(_ right: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView? = nil) {
-        guard let superV = self.superview else {return}
-        superV.addConstraint(NSLayoutConstraint(item: self, attribute: .right, relatedBy: related, toItem: other ?? superV, attribute: .right, multiplier: 1, constant: right))
+    @discardableResult public func autoLayoutRight(_ right: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView? = nil) -> NSLayoutConstraint {
+        var layoutConstraint = NSLayoutConstraint(item: self, attribute: .right, relatedBy: related, toItem: superview, attribute: .right, multiplier: 1, constant: right)
+        
+        if let otherView = other {
+            layoutConstraint = NSLayoutConstraint(item: self, attribute: .right, relatedBy: related, toItem: otherView, attribute: .right, multiplier: 1, constant: right)
+        }
+        self.superview?.addConstraint(layoutConstraint)
+        
+        return layoutConstraint
     }
     
-    public func autoLayoutBottom(_ bottom: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView? = nil) {
-        guard let superV = self.superview else {return}
-        superV.addConstraint(NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: related, toItem: other ?? superV, attribute: .bottom, multiplier: 1, constant: bottom))
+    @discardableResult public func autoLayoutBottom(_ bottom: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView? = nil) -> NSLayoutConstraint {
+        var layoutConstraint = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: related, toItem: superview, attribute: .bottom, multiplier: 1, constant: bottom)
+        
+        if let otherView = other {
+            layoutConstraint = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: related, toItem: otherView, attribute: .bottom, multiplier: 1, constant: bottom)
+        }
+        self.superview?.addConstraint(layoutConstraint)
+        
+        return layoutConstraint
     }
     
-    public func autoLayoutCenter(_ centerX: CGFloat, _ centerY: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView? = nil) {
-        guard let superV = self.superview else {return}
-        superV.addConstraint(NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: related, toItem: other ?? superV, attribute: .centerX, multiplier: 1, constant: centerX))
-        superV.addConstraint(NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: related, toItem: other ?? superV, attribute: .centerY, multiplier: 1, constant: centerY))
+    @discardableResult public func autoLayoutCenter(_ centerX: CGFloat, _ centerY: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView? = nil) -> [NSLayoutConstraint] {
+        var layoutConstraintX = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: related, toItem: superview, attribute: .centerX, multiplier: 1, constant: centerX)
+        var layoutConstraintY = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: related, toItem: superview, attribute: .centerY, multiplier: 1, constant: centerY)
+        
+        if let otherView = other {
+            layoutConstraintX = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: related, toItem: otherView, attribute: .centerX, multiplier: 1, constant: centerX)
+            layoutConstraintY = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: related, toItem: otherView, attribute: .centerY, multiplier: 1, constant: centerY)
+        }
+        self.superview?.addConstraint(layoutConstraintX)
+        self.superview?.addConstraint(layoutConstraintY)
+        
+        return [layoutConstraintX, layoutConstraintY]
     }
     
-    public func autoLayoutCenterX(_ centerX: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView? = nil) {
-        guard let superV = self.superview else {return}
-        superV.addConstraint(NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: related, toItem: other ?? superV, attribute: .centerX, multiplier: 1, constant: centerX))
+    @discardableResult public func autoLayoutCenterX(_ centerX: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView? = nil) -> NSLayoutConstraint {
+        var layoutConstraint = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: related, toItem: superview, attribute: .centerX, multiplier: 1, constant: centerX)
+        
+        if let otherView = other {
+            layoutConstraint = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: related, toItem: otherView, attribute: .centerX, multiplier: 1, constant: centerX)
+        }
+        self.superview?.addConstraint(layoutConstraint)
+        
+        return layoutConstraint
     }
     
-    public func autoLayoutCenterY(_ centerY: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView? = nil) {
-        guard let superV = self.superview else {return}
-        superV.addConstraint(NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: related, toItem: other ?? superV, attribute: .centerY, multiplier: 1, constant: centerY))
+    @discardableResult public func autoLayoutCenterY(_ centerY: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView? = nil) -> NSLayoutConstraint {
+        var layoutConstraint = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: related, toItem: superview, attribute: .centerY, multiplier: 1, constant: centerY)
+        
+        if let otherView = other {
+            layoutConstraint = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: related, toItem: otherView, attribute: .centerY, multiplier: 1, constant: centerY)
+        }
+        self.superview?.addConstraint(layoutConstraint)
+        
+        return layoutConstraint
     }
     
-    public func autoLayoutWidth(_ width: CGFloat, _ related: NSLayoutConstraint.Relation) {
-        self.superview?.addConstraint(NSLayoutConstraint(item: self, attribute: .width, relatedBy: related, toItem: nil, attribute: .width, multiplier: 1, constant: width))
+    @discardableResult public func autoLayoutWidth(_ width: CGFloat, _ related: NSLayoutConstraint.Relation) -> NSLayoutConstraint {
+        let layoutConstraint = NSLayoutConstraint(item: self, attribute: .width, relatedBy: related, toItem: nil, attribute: .width, multiplier: 1, constant: width)
+        
+        self.superview?.addConstraint(layoutConstraint)
+        
+        return layoutConstraint
     }
     
-    public func autoLayoutHeight(_ height: CGFloat, _ related: NSLayoutConstraint.Relation) {
-        self.superview?.addConstraint(NSLayoutConstraint(item: self, attribute: .height, relatedBy: related, toItem: nil, attribute: .height, multiplier: 1, constant: height))
+    @discardableResult public func autoLayoutHeight(_ height: CGFloat, _ related: NSLayoutConstraint.Relation) -> NSLayoutConstraint {
+        let layoutConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: related, toItem: nil, attribute: .height, multiplier: 1, constant: height)
+        
+        self.superview?.addConstraint(layoutConstraint)
+        
+        return layoutConstraint
     }
     
-    public func autoLayoutTopRelative(_ top: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView) {
-        guard let superV = self.superview else {return}
-        superV.addConstraint(NSLayoutConstraint(item: self, attribute: .top, relatedBy: related, toItem: other, attribute: .bottom, multiplier: 1, constant: top))
+    @discardableResult public func autoLayoutTopRelative(_ top: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView) -> NSLayoutConstraint {
+        let layoutConstraint = NSLayoutConstraint(item: self, attribute: .top, relatedBy: related, toItem: other, attribute: .bottom, multiplier: 1, constant: top)
+        
+        self.superview?.addConstraint(layoutConstraint)
+        
+        return layoutConstraint
     }
     
-    public func autoLayoutLeftRelative(_ left: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView) {
-        guard let superV = self.superview else {return}
-        superV.addConstraint(NSLayoutConstraint(item: self, attribute: .left, relatedBy: related, toItem: other, attribute: .right, multiplier: 1, constant: left))
+    @discardableResult public func autoLayoutLeftRelative(_ left: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView) -> NSLayoutConstraint {
+        let layoutConstraint = NSLayoutConstraint(item: self, attribute: .left, relatedBy: related, toItem: other, attribute: .right, multiplier: 1, constant: left)
+        
+        self.superview?.addConstraint(layoutConstraint)
+        
+        return layoutConstraint
     }
     
-    public func autoLayoutRightRelative(_ right: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView) {
-        guard let superV = self.superview else {return}
-        superV.addConstraint(NSLayoutConstraint(item: self, attribute: .right, relatedBy: related, toItem: other, attribute: .left, multiplier: 1, constant: right))
+    @discardableResult public func autoLayoutRightRelative(_ right: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView) -> NSLayoutConstraint {
+        let layoutConstraint = NSLayoutConstraint(item: self, attribute: .right, relatedBy: related, toItem: other, attribute: .left, multiplier: 1, constant: right)
+        
+        self.superview?.addConstraint(layoutConstraint)
+        
+        return layoutConstraint
     }
     
-    public func autoLayoutBottomRelative(_ bottom: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView) {
-        guard let superV = self.superview else {return}
-        superV.addConstraint(NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: related, toItem: other, attribute: .top, multiplier: 1, constant: bottom))
+    @discardableResult public func autoLayoutBottomRelative(_ bottom: CGFloat, _ related: NSLayoutConstraint.Relation, _ other: UIView) -> NSLayoutConstraint {
+        let layoutConstraint = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: related, toItem: other, attribute: .top, multiplier: 1, constant: bottom)
+        
+        self.superview?.addConstraint(layoutConstraint)
+        
+        return layoutConstraint
     }
 }
 

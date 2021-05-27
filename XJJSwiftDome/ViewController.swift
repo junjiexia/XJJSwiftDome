@@ -18,7 +18,7 @@ class ViewController: XJJBaseViewController {
         super.viewDidLoad()
         self.initData()
         self.initUI()
-        self.addRightImageItem(XJJImages.pause!)
+        self.addRightImageItem(XJJImages.listMenuImage!)
         // Do any additional setup after loading the view.
     }
     
