@@ -47,10 +47,17 @@ class XJJVideoPlayer: UIView {
     private var playerItem: XJJVideoPlayerItem! // 播放项
     private var playerLayer: AVPlayerLayer!
     private var playerMenu: XJJVideoPlayerMenu!
+    private weak var landscapeVC: XJJVideoLandscapeViewController? // 横屏控制器
+    private weak var smallVC: XJJVideoSmallViewController? // 竖屏过度控制器
     
     private var autoPlay: Bool = true // 是否缓冲到最小时长时，自动播放
     private var isPlaying: Bool = false // 是否正在播放
+    private var isReaded: Bool = false // 是否准备好播放
     private var minPlayTime: CMTime = CMTime(value: CMTimeValue(5.0), timescale: 1) // 最小缓冲时长
+    private var org_frame: CGRect = CGRect.zero // 竖屏原始frame
+    private var org_superView: UIView? // 竖屏原始视图
+    private var isInAnimation: Bool = false // 是否在动画
+    private var isFullScreen: Bool = false // 是否全屏
     
     private func initUI() {
         self.backgroundColor = UIColor.black
@@ -69,6 +76,33 @@ class XJJVideoPlayer: UIView {
     private func initPlayerMenu() {
         self.playerMenu = XJJVideoPlayerMenu()
         self.addSubview(playerMenu)
+        
+        self.playerMenu.backBlock = {[weak self] in
+            guard let sself = self else {return}
+            if sself.isFullScreen {
+                sself.changeToPortrait()
+            }
+        }
+        
+        self.playerMenu.settingBlock = {[weak self] in
+            guard let sself = self else {return}
+            sself.showSettingView()
+        }
+        
+        self.playerMenu.showListBlock = {[weak self] in
+            guard let sself = self else {return}
+            sself.showListView()
+        }
+        
+        self.playerMenu.lockBlock = {[weak self] isLock in
+            guard let sself = self else {return}
+            sself.lockView(isLock)
+        }
+        
+        self.playerMenu.fullScreenBlock = {[weak self] fullScreen in
+            guard let sself = self else {return}
+            sself.fullScreen(fullScreen)
+        }
     }
     
     private func updatePlayerItem(_ videoSource: XJJVideoSubItem) {
@@ -89,6 +123,7 @@ class XJJVideoPlayer: UIView {
             self.player = AVPlayer(playerItem: item)
             //self.player.automaticallyWaitsToMinimizeStalling = false // 保证 AVAssetResourceLoader 正常使用
             self.playerLayer.player = player
+            self.autoPlay = false
             
             playerItem.loadedTimeBlock = {[weak self] values in
                 guard let sself = self else {return}
@@ -103,7 +138,6 @@ class XJJVideoPlayer: UIView {
     }
     
     private func loadedTime(values: [NSValue]) {
-        guard autoPlay else {return}
         guard !isPlaying else {return}
         
         let rangeArr = values.map { $0 as? CMTimeRange }
@@ -112,7 +146,10 @@ class XJJVideoPlayer: UIView {
         let cTime = CMTimeAdd(player.currentTime(), minPlayTime)
         
         if let startTime = pointArr.max(), CMTimeCompare(startTime, cTime) >= 0 {
-            self.play()
+            self.isReaded = true
+            if autoPlay {
+                self.play()
+            }
         }
     }
     
@@ -128,20 +165,95 @@ class XJJVideoPlayer: UIView {
     
     private func play() {
         guard isViewAppeared else {return}
-        self.player.play()
-        self.isPlaying = true
+        if isReaded {
+            self.player.play()
+            self.isPlaying = true
+            self.autoPlay = true
+        }
     }
     
     private func pause() {
         guard isViewAppeared else {return}
         self.player.pause()
         self.isPlaying = false
-        self.autoPlay = false
     }
     
     private func setupSubviewsLayout() {
+        self.removeConstraints(self.constraints)
+        
+        UIView.setupNeedLayout([playerMenu])
+        
+        self.playerMenu.autoLayoutTop(0, .equal)
+        self.playerMenu.autoLayoutLeft(0, .equal)
+        self.playerMenu.autoLayoutRight(0, .equal)
+        self.playerMenu.autoLayoutBottom(0, .equal)
+        
         self.playerLayer.frame = self.bounds
-        self.playerMenu.frame = self.bounds
+    }
+}
+
+//MARK: - 横屏/竖屏
+extension XJJVideoPlayer {
+    private func fullScreen(_ isFullScreen: Bool) {
+        if isFullScreen {
+            self.changeToLandscape()
+        }else {
+            self.changeToPortrait()
+        }
     }
     
+    // 横屏
+    private func changeToLandscape() {
+        self.isInAnimation = true
+        self.org_frame = self.frame
+        self.org_superView = self.superview
+        self.showLandscape()
+        self.isFullScreen = true
+    }
+    
+    private func showLandscape() {
+        let _landscape = XJJVideoLandscapeViewController()
+        self.viewController()?.navigationController?.pushViewController(_landscape, animated: false)
+        
+        let rectInWindow = self.convert(self.frame, to: XJJTools.keywindow)
+        self.removeFromSuperview()
+        self.frame = rectInWindow
+        _landscape.playerView = self
+        _landscape.view.addSubview(self)
+                
+        self.isInAnimation = false
+        self.landscapeVC = _landscape
+    }
+
+    // 竖屏
+    private func changeToPortrait() {
+        self.isInAnimation = true
+        self.dissmissLandscape()
+        self.isFullScreen = false
+    }
+    
+    private func dissmissLandscape() {
+        self.removeFromSuperview()
+        self.landscapeVC?.navigationController?.popViewController(animated: false)
+        self.frame = self.org_frame
+        self.org_superView?.addSubview(self)
+        
+        self.isInAnimation = false
+    }
+}
+
+//MARK: - 设置、列表、锁
+extension XJJVideoPlayer {
+    // 设置
+    private func showSettingView() {
+        self.playerMenu.hiddenBorder()
+    }
+    // 列表
+    private func showListView() {
+        self.playerMenu.hiddenBorder()
+    }
+    // 锁
+    private func lockView(_ isLock: Bool) {
+        self.playerMenu.hiddenBorder()
+    }
 }

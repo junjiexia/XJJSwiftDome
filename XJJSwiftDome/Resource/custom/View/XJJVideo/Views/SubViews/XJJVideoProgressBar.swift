@@ -113,7 +113,6 @@ class XJJVideoProgressView: UIView {
         self.progressLayer = CALayer()
         self.layer.addSublayer(progressLayer)
         
-        self.progressLayer.frame = CGRect.zero
         self.progressLayer.backgroundColor = UIColor.blue.cgColor
         
     }

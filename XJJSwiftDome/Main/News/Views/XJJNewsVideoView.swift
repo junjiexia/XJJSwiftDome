@@ -56,14 +56,7 @@ class XJJNewsVideoView: UIView {
     private let playerHeight: CGFloat = 300
     
     private func setupSubviewsLayout() {
-        self.removeConstraints(self.constraints)
-        
-        UIView.setupNeedLayout([player])
-        
-        self.player.autoLayoutTop(1, .equal)
-        self.player.autoLayoutLeft(1, .equal)
-        self.player.autoLayoutRight(-1, .equal)
-        self.player.autoLayoutHeight(playerHeight, .equal)
+        self.player.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: 300)
     }
     
     /*

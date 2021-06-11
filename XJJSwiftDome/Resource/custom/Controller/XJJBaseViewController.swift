@@ -54,6 +54,14 @@ class XJJBaseViewController: UIViewController {
         
     }
     
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBackground()
@@ -77,11 +85,15 @@ class XJJBaseViewController: UIViewController {
     
     /*
         * 实例化时设置 frame，需要考虑手机安全区域问题，iPhone X 以上 要减去导航和底部多出来的高度，例：self.titleView = XJJNavigationTitleView(frame: frame)
-        * 实例化后设置 frame，不需要考虑安全区域，例：self.titleView = XJJNavigationTitleView()
+        * 实例化后设置 frame，不需要考虑安全区域，例：self.titleView = XJJNavigationTitleView(); self.titleView.frame = frame
      */
     private func initUI() {
         self.view.backgroundColor = UIColor.white
         
+        self.initTitle()
+    }
+    
+    private func initTitle() {
         self.titleView = XJJNavigationTitleView()
         self.navigationItem.titleView = self.titleView
     }

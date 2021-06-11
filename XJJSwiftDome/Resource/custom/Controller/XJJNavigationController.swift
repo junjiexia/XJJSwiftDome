@@ -18,6 +18,21 @@ class XJJNavigationController: UINavigationController {
         // Do any additional setup after loading the view.
     }
     
+    // 需要自动旋转 true
+    override var shouldAutorotate: Bool {
+        return self.topViewController?.shouldAutorotate ?? true
+    }
+    
+    // 支持屏幕显示方向
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return self.topViewController?.supportedInterfaceOrientations ?? .all
+    }
+    
+    // 演示的首选界面方向
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return self.topViewController?.preferredInterfaceOrientationForPresentation ?? .portrait
+    }
+    
     // 重写初始化方法，根据需要重写
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)

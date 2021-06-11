@@ -8,11 +8,20 @@
 import UIKit
 
 class XJJVideoPlayerMenu: UIView {
-    
-    var rewindBlock: (() -> Void)?
-    var forwardBlock: (() -> Void)?
+    var backBlock: (() -> Void)? // 返回按钮事件
+    var settingBlock: (() -> Void)? // 设置按钮事件
+    var lockBlock: ((_ isLock: Bool) -> Void)? // 锁定按钮事件
+    var rewindBlock: (() -> Void)? // 倒回事件
+    var forwardBlock: (() -> Void)? // 快进事件
+    var showListBlock: (() -> Void)? // 列表按钮事件
+    var playBlock: ((_ isPlay: Bool) -> Void)? // 播放按钮事件
+    var fullScreenBlock: ((_ isFullScreen: Bool) -> Void)? // 全屏按钮事件
 
     var controlEnable: Bool = true // 控制权限
+    
+    func hiddenBorder() {
+        self.show(false)
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,7 +46,8 @@ class XJJVideoPlayerMenu: UIView {
     private var tap: UITapGestureRecognizer!
     private var swipe: UISwipeGestureRecognizer!
     
-    private var isShow: Bool = true
+    private var isShow: Bool = true // 是否显示
+    private var isAnimation: Bool = false // 是否正在动画
         
     private func initUI() {
         self.initCenter()
@@ -62,21 +72,51 @@ class XJJVideoPlayerMenu: UIView {
     private func initTop() {
         self.topView = XJJVideoPlayerMenuTopView()
         self.addSubview(topView)
+        
+        self.topView.backBlock = {[weak self] in
+            guard let sself = self else {return}
+            sself.backBlock?()
+        }
+        
+        self.topView.settingBlock = {[weak self] in
+            guard let sself = self else {return}
+            sself.settingBlock?()
+        }
     }
     
     private func initLeft() {
         self.leftView = XJJVideoPlayerMenuLeftView()
         self.addSubview(leftView)
+        
+        self.leftView.imageTapBlock = {[weak self] isLock in
+            guard let sself = self else {return}
+            sself.lockBlock?(isLock)
+        }
     }
     
     private func initRight() {
         self.rightView = XJJVideoPlayerMenuRightView()
         self.addSubview(rightView)
+        
+        self.rightView.imageTapBlock = {[weak self] in
+            guard let sself = self else {return}
+            sself.showListBlock?()
+        }
     }
     
     private func initBottom() {
         self.bottomView = XJJVideoPlayerMenuBottomView()
         self.addSubview(bottomView)
+        
+        self.bottomView.playBlock = {[weak self] isPlay in
+            guard let sself = self else {return}
+            sself.playBlock?(isPlay)
+        }
+        
+        self.bottomView.fullScreenBlock = {[weak self] fullScreen in
+            guard let sself = self else {return}
+            sself.fullScreenBlock?(fullScreen)
+        }
     }
     
     private func addTap() {
@@ -95,9 +135,7 @@ class XJJVideoPlayerMenu: UIView {
         self.swipe.direction = UISwipeGestureRecognizer.Direction(rawValue: UISwipeGestureRecognizer.Direction.up.rawValue|UISwipeGestureRecognizer.Direction.down.rawValue|UISwipeGestureRecognizer.Direction.left.rawValue|UISwipeGestureRecognizer.Direction.right.rawValue)
         self.addGestureRecognizer(swipe)
     }
-    
-    private var swipeCount: CGFloat = 0
-    
+        
     @objc private func swipeAction(_ swipe: UISwipeGestureRecognizer) {
         
         let point = swipe.location(in: self)
@@ -118,18 +156,23 @@ class XJJVideoPlayerMenu: UIView {
     
     private func autoHidden() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            self.show(false)
+            if self.isShow {
+                self.show(false)
+            }
         }
     }
     
     private func show(_ show: Bool) {
+        guard !isAnimation else {return}
         self.isShow = show
+        self.isAnimation = true
         if show {self.hiddenViews()}
         UIView.animate(withDuration: 1.0) {
             self.changeTransforms()
         } completion: { (completed) in
             self.changeLayout()
             if !show {self.hiddenViews()}
+            self.isAnimation = false
         }
     }
     

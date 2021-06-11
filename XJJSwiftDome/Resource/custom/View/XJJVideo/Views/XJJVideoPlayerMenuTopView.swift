@@ -87,6 +87,7 @@ class XJJVideoPlayerMenuTopView: UIView {
     
     private let border_h: CGFloat = 16
     private let border_v: CGFloat = 5
+    private var imageSize: CGSize = CGSize(width: 30, height: 30)
     
     private func setupSubviewsLayout() {
         self.removeConstraints(self.constraints)
@@ -95,10 +96,8 @@ class XJJVideoPlayerMenuTopView: UIView {
         
         self.backBtn.autoLayoutCenterY(0, .equal)
         self.backBtn.autoLayoutLeft(border_h, .equal)
-        if let size = self.backBtn.imageView?.image?.size {
-            self.backBtn.autoLayoutWidth(size.width, .equal)
-            self.backBtn.autoLayoutHeight(size.height, .equal)
-        }
+        self.backBtn.autoLayoutWidth(imageSize.width, .equal)
+        self.backBtn.autoLayoutHeight(imageSize.height, .equal)
         
         self.titleLabel.autoLayoutCenterY(0, .equal)
         self.titleLabel.autoLayoutLeftRelative(5, .equal, backBtn)
@@ -107,10 +106,8 @@ class XJJVideoPlayerMenuTopView: UIView {
         self.settingBtn.autoLayoutCenterY(0, .equal)
         self.settingBtn.autoLayoutLeftRelative(5, .equal, titleLabel)
         self.settingBtn.autoLayoutRight(-border_h, .equal)
-        if let size = self.settingBtn.imageView?.image?.size {
-            self.settingBtn.autoLayoutWidth(size.width, .equal)
-            self.settingBtn.autoLayoutHeight(size.height, .equal)
-        }
+        self.settingBtn.autoLayoutWidth(imageSize.width, .equal)
+        self.settingBtn.autoLayoutHeight(imageSize.height, .equal)
     }
 
 }

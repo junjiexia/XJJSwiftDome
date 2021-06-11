@@ -43,16 +43,16 @@ class XJJVideoPlayerMenuCenterView: UIView {
         self.imageView.isUserInteractionEnabled = true
     }
     
+    private var imageSize: CGSize = CGSize(width: 30, height: 30)
+    
     private func setupSubviewsLayout() {
         self.removeConstraints(self.constraints)
         
         UIView.setupNeedLayout([imageView])
-        
-        let size = imageView.image?.size ?? CGSize.zero
-    
+            
         self.imageView.autoLayoutCenter(0, 0, .equal)
-        self.imageView.autoLayoutWidth(size.width, .equal)
-        self.imageView.autoLayoutHeight(size.height, .equal)
+        self.imageView.autoLayoutWidth(imageSize.width, .equal)
+        self.imageView.autoLayoutHeight(imageSize.height, .equal)
     }
     
 }

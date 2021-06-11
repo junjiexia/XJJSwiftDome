@@ -40,14 +40,18 @@ class XJJTabBarController: UITabBarController {
         self.tabBar.barTintColor = XJJThemeConfig.share.theme.bar_color
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // 需要自动旋转 true
+    override var shouldAutorotate: Bool {
+        return self.selectedViewController?.shouldAutorotate ?? true
     }
-    */
+    
+    // 支持屏幕显示方向
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return self.selectedViewController?.supportedInterfaceOrientations ?? .all
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return self.selectedViewController?.preferredInterfaceOrientationForPresentation ?? .portrait
+    }
 
 }
