@@ -33,7 +33,7 @@ class XJJVideoPlayerMenuBottomView: UIView {
     private var imageSize: CGSize = CGSize(width: 30, height: 30)
         
     private func initUI() {
-        self.backgroundColor = UIColor(white: 1, alpha: 0.4)
+        self.backgroundColor = UIColor(white: 0, alpha: 0.4)
         
         self.initPlay()
         self.initProgress()

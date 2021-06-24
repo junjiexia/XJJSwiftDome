@@ -22,7 +22,7 @@ class TestViewController: XJJBaseViewController {
         //self.videoSource()
         self.testImage()
         
-        self.addRightImageItem(XJJImages.forward!)
+        self.addRightImageItem(XJJImages.batteryFull!)
     }
     
     // 渐变 - CAGradientLayer
@@ -46,6 +46,7 @@ class TestViewController: XJJBaseViewController {
     private var imageView: UIImageView!
     private var otherImageView: UIImageView!
     private var thirdImageView: UIImageView!
+    private var fourthImageView: UIImageView!
     
     private func testImage() {
         self.imageView = UIImageView(frame: CGRect(x: 50, y: 100, width: 100, height: 100))
@@ -74,6 +75,11 @@ class TestViewController: XJJBaseViewController {
         
 //        let maskView = UIImageView(image: UIImage.drawPlay(size: CGSize(width: 100, height: 100))?.grayImage)
 //        self.thirdImageView.mask = maskView
+        
+        self.thirdImageView = UIImageView(frame: CGRect(x: 350, y: 100, width: 30, height: 30))
+        self.view.addSubview(thirdImageView)
+        
+        self.thirdImageView.image = XJJImages.batteryFull
     }
     
 }

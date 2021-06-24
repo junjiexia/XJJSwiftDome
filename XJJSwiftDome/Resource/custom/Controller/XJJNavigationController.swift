@@ -17,6 +17,22 @@ class XJJNavigationController: UINavigationController {
         self.initUI()
         // Do any additional setup after loading the view.
     }
+        
+    override var prefersStatusBarHidden: Bool {
+        return self.topViewController?.prefersStatusBarHidden ?? false
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return self.topViewController?.preferredStatusBarStyle ?? .default
+    }
+    
+    override var childForStatusBarHidden: UIViewController? {
+        return self.topViewController
+    }
+    
+    override var childForStatusBarStyle: UIViewController? {
+        return self.topViewController
+    }
     
     // 需要自动旋转 true
     override var shouldAutorotate: Bool {

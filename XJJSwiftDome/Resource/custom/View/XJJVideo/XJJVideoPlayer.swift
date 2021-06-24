@@ -10,6 +10,8 @@ import AVKit
 
 class XJJVideoPlayer: UIView {
     
+    var showBorderBlock: ((_ isShow: Bool) -> Void)? // 边框显示
+    
     var videoSource: XJJVideoSubItem? {
         didSet {
             guard let source = videoSource else {return}
@@ -18,6 +20,27 @@ class XJJVideoPlayer: UIView {
     }
     
     var isViewAppeared: Bool = false // 是否显示在最前
+    
+    var timeText: String? {
+        didSet {
+            guard let text = timeText else {return}
+            self.playerMenu.timeText = text
+        }
+    }
+    
+    var batteryValue: UIImage.Battery? {
+        didSet {
+            guard let value = batteryValue else {return}
+            self.playerMenu.batteryValue = value
+        }
+    }
+    
+    var showStatus: Bool? {
+        didSet {
+            guard let isShow = showStatus else {return}
+            self.playerMenu.showStatus = isShow
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,7 +71,6 @@ class XJJVideoPlayer: UIView {
     private var playerLayer: AVPlayerLayer!
     private var playerMenu: XJJVideoPlayerMenu!
     private weak var landscapeVC: XJJVideoLandscapeViewController? // 横屏控制器
-    private weak var smallVC: XJJVideoSmallViewController? // 竖屏过度控制器
     
     private var autoPlay: Bool = true // 是否缓冲到最小时长时，自动播放
     private var isPlaying: Bool = false // 是否正在播放
@@ -102,6 +124,11 @@ class XJJVideoPlayer: UIView {
         self.playerMenu.fullScreenBlock = {[weak self] fullScreen in
             guard let sself = self else {return}
             sself.fullScreen(fullScreen)
+        }
+        
+        self.playerMenu.showBorderBlock = {[weak self] isShow in
+            guard let sself = self else {return}
+            sself.showBorderBlock?(isShow)
         }
     }
     

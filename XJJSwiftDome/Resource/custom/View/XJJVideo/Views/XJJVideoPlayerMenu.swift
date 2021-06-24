@@ -16,8 +16,30 @@ class XJJVideoPlayerMenu: UIView {
     var showListBlock: (() -> Void)? // 列表按钮事件
     var playBlock: ((_ isPlay: Bool) -> Void)? // 播放按钮事件
     var fullScreenBlock: ((_ isFullScreen: Bool) -> Void)? // 全屏按钮事件
+    var showBorderBlock: ((_ isShow: Bool) -> Void)? // 边框显示
 
     var controlEnable: Bool = true // 控制权限
+    
+    var timeText: String? {
+        didSet {
+            guard let text = timeText else {return}
+            self.topView.timeText = text
+        }
+    }
+    
+    var batteryValue: UIImage.Battery? {
+        didSet {
+            guard let value = batteryValue else {return}
+            self.topView.batteryValue = value
+        }
+    }
+    
+    var showStatus: Bool? {
+        didSet {
+            guard let isShow = showStatus else {return}
+            self.topView.showStatus = isShow
+        }
+    }
     
     func hiddenBorder() {
         self.show(false)
@@ -46,7 +68,13 @@ class XJJVideoPlayerMenu: UIView {
     private var tap: UITapGestureRecognizer!
     private var swipe: UISwipeGestureRecognizer!
     
-    private var isShow: Bool = true // 是否显示
+    private var isShow: Bool = true {
+        didSet {
+            if isShow != oldValue {
+                self.showBorderBlock?(isShow)
+            }
+        }
+    } // 是否显示
     private var isAnimation: Bool = false // 是否正在动画
         
     private func initUI() {
@@ -197,7 +225,7 @@ class XJJVideoPlayerMenu: UIView {
         self.bottomView.isHidden = !isShow
     }
     
-    private let topHeight: CGFloat = 30
+    private let topHeight: CGFloat = 50
     private let bottomHeight: CGFloat = 45
     private let leftWidth: CGFloat = 35
     private let rightWidth: CGFloat = 35

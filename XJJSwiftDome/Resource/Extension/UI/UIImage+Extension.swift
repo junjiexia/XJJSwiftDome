@@ -962,6 +962,165 @@ extension UIImage {
         
         return image
     }
+    
+    /*
+        * 电池电量🔋
+     */
+    public struct Battery {
+        var type: BType = .white
+        var value: Float = 0 // 电量（0 ~ 100）
+        var state: UIDevice.BatteryState = .unplugged // 电池状态，默认：unplugged（未充电）
+        var isLowPowerState: Bool = false // 是否是低电量
+        var color: UIColor? {
+            get {
+                switch state {
+                case .charging, .full:
+                    return chargingColor
+                default:
+                    if value < 20 {
+                        return isLowPowerState ? lowPowerStateColor : lowPowerColor
+                    }else {
+                        return normalColor
+                    }
+                }
+            }
+        }
+        
+        var chargingColor: UIColor? {
+            get {
+                switch type {
+                case .white:
+                    return #colorLiteral(red: 0.2156862745, green: 0.7960784314, blue: 0.2745098039, alpha: 1)
+                default:
+                    return #colorLiteral(red: 0.2156862745, green: 0.7960784314, blue: 0.2745098039, alpha: 1)
+                }
+            }
+        }
+        var normalColor: UIColor? {
+            get {
+                switch type {
+                case .white:
+                    return #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                case .black:
+                    return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                }
+            }
+        }
+        var lowPowerColor: UIColor? {
+            get {
+                switch type {
+                case .white:
+                    return #colorLiteral(red: 0.9411764706, green: 0.1725490196, blue: 0.1764705882, alpha: 1)
+                default:
+                    return #colorLiteral(red: 0.9411764706, green: 0.1725490196, blue: 0.1764705882, alpha: 1)
+                }
+            }
+        }
+        var lowPowerStateColor: UIColor? {
+            get {
+                switch type {
+                case .white:
+                    return #colorLiteral(red: 0.9764705882, green: 0.8117647059, blue: 0.05490196078, alpha: 1)
+                default:
+                    return #colorLiteral(red: 0.9764705882, green: 0.8117647059, blue: 0.05490196078, alpha: 1)
+                }
+            }
+        }
+        
+        enum BType {
+            case white
+            case black
+        }
+    }
+    
+    // 横向电池 //
+    public static var batteryFull: UIImage? {
+        return drawBattery(battery: Battery(value: 100))
+    }
+    
+    // isFull: 是否占用全部高度
+    public static func drawBattery(battery: Battery,
+                                   size: CGSize? = nil,
+                                   isFull: Bool? = false) -> UIImage?
+    {
+        let _size = size ?? CGSize(width: 25, height: 25)
+        let _strokeColor = battery.normalColor?.cgColor ?? UIColor.white.cgColor
+        let _fillColor = battery.color?.cgColor ?? UIColor.white.cgColor
+        
+        let center = CGPoint(x: _size.width / 2, y: _size.height / 2)
+        let bWidth: CGFloat = _size.width * 0.85
+        let bHeight: CGFloat = (isFull == true) ? _size.height * 0.99 : _size.height * 0.4
+        let lineWidth: CGFloat = ((_size.width * 0.05) < 1) ? 1 : _size.width * 0.05 // 画笔宽度
+        let tHeight: CGFloat = bHeight / 3 // 电池头部高度
+        let bCenter = CGPoint(x: center.x - lineWidth, y: center.y) // 电池框中心
+        let bScale = CGFloat(battery.value) / 100
+        
+        // 电池外框
+        let olt_point = CGPoint(x: bCenter.x - bWidth / 2, y: bCenter.y - bHeight / 2)
+        let oRounded = UIBezierPath(roundedRect: CGRect(x: olt_point.x, y: olt_point.y, width: bWidth, height: bHeight), cornerRadius: 2.5)
+        // 电池内部
+        let ilt_point = CGPoint(x: olt_point.x + lineWidth, y: olt_point.y + lineWidth)
+        let iRounded = UIBezierPath(roundedRect: CGRect(x: ilt_point.x, y: ilt_point.y, width: (bWidth - lineWidth * 2) * bScale, height: bHeight - lineWidth * 2), cornerRadius: 2)
+        // 电池头部
+        let tt_point = CGPoint(x: center.x + bWidth / 2 + lineWidth, y: center.y - tHeight / 2)
+        let tb_point = CGPoint(x: center.x + bWidth / 2 + lineWidth, y: center.y + tHeight / 2)
+        // 充电闪电
+        let lsWidth: CGFloat = bWidth * 0.05
+        let lsHeight: CGFloat = bHeight * 0.15
+        let llHeight: CGFloat = bHeight * 0.65
+        let lsLength: CGFloat = bWidth * 0.05
+        let llLength: CGFloat = bWidth * 0.15
+        
+        let llt_point = CGPoint(x: bCenter.x + lsWidth, y: bCenter.y - llHeight)
+        let lrt_point = CGPoint(x: llt_point.x + lsLength, y: llt_point.y)
+        let llr_point = CGPoint(x: bCenter.x - lsWidth, y: bCenter.y + lsHeight)
+        let lll_point = CGPoint(x: llr_point.x - llLength, y: llr_point.y)
+        let lrb_point = CGPoint(x: bCenter.x - lsWidth, y: bCenter.y + llHeight)
+        let llb_point = CGPoint(x: lrb_point.x - lsLength, y: lrb_point.y)
+        let lrl_point = CGPoint(x: bCenter.x + lsWidth, y: bCenter.y - lsHeight)
+        let lrr_point = CGPoint(x: lrl_point.x + llLength, y: lrl_point.y)
+        
+        UIGraphicsBeginImageContextWithOptions(_size, false, UIScreen.main.scale)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setStrokeColor(_strokeColor)
+        context?.setLineWidth(lineWidth)
+        context?.addPath(oRounded.cgPath)
+        context?.strokePath()
+        
+        context?.move(to: tt_point)
+        context?.addLine(to: tb_point)
+        context?.strokePath()
+        
+        context?.setFillColor(_fillColor)
+        context?.addPath(iRounded.cgPath)
+        context?.fillPath()
+        
+        switch battery.state {
+        case .charging, .full:
+            context?.setStrokeColor(UIColor.white.cgColor)
+            context?.setFillColor(UIColor.white.cgColor)
+            context?.move(to: llt_point)
+            context?.addLine(to: lrt_point)
+            context?.addLine(to: lrl_point)
+            context?.addLine(to: lrr_point)
+            context?.addLine(to: lrb_point)
+            context?.addLine(to: llb_point)
+            context?.addLine(to: llr_point)
+            context?.addLine(to: lll_point)
+            context?.closePath()
+            context?.fillPath()
+        default:
+            break
+        }
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
 }
 
 //MARK: - 位图应用（bitmap）

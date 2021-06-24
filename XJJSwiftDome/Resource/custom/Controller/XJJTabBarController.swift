@@ -39,6 +39,18 @@ class XJJTabBarController: UITabBarController {
     func setupTheme() {
         self.tabBar.barTintColor = XJJThemeConfig.share.theme.bar_color
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return self.selectedViewController?.prefersStatusBarHidden ?? false
+    }
+    
+    override var childForStatusBarHidden: UIViewController? {
+        return self.selectedViewController
+    }
+    
+    override var childForStatusBarStyle: UIViewController? {
+        return self.selectedViewController
+    }
 
     // 需要自动旋转 true
     override var shouldAutorotate: Bool {

@@ -7,6 +7,12 @@
 
 import UIKit
 
+/*
+    * 横屏时，导航栏自动影藏
+    * info.plist 中添加 View controller-based status bar appearance -- 控制App状态栏显隐接受全局（UIApplication设置）配置（NO）或者 各控制器各自配置（YES）
+    *
+ */
+
 class XJJVideoLandscapeViewController: UIViewController {
     
     var playerView: XJJVideoPlayer?
@@ -23,6 +29,7 @@ class XJJVideoLandscapeViewController: UIViewController {
         self.navigationController?.tabBarController?.tabBar.isHidden = true
         //强制横屏
         UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
+        self.playerView?.showStatus = true
         
         super.viewWillAppear(animated)
     }
@@ -32,6 +39,7 @@ class XJJVideoLandscapeViewController: UIViewController {
         self.navigationController?.tabBarController?.tabBar.isHidden = false
         //强制竖屏
         UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+        self.playerView?.showStatus = false
         
         super.viewWillDisappear(animated)
     }
@@ -59,9 +67,19 @@ class XJJVideoLandscapeViewController: UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
     }
     
-    // 隐藏状态栏 false
+    private var statusBarHidden: Bool  = false
+    
+    // 状态栏
     override var prefersStatusBarHidden: Bool {
-        return false
+        return statusBarHidden
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .none
     }
     
     // 需要自动旋转 true
@@ -85,20 +103,31 @@ class XJJVideoLandscapeViewController: UIViewController {
     
     private func initUI() {
         self.view.backgroundColor = UIColor.black
+        
+        self.playerView?.showBorderBlock = {[weak self] isShow in
+            guard let sself = self else {return}
+            sself.statusBarHidden = !isShow
+            sself.setNeedsStatusBarAppearanceUpdate()
+        }
     }
     
     private func addNotification() {
-        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
+        UIDevice.current.isBatteryMonitoringEnabled = true
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceBatteryChanged), name: UIDevice.batteryLevelDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceBatteryChanged), name: UIDevice.batteryStateDidChangeNotification, object: nil)
     }
     
-    @objc private func deviceOrientationChanged(_ noti: Notification) {
-        
+    @objc private func deviceBatteryChanged(_ noti: Notification) {
+        let level = UIDevice.current.batteryLevel
+        let state = UIDevice.current.batteryState
+        let isLowPowerState = ProcessInfo.processInfo.isLowPowerModeEnabled
+        self.playerView?.batteryValue = UIImage.Battery(value: level, state: state, isLowPowerState: isLowPowerState)
     }
     
     private func removeNotification() {
-        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
-        UIDevice.current.endGeneratingDeviceOrientationNotifications()
+        NotificationCenter.default.removeObserver(self, name: UIDevice.batteryLevelDidChangeNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIDevice.batteryStateDidChangeNotification, object: nil)
+        UIDevice.current.isBatteryMonitoringEnabled = false
     }
     
     

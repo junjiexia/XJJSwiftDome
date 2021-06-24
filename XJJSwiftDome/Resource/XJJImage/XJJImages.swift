@@ -27,6 +27,8 @@ class XJJImages {
     
     /* 自绘图片
         * 优先实例化并缓存
+        * UIGraphicsGetImageFromCurrentImageContext() 绘制图片无法释放，一张图片只能创建一次
+        * 在其他线程绘制图片，UIGraphicsGetImageFromCurrentImageContext() 可以释放
      */
     static let returnImage: UIImage? = UIImage.backArrow
     static let settingImage: UIImage? = UIImage.mutSixGaps
@@ -38,4 +40,21 @@ class XJJImages {
     static let progressBarButton: UIImage? = UIImage.progressBarButton
     static let rewind: UIImage? = UIImage.rewind
     static let forward: UIImage? = UIImage.forward
+}
+
+//MARK: - 电池图片
+extension XJJImages {
+    static let batteryFull: UIImage? = UIImage.batteryFull
+    
+    /*
+        * 随时变化的图片需要在其他线程绘制图片，否则 UIGraphicsGetImageFromCurrentImageContext() 无法释放
+     */
+    static func getImage(battery: UIImage.Battery, size: CGSize? = nil, isFull: Bool? = false, resultBlock: ((_ image: UIImage?) -> Void)?) {
+        DispatchQueue.global().async {
+            let image = UIImage.drawBattery(battery: battery, size: size, isFull: isFull)
+            DispatchQueue.main.async {
+                resultBlock?(image)
+            }
+        }
+    }
 }
