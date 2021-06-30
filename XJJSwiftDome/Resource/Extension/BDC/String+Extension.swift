@@ -113,9 +113,21 @@ extension String {
     }
     
     // String(format: %.f%%) 自动四舍五入
-    static func percentage(_ num: Double?, decimalCount: Int? = 0) -> String {
+    // 有误差，例：0.125, decimalCount = 0 时，结果为 12%，不会自动四舍五入，如果是 0.1251，结果却是 13%；或者 0.135，结果是 14%
+    static func percentage(s num: Double?, decimalCount: Int? = 0) -> String {
         if let n = num, n > 0 {
             return String(format: "%.\(decimalCount!)f%%", n * 100)
+        }
+        return "0%"
+    }
+    
+    // 百分比，完全四舍五入
+    static func percentage(ss num: Double?, decimalCount: Int? = 0) -> String {
+        if let n = num, n > 0 {
+            let _d = (decimalCount == 0) ? 1 : (10 * decimalCount!)
+            let _n = Int(n * 1000) * _d % 10
+            let diff: Double = _n >= 5 ? 1 : 0
+            return String(format: "%.\(decimalCount!)f%%", n * 100 + diff * pow(0.1, Double(decimalCount! + 1)))
         }
         return "0%"
     }
