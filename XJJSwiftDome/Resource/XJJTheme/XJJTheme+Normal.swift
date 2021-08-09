@@ -33,6 +33,7 @@ extension XJJThemeConfig {
         ]
         
         self.theme.page_text =  [
+            XJJPageText.title: XJJText(type: UIColor.blue, font: UIFont(name: fontName, size: 20)),
             XJJPageText.text: XJJText(type: UIColor.darkText, font: UIFont(name: fontName, size: 15)),
             XJJPageText.randomText: XJJText(randomType: XJJText.TRandom(fontSize: (14, 15), fontArr: [fontName])),
             XJJPageText.newsMenuTitle: XJJText(type: UIColor.blue, font: UIFont(name: fontName, size: 15)),
@@ -77,7 +78,12 @@ extension XJJThemeConfig {
                                        nav_color: UIColor.yellow,
                                        nav_title: XJJText(designated: XJJPage.test.rawValue, attrArr: [XJJText.TDesignated(designated: "0123456789", color: UIColor.purple, font: UIFont(name: fontName, size: 20)!), XJJText.TDesignated(designated: "我你他她", color: UIColor.green, font: UIFont(name: "HYQinChuanFeiYingW", size: 20)!), XJJText.TDesignated(designated: "爱", color: UIColor.red, font: UIFont.systemFont(ofSize: 14))]),
                                        nav_text: nil,
-                                       nav_return: nil)
+                                       nav_return: nil),
+            XJJPage.alertList: XJJPageModel(nav_image: nil,
+                                        nav_color: randomColor,
+                                        nav_title: XJJText(XJJPage.alertList.rawValue, color: randomColor.invertColor, font: UIFont(name: fontName, size: 20)),
+                                        nav_text: XJJText(type: randomColor.invertColor, font: UIFont(name: fontName, size: 14)),
+                                        nav_return: nil)
         ]
     }
     

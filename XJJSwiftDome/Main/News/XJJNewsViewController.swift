@@ -25,15 +25,15 @@ class XJJNewsViewController: XJJBaseViewController {
     private func initData() {
         let text = XJJThemeConfig.share.theme.page_text[.newsMenuTitle]
         self.titleData = [
-            XJJNewsTitleCellItem(text: XJJText("推荐", color: text?.color, font: text?.font, alignment: .center), isSelect: true),
-            XJJNewsTitleCellItem(text: XJJText("体育", color: text?.color, font: text?.font, alignment: .center)),
-            XJJNewsTitleCellItem(text: XJJText("教育", color: text?.color, font: text?.font, alignment: .center)),
-            XJJNewsTitleCellItem(text: XJJText("外交", color: text?.color, font: text?.font, alignment: .center)),
-            XJJNewsTitleCellItem(text: XJJText("财经", color: text?.color, font: text?.font, alignment: .center)),
-            XJJNewsTitleCellItem(text: XJJText("旅游", color: text?.color, font: text?.font, alignment: .center)),
-            XJJNewsTitleCellItem(text: XJJText("美食", color: text?.color, font: text?.font, alignment: .center)),
-            XJJNewsTitleCellItem(text: XJJText("开心一刻", color: text?.color, font: text?.font, alignment: .center)),
-            XJJNewsTitleCellItem(text: XJJText("猜你喜欢", color: text?.color, font: text?.font, alignment: .center))
+            XJJNewsTitleCellItem(text: XJJText(XJJNewsItem.ID.first.rawValue, color: text?.color, font: text?.font, alignment: .center), isSelect: true),
+            XJJNewsTitleCellItem(text: XJJText(XJJNewsItem.ID.second.rawValue, color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText(XJJNewsItem.ID.third.rawValue, color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText(XJJNewsItem.ID.fourth.rawValue, color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText(XJJNewsItem.ID.fifth.rawValue, color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText(XJJNewsItem.ID.sixth.rawValue, color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText(XJJNewsItem.ID.seventh.rawValue, color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText(XJJNewsItem.ID.eighth.rawValue, color: text?.color, font: text?.font, alignment: .center)),
+            XJJNewsTitleCellItem(text: XJJText(XJJNewsItem.ID.ninth.rawValue, color: text?.color, font: text?.font, alignment: .center))
         ]
         
         self.dataSource.getDataSource()

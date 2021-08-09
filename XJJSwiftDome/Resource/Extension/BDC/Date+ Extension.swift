@@ -111,7 +111,7 @@ extension Date {
     }
 }
 
-//MARK: - 时间戳转换
+//MARK: - 时间转换
 extension Date {
     // 时间字符串 to 时间戳
     static func timeInterval(_ dateStr: String, _ format: String) -> TimeInterval {
@@ -150,6 +150,15 @@ extension Date {
         let timeInterval: TimeInterval = interval
         let date: Date = Date(timeIntervalSince1970: timeInterval)
         return date.dateString(format)
+    }
+    
+    // 时间字符串 to 时间模组
+    static func components(ofString value: String, format: String) -> DateComponents? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        let date = formatter.date(from: value)
+        
+        return date == nil ? nil : Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!)
     }
 }
 

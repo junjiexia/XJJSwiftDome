@@ -61,6 +61,7 @@ class XJJNavigationTitleView: UIView {
     
     private func setupLabel(_ text: XJJText) {
         self.titleLabel?.setText(text)
+        self.setNeedsLayout()
     }
     
     private func setSubviewLayout() {

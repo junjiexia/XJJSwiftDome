@@ -23,6 +23,16 @@ class XJJTools {
 
 //MARK: - find UI
 extension XJJTools {
+    static var statusBarFrame: CGRect? {
+        if #available(iOS 13.0, *) {
+            return keywindow?.windowScene?.statusBarManager?.statusBarFrame
+        }else {
+            return UIApplication.shared.statusBarFrame
+        }
+    }
+    
+    // 默认 主 scene 中， 主 window 是第一个，UITextEffectsWindow 为第二个
+    // 在主 scene 上还有 键盘的 scene
     static var keywindow: UIWindow? {
         var window:UIWindow? = nil
         if #available(iOS 13.0, *) {

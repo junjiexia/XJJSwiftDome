@@ -1121,6 +1121,150 @@ extension UIImage {
         
         return image
     }
+    
+    /*
+        * 加减号（展开、闭合）
+     */
+    public static var add: UIImage? {
+        return drawAddOrSubtract(isAdd: true, hasBox: false)
+    }
+    public static var subtract: UIImage? {
+        return drawAddOrSubtract(isAdd: false, hasBox: false)
+    }
+    public static var openSymbol: UIImage? {
+        return drawAddOrSubtract(isAdd: false, hasBox: true)
+    }
+    public static var closeSymbol: UIImage? {
+        return drawAddOrSubtract(isAdd: true, hasBox: true)
+    }
+    
+    // isAdd: 是否是加号
+    // hasBox: 是否有方框
+    public static func drawAddOrSubtract(isAdd: Bool,
+                                         hasBox: Bool,
+                                         size: CGSize? = nil,
+                                         strokeColor: UIColor? = nil,
+                                         strokeWidth: CGFloat? = 2) -> UIImage?
+    {
+        let _size = size ?? CGSize(width: 25, height: 25)
+        let _strokeColor = strokeColor?.cgColor ?? UIColor.black.cgColor
+        
+        let center = CGPoint(x: _size.width / 2, y: _size.height / 2)
+        let min_length = min(_size.width, _size.height)
+        let symbolRadius = min_length * 0.35
+        let boxRadius = min_length * 0.4
+        
+        // 符号
+        let left_point = CGPoint(x: center.x - symbolRadius, y: center.y)
+        let right_point = CGPoint(x: center.x + symbolRadius, y: center.y)
+        let top_point = CGPoint(x: center.x, y: center.y + symbolRadius)
+        let bottom_point = CGPoint(x: center.x, y: center.y - symbolRadius)
+        // 方框
+        let lt_point = CGPoint(x: center.x - boxRadius, y: center.y + boxRadius)
+        let lb_point = CGPoint(x: center.x - boxRadius, y: center.y - boxRadius)
+        let rt_point = CGPoint(x: center.x + boxRadius, y: center.y + boxRadius)
+        let rb_point = CGPoint(x: center.x + boxRadius, y: center.y - boxRadius)
+        
+        UIGraphicsBeginImageContextWithOptions(_size, false, UIScreen.main.scale)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setStrokeColor(_strokeColor)
+        context?.setLineWidth(strokeWidth!)
+        
+        // 横
+        context?.move(to: left_point)
+        context?.addLine(to: right_point)
+        context?.strokePath()
+        
+        if isAdd { // 竖
+            context?.move(to: top_point)
+            context?.addLine(to: bottom_point)
+            context?.strokePath()
+        }
+        
+        if hasBox { // 方框
+            context?.move(to: lt_point)
+            context?.addLine(to: rt_point)
+            context?.addLine(to: rb_point)
+            context?.addLine(to: lb_point)
+            context?.closePath()
+            context?.strokePath()
+        }
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
+    /*
+        * 勾 √
+     */
+    public static var check: UIImage? {
+        return drawTick(isCheck: true)
+    }
+    public static var noCheck: UIImage? {
+        return drawTick(isCheck: false)
+    }
+    
+    // isCheck: 是否标记对号
+    public static func drawTick(isCheck: Bool,
+                                size: CGSize? = nil,
+                                tickColor: UIColor? = nil,
+                                boxColor: UIColor? = nil,
+                                strokeWidth: CGFloat? = 2) -> UIImage?
+    {
+        let _size = size ?? CGSize(width: 25, height: 25)
+        let _tickColor = tickColor?.cgColor ?? UIColor.red.cgColor
+        let _boxColor = boxColor?.cgColor ?? UIColor.black.cgColor
+        
+        let center = CGPoint(x: _size.width / 2, y: _size.height / 2)
+        let min_length = min(_size.width, _size.height)
+        let boxRadius = min_length * 0.35
+        
+        // 方框
+        let lt_point = CGPoint(x: center.x - boxRadius, y: center.y + boxRadius)
+        let lb_point = CGPoint(x: center.x - boxRadius, y: center.y - boxRadius)
+        let rt_point = CGPoint(x: center.x + boxRadius, y: center.y + boxRadius)
+        let rb_point = CGPoint(x: center.x + boxRadius, y: center.y - boxRadius)
+        
+        // 符号
+        let first_point = CGPoint(x: center.x - boxRadius, y: center.y)
+        let second_point = CGPoint(x: center.x, y: center.y - boxRadius)
+        let third_point = CGPoint(x: center.x + min_length * 0.4, y: center.y + boxRadius)
+        
+        UIGraphicsBeginImageContextWithOptions(_size, false, UIScreen.main.scale)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setLineWidth(strokeWidth!)
+        
+        // 方框
+        context?.setStrokeColor(_boxColor)
+        context?.move(to: lt_point)
+        context?.addLine(to: rt_point)
+        context?.addLine(to: rb_point)
+        context?.addLine(to: lb_point)
+        context?.closePath()
+        context?.strokePath()
+        
+        if isCheck {
+            //对号
+            context?.setStrokeColor(_tickColor)
+            context?.move(to: first_point)
+            context?.addLine(to: second_point)
+            context?.addLine(to: third_point)
+            context?.strokePath()
+        }
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
 }
 
 //MARK: - 位图应用（bitmap）

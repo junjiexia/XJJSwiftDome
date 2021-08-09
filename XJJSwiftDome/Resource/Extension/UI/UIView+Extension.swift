@@ -148,9 +148,7 @@ extension UIView {
 extension UIView {
     /// 删除所有子视图
     public func removeAllSubview() {
-        for view in subviews {
-            view.removeFromSuperview()
-        }
+        subviews.forEach { $0.removeFromSuperview() }
     }
     
     /// 是否包含 view （遍历页面所有 view ）

@@ -40,6 +40,10 @@ class XJJImages {
     static let progressBarButton: UIImage? = UIImage.progressBarButton
     static let rewind: UIImage? = UIImage.rewind
     static let forward: UIImage? = UIImage.forward
+    static let open: UIImage? = UIImage.subtract
+    static let close: UIImage? = UIImage.add
+    static let check: UIImage? = UIImage.check
+    static let noCheck: UIImage? = UIImage.noCheck
 }
 
 //MARK: - 电池图片

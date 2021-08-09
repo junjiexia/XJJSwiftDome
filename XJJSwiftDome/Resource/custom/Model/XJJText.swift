@@ -13,6 +13,7 @@ class XJJText {
     var text: String = ""
     var color: UIColor = UIColor.darkText
     var font: UIFont = UIFont.systemFont(ofSize: 15)
+    var placeholder: String = ""
     var alignment: NSTextAlignment = .left
     
     var size: CGSize {
@@ -58,6 +59,10 @@ class XJJText {
     
     var totalRange: [TRange] = [] // 完整的分段
     
+    func textHeight(_ width: CGFloat) -> CGFloat {
+        return getTextHeight(width)
+    }
+    
     enum TType { // 文字类型
         case text // 字符串
         case range // 范围属性化字符串
@@ -93,64 +98,74 @@ class XJJText {
     
     init() {}
     
-    init(type color: UIColor?, font: UIFont?, alignment: NSTextAlignment? = nil) { // 普通文字格式
+    init(type color: UIColor?, font: UIFont?, placeholder: String? = nil, alignment: NSTextAlignment? = nil) { // 普通文字格式
         self.type = .text
         self.color = color ?? UIColor.darkText
         self.font = font ?? UIFont.systemFont(ofSize: 15)
+        self.placeholder = placeholder ?? ""
         self.alignment = alignment ?? .left
     }
     
-    init(rangeType attrArr: [TRange]) {
+    init(rangeType attrArr: [TRange], placeholder: String? = nil) {
         self.type = .range
         self.rangeAttrArr = attrArr
+        self.placeholder = placeholder ?? ""
     }
     
-    init(designatedType attrArr: [TDesignated]) {
+    init(designatedType attrArr: [TDesignated], placeholder: String? = nil) {
         self.type = .designated
         self.designatedAttrArr = attrArr
+        self.placeholder = placeholder ?? ""
     }
     
-    init(randomType factor: TRandom) {
+    init(randomType factor: TRandom, placeholder: String? = nil) {
         self.type = .random
         self.randomFactor = factor
+        self.placeholder = placeholder ?? ""
     }
     
-    init(wholeRandomType factor: TRandom) {
+    init(wholeRandomType factor: TRandom, placeholder: String? = nil) {
         self.type = .wholeRandom
         self.randomFactor = factor
+        self.placeholder = placeholder ?? ""
     }
     
-    init(_ text: String, color: UIColor? = nil, font: UIFont? = nil, alignment: NSTextAlignment? = nil) {
+    init(_ text: String, color: UIColor? = nil, font: UIFont? = nil, placeholder: String? = nil, alignment: NSTextAlignment? = nil) {
         self.type = .text
         self.text = text
         self.color = color ?? UIColor.darkText
         self.font = font ?? UIFont.systemFont(ofSize: 15)
         self.totalRange = [TRange(index: 0, count: text.count, color: color ?? UIColor.darkText, font: font ?? UIFont.systemFont(ofSize: 15))]
+        self.placeholder = placeholder ?? ""
         self.alignment = alignment ?? .left
     }
     
-    init(range text: String, attrArr: [TRange]) {
+    init(range text: String, attrArr: [TRange], placeholder: String? = nil) {
         self.type = .range
         self.text = text
         self.rangeAttrArr = attrArr
+        self.placeholder = placeholder ?? ""
     }
     
-    init(designated text: String, attrArr: [TDesignated]) {
+    init(designated text: String, attrArr: [TDesignated], placeholder: String? = nil) {
         self.type = .designated
         self.text = text
         self.designatedAttrArr = attrArr
+        self.placeholder = placeholder ?? ""
     }
     
-    init(random text: String, factor: TRandom) {
+    init(random text: String, factor: TRandom, placeholder: String? = nil) {
         self.type = .random
         self.text = text
         self.randomFactor = factor
+        self.placeholder = placeholder ?? ""
     }
     
-    init(wholeRandom text: String, factor: TRandom) {
+    init(wholeRandom text: String, factor: TRandom, placeholder: String? = nil) {
         self.type = .wholeRandom
         self.text = text
         self.randomFactor = factor
+        self.placeholder = placeholder ?? ""
     }
     
     /*
@@ -187,8 +202,8 @@ class XJJText {
                 }
                 
                 if i == rangeAttrArr.count - 1, index < text.count - 1 {
-                    attrText.append(NSAttributedString(string: text.sub(index, text.count - 1 - index), attributes: [NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: font]))
-                    self.totalRange.append(TRange(index: index, count: text.count - 1 - index, color: color, font: font))
+                    attrText.append(NSAttributedString(string: text.sub(index, text.count - index), attributes: [NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: font]))
+                    self.totalRange.append(TRange(index: index, count: text.count - index, color: color, font: font))
                 }
             }
         }
@@ -246,10 +261,13 @@ class XJJText {
             let alpha = factor.alphaRange.0 + (alphaDiff == 0 ? 0 : CGFloat(arc4random() % alphaDiff) / 100.0)
             let random_color = UIColor(red: redColor, green: greedColor, blue: blueColor, alpha: alpha)
             
-            let fontName = factor.fontArr[Int(arc4random()) % factor.fontArr.count]
             let sizeDiff = factor.fontSize.1 - randomFactor.fontSize.0
             let fontSize = CGFloat(factor.fontSize.0 + (sizeDiff == 0 ? 0 : Int(arc4random()) % sizeDiff))
-            let random_font = UIFont(name: fontName, size: fontSize) ?? font
+            var random_font = UIFont.systemFont(ofSize: fontSize)
+            if factor.fontArr.count > 0 {
+                let fontName = factor.fontArr[Int(arc4random()) % factor.fontArr.count]
+                random_font = UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+            }
             
             attrText.append(NSAttributedString(string: tx, attributes: [NSAttributedString.Key.foregroundColor: random_color, NSAttributedString.Key.font: random_font]))
             self.totalRange.append(TRange(index: i, count: 1, color: random_color, font: random_font))
@@ -293,6 +311,20 @@ class XJJText {
         }
     }
     
+    private func getTextHeight(_ width: CGFloat) -> CGFloat {
+        let _font = self.font
+        switch type {
+        case .text:
+            return text.getHeight(font, width)
+        case .range:
+            return text.getHeight(rangeAttrArr.max { $0.font.pointSize > $1.font.pointSize }?.font ?? _font, width)
+        case .designated:
+            return text.getHeight(designatedAttrArr.max { $0.font.pointSize > $1.font.pointSize }?.font ?? _font, width)
+        case .random, .wholeRandom:
+            return text.getHeight(UIFont.systemFont(ofSize: CGFloat(randomFactor.fontSize.1)), width)
+        }
+    }
+    
     private func getGradientLayer() -> CAGradientLayer? {
         let count = totalRange.count
         
@@ -319,6 +351,23 @@ class XJJText {
     }
 }
 
+//MARK: - 扩展协议 Hashable
+extension XJJText: Hashable {
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(text)
+    }
+    
+    static func == (lhs: XJJText, rhs: XJJText) -> Bool {
+        var lhsHasher = Hasher()
+        var rhsHasher = Hasher()
+        lhs.hash(into: &lhsHasher)
+        rhs.hash(into: &rhsHasher)
+        return lhsHasher.finalize() == rhsHasher.finalize()
+        
+    }
+}
+
 extension XJJText: XJJCopyable {
     typealias T = XJJText
     
@@ -339,14 +388,20 @@ extension XJJText: XJJCopyable {
         return obj
     }
     
-    func newText(_ text: String) -> XJJText {
+    func newText(_ text: String, color: UIColor? = nil, font: UIFont? = nil) -> XJJText {
         let new = self.copy()
         new.text = text
+        if let _color = color {
+            new.color = _color
+        }
+        if let _font = font {
+            new.font = _font
+        }
         return new
     }
 }
 
-//MARK: - 相关扩展
+//MARK: - 其他相关类扩展
 extension UILabel {
     func setText(_ text: XJJText?) {
         switch text?.type {
@@ -398,6 +453,73 @@ extension UIButton {
         case .wholeRandom:
             self.setTitle("", for: .normal)
             self.setAttributedTitle(text?.wholeRandomAttr, for: .normal)
+        case .none:
+            break
+        }
+    }
+}
+
+extension UITextField {
+    func setText(_ text: XJJText?) {
+        switch text?.type {
+        case .text:
+            self.attributedText = nil
+            self.text = text?.text
+            self.textColor = text?.color
+            self.font = text?.font
+            self.textAlignment = text?.alignment ?? .left
+            self.placeholder = text?.placeholder
+        case .range:
+            self.text = ""
+            self.attributedText = text?.rangeAttr
+            self.textAlignment = text?.alignment ?? .center
+            self.placeholder = text?.placeholder
+        case .designated:
+            self.text = ""
+            self.attributedText = text?.designatedAttr
+            self.textAlignment = text?.alignment ?? .center
+            self.placeholder = text?.placeholder
+        case .random:
+            self.text = ""
+            self.attributedText = text?.randomAttr
+            self.textAlignment = text?.alignment ?? .center
+            self.placeholder = text?.placeholder
+        case .wholeRandom:
+            self.text = ""
+            self.attributedText = text?.wholeRandomAttr
+            self.textAlignment = text?.alignment ?? .center
+            self.placeholder = text?.placeholder
+        case .none:
+            break
+        }
+    }
+}
+
+extension UITextView {
+    func setText(_ text: XJJText?) {
+        switch text?.type {
+        case .text:
+            self.attributedText = nil
+            self.text = text?.text
+            self.textColor = text?.color
+            self.font = text?.font
+            self.textAlignment = text?.alignment ?? .left
+        case .range:
+            self.text = ""
+            self.attributedText = text?.rangeAttr
+            self.textAlignment = text?.alignment ?? .center
+        case .designated:
+            self.text = ""
+            self.attributedText = text?.designatedAttr
+            self.textAlignment = text?.alignment ?? .center
+        case .random:
+            self.text = ""
+            self.attributedText = text?.randomAttr
+            self.textAlignment = text?.alignment ?? .center
+        case .wholeRandom:
+            self.text = ""
+            self.attributedText = text?.wholeRandomAttr
+            self.textAlignment = text?.alignment ?? .center
         case .none:
             break
         }

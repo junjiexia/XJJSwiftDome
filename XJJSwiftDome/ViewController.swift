@@ -35,6 +35,7 @@ class ViewController: XJJBaseViewController {
         
         if let text = XJJThemeConfig.share.theme.page_text[.randomText] {
             self.tableData.append(TableInfo(text: text.newText("打开主页"), id: "主页"))
+            self.tableData.append(TableInfo(text: text.newText("弹框示例"), id: "弹框"))
             self.tableData.append(TableInfo(text: text.newText("切换主题"), id: "主题"))
         }
     }
@@ -97,8 +98,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = XJJMainViewController()
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
+        case "弹框":
+            let vc = XJJAlertListViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         case "主题":
-            XJJSheet.sheet(on: self, "选择主题", ["默认主题", "新年主题"]) {[weak self] (index, text) in
+            XJJAlert.sheet(on: self, XJJText("选择主题"), nil, [XJJText("默认主题"), XJJText("新年主题")]) {[weak self] (index, text) in
                 guard let sself = self else {return}
                 switch text {
                 case "默认主题":
