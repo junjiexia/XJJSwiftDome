@@ -35,7 +35,7 @@ class XJJAlertBackgroundView: UIView {
     }
     
     deinit {
-        print("XJJAlertView deinit !!")
+        //print("XJJAlertView deinit !!")
     }
     
     private var tapView: UIView!

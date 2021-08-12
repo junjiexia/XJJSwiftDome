@@ -14,9 +14,9 @@ extension XJJAlert {
         
         switch number {
         case .single:
-            height = XJJAlert.borderV + XJJAlert.textHeight + XJJAlert.pickerHeight + XJJAlert.btnHeight
+            height = borderV + textHeight + pickerHeight + btnHeight
         case .double:
-            height = XJJAlert.borderV + XJJAlert.textHeight * 3 + XJJAlert.pickerHeight * 2 + XJJAlert.btnHeight
+            height = borderV + textHeight * 3 + pickerHeight * 2 + btnHeight
         }
         
         return height
@@ -34,7 +34,7 @@ extension XJJAlert {
         alertView.cancelEnable = cancelEnable!
         
         let height: CGFloat = pickerViewHeight(number: .single)
-        let datePicker = XJJAlertPickerView(frame: CGRect(x: XJJAlert.contentX, y: (UIScreen.main.bounds.height - height) / 2, width: XJJAlert.ContentWidth, height: height))
+        let datePicker = XJJAlertPickerView(frame: CGRect(x: contentX, y: (UIScreen.main.bounds.height - height) / 2, width: contentWidth, height: height))
         
         datePicker.create(date: style, number: .single, titleOne: titleText, sureText: sureText)
         datePicker.setCurrent(fristDate: current)
@@ -67,7 +67,7 @@ extension XJJAlert {
         alertView.cancelEnable = cancelEnable!
         
         let height: CGFloat = pickerViewHeight(number: .double)
-        let datePicker = XJJAlertPickerView(frame: CGRect(x: XJJAlert.contentX, y: (UIScreen.main.bounds.height - height) / 2, width: XJJAlert.ContentWidth, height: height))
+        let datePicker = XJJAlertPickerView(frame: CGRect(x: contentX, y: (UIScreen.main.bounds.height - height) / 2, width: contentWidth, height: height))
         
         datePicker.create(date: style, number: .double, titleOne: firstText, titleTwo: secondtext, sureText: sureText)
         datePicker.setCurrent(fristDate: firstDate)
@@ -99,7 +99,7 @@ extension XJJAlert {
         alertView.cancelEnable = cancelEnable!
         
         let height: CGFloat = pickerViewHeight(number: .single)
-        let picker = XJJAlertPickerView(frame: CGRect(x: XJJAlert.contentX, y: (UIScreen.main.bounds.height - height) / 2, width: XJJAlert.ContentWidth, height: height))
+        let picker = XJJAlertPickerView(frame: CGRect(x: contentX, y: (UIScreen.main.bounds.height - height) / 2, width: contentWidth, height: height))
         picker.create(custom: .single, firstPickerData: pickerArr, titleOne: titleText, sureText: sureText)
         picker.setCurrent(current ?? [])
         
@@ -132,7 +132,7 @@ extension XJJAlert {
         alertView.cancelEnable = cancelEnable!
         
         let height: CGFloat = pickerViewHeight(number: .double)
-        let picker = XJJAlertPickerView(frame: CGRect(x: XJJAlert.contentX, y: (UIScreen.main.bounds.height - height) / 2, width: XJJAlert.ContentWidth, height: height))
+        let picker = XJJAlertPickerView(frame: CGRect(x: contentX, y: (UIScreen.main.bounds.height - height) / 2, width: contentWidth, height: height))
         picker.create(custom: .double, firstPickerData: pickerArr, secondPickerData: otherPickerArr, titleOne: titleText, titleTwo: otherTitleText, sureText: sureText)
         picker.setCurrent(currentValue ?? [], other: otherValue)
         alertView.content = picker

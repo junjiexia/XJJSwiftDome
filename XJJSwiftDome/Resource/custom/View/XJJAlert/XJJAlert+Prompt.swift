@@ -16,13 +16,13 @@ extension XJJAlert {
         
         size.height = promptHeight(title: title, message: message, headerImageSize: headerImageSize, textFieldCount: textFieldCount, textViewItem: textViewItem, actionCount: actionCount, actionStyle: actionStyle)
         
-        let isAdjustWidth: Bool = (title == nil && headerImageSize == nil && actionCount == nil) && (message != nil && ((message!.size.width + diffWidth) < XJJAlert.ContentWidth))
+        let isAdjustWidth: Bool = (title == nil && headerImageSize == nil && actionCount == nil) && (message != nil && ((message!.size.width + diffWidth) < contentWidth))
         
         if isAdjustWidth {
             size.width = (message?.size.width ?? 0) + diffWidth
-            size.height += XJJAlert.mergeV
+            size.height += mergeV
         }else {
-            size.width = XJJAlert.ContentWidth
+            size.width = contentWidth
         }
                 
         return size
@@ -33,29 +33,29 @@ extension XJJAlert {
         
         // headImage
         if let size = headerImageSize {
-            height += size.height * XJJAlert.ContentWidth / size.width + XJJAlert.lineWidth
+            height += size.height * contentWidth / size.width + lineWidth
         }
         if let text = title {
-            height += text.size.height + XJJAlert.mergeV * 2 + XJJAlert.lineWidth
+            height += text.size.height + mergeV * 2 + lineWidth
         }
         if let text = message {
-            height += text.textHeight(XJJAlert.ContentWidth - XJJAlert.borderH * 2) + XJJAlert.mergeV * 2 + XJJAlert.lineWidth
+            height += text.textHeight(contentWidth - borderH * 2) + mergeV * 2 + lineWidth
         }
         if let count = textFieldCount {
-            height += (XJJAlert.textFieldHeight + XJJAlert.mergeV) * CGFloat(count)
+            height += (textFieldHeight + mergeV) * CGFloat(count)
         }
         if textViewItem != nil {
-            height += XJJAlert.textViewHeight + XJJAlert.mergeV
+            height += textViewHeight + mergeV
         }
         if let count = actionCount {
             switch actionStyle! {
             case .H:
-                height += XJJAlert.btnHeight
+                height += btnHeight
             case .H2:
                 let vCount = count / 2 + ((count % 2) > 0 ? 1 : 0)
-                height += XJJAlert.btnHeight * CGFloat(vCount) + XJJAlert.lineWidth * CGFloat(vCount - 1)
+                height += btnHeight * CGFloat(vCount) + lineWidth * CGFloat(vCount - 1)
             case .V:
-                height += XJJAlert.btnHeight * CGFloat(count) + XJJAlert.lineWidth * CGFloat(count - 1)
+                height += btnHeight * CGFloat(count) + lineWidth * CGFloat(count - 1)
             }
         }
         
@@ -77,7 +77,7 @@ extension XJJAlert {
         
         let promptHeight = promptHeight(title: title, message: message, headerImageSize: headerImage?.size, actionCount: actions?.count, actionStyle: actionStyle)
         let promptY = (UIScreen.main.bounds.height - promptHeight) / 2
-        let promptView = XJJAlertPromptView(frame: CGRect(x: XJJAlert.contentX, y: promptY, width: XJJAlert.ContentWidth, height: promptHeight))
+        let promptView = XJJAlertPromptView(frame: CGRect(x: contentX, y: promptY, width: contentWidth, height: promptHeight))
         
         promptView.headerImage = headerImage
         promptView.titleText = title
@@ -147,7 +147,7 @@ extension XJJAlert {
         
         let promptHeight = promptHeight(title: title, message: message, headerImageSize: headerImage?.size, textFieldCount: textFields.count, actionCount: actions?.count, actionStyle: actionStyle)
         let promptY = (UIScreen.main.bounds.height - promptHeight) / 2
-        let promptView = XJJAlertPromptView(frame: CGRect(x: XJJAlert.contentX, y: promptY, width: XJJAlert.ContentWidth, height: promptHeight))
+        let promptView = XJJAlertPromptView(frame: CGRect(x: contentX, y: promptY, width: contentWidth, height: promptHeight))
         
         promptView.headerImage = headerImage
         promptView.titleText = title
@@ -188,7 +188,7 @@ extension XJJAlert {
         
         let promptHeight = promptHeight(title: title, message: message, headerImageSize: headerImage?.size, textViewItem: textViewItem, actionCount: actions?.count, actionStyle: actionStyle)
         let promptY = (UIScreen.main.bounds.height - promptHeight) / 2
-        let promptView = XJJAlertPromptView(frame: CGRect(x: XJJAlert.contentX, y: promptY, width: XJJAlert.ContentWidth, height: promptHeight))
+        let promptView = XJJAlertPromptView(frame: CGRect(x: contentX, y: promptY, width: contentWidth, height: promptHeight))
         
         promptView.headerImage = headerImage
         promptView.titleText = title

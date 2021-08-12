@@ -31,6 +31,7 @@ class XJJAlertListViewController: XJJBaseViewController {
                 text.newText("中心输入弹框"),
                 text.newText("中心等待弹框"),
                 text.newText("选择器弹框"),
+                text.newText("列表弹框"),
                 text.newText("系统选择弹框")
             ]
         }
@@ -67,6 +68,12 @@ class XJJAlertListViewController: XJJBaseViewController {
                     text.newText("双日期选择器弹框"),
                     text.newText("选择器弹框"),
                     text.newText("双选择器弹框")
+                ],
+                [
+                    text.newText("单选列表弹框"),
+                    text.newText("多选列表弹框"),
+                    text.newText("单选树形列表弹框"),
+                    text.newText("多选树形列表弹框")
                 ],
                 [
                     text.newText("底部系统Sheet")
@@ -337,6 +344,248 @@ extension XJJAlertListViewController: UITableViewDelegate, UITableViewDataSource
                                   otherValue: other)
             { first, second in
                 print("天气选择 - ", first.map { $0.text }, "活动选择 - ", second.map { $0.text })
+            }
+        case "单选列表弹框":
+            XJJAlert.table(title: XJJText(text.text, color: UIColor.blue, font: UIFont.boldSystemFont(ofSize: 17), alignment: .center),
+                           tableData: [
+                            XJJAlertTree(list: 0, text: XJJText("米糕", color: UIColor.orange), isSelect: true),
+                            XJJAlertTree(list: 1, text: XJJText("桂花糕", color: UIColor.orange), isSelect: false),
+                            XJJAlertTree(list: 2, text: XJJText("奶油蛋糕", color: UIColor.orange), isSelect: false),
+                            XJJAlertTree(list: 3, text: XJJText("培根煎蛋", color: UIColor.orange), isSelect: false)
+                           ],
+                           message: XJJText("以下四种食物，你最喜欢哪种呢？"))
+            { item in
+                print("我喜欢 - ", item.text?.text ?? "")
+            }
+        case "多选列表弹框":
+            XJJAlert.multipleTable(title: XJJText(text.text, color: UIColor.blue, font: UIFont.boldSystemFont(ofSize: 17), alignment: .center),
+                                   tableData: [
+                                    XJJAlertTree(list: 0, text: XJJText("米糕", color: UIColor.orange), isSelect: true),
+                                    XJJAlertTree(list: 1, text: XJJText("桂花糕", color: UIColor.orange), isSelect: false),
+                                    XJJAlertTree(list: 2, text: XJJText("奶油蛋糕", color: UIColor.orange), isSelect: false),
+                                    XJJAlertTree(list: 3, text: XJJText("培根煎蛋", color: UIColor.orange), isSelect: false)
+                                   ],
+                                   message: XJJText("以下四种食物，你最喜欢哪种呢？"))
+            { items in
+                print("我喜欢 - ", items.map { $0.text?.text ?? "" }.joined(separator: ","))
+            }
+        case "单选树形列表弹框":
+            XJJAlert.tree(title: XJJText(text.text, color: UIColor.blue, font: UIFont.boldSystemFont(ofSize: 17), alignment: .center),
+                          tableData: [
+                            XJJAlertTree(tree: 0,
+                                         parentId: -1,
+                                         text: XJJText("生物", color: UIColor.orange),
+                                         deep: 0,
+                                         children: [
+                                            XJJAlertTree(tree: 1,
+                                                         parentId: 0,
+                                                         text: XJJText("动物", color: UIColor.orange),
+                                                         deep: 1,
+                                                         children: [
+                                                            XJJAlertTree(tree: 3,
+                                                                         parentId: 1,
+                                                                         text: XJJText("哺乳类", color: UIColor.orange),
+                                                                         deep: 2,
+                                                                         children: [
+                                                                            
+                                                                         ],
+                                                                         isSelect: false),
+                                                            XJJAlertTree(tree: 4,
+                                                                         parentId: 1,
+                                                                         text: XJJText("鱼类", color: UIColor.orange),
+                                                                         deep: 2,
+                                                                         children: [
+                                                                            
+                                                                         ],
+                                                                         isSelect: false),
+                                                            XJJAlertTree(tree: 5,
+                                                                         parentId: 1,
+                                                                         text: XJJText("鸟类", color: UIColor.orange),
+                                                                         deep: 2,
+                                                                         children: [
+                                                                            
+                                                                         ],
+                                                                         isSelect: false),
+                                                            XJJAlertTree(tree: 6,
+                                                                         parentId: 1,
+                                                                         text: XJJText("两栖类", color: UIColor.orange),
+                                                                         deep: 2,
+                                                                         children: [
+                                                                            
+                                                                         ],
+                                                                         isSelect: false),
+                                                            XJJAlertTree(tree: 7,
+                                                                         parentId: 1,
+                                                                         text: XJJText("昆虫类", color: UIColor.orange),
+                                                                         deep: 2,
+                                                                         children: [
+                                                                            
+                                                                         ],
+                                                                         isSelect: false)
+                                                         ],
+                                                         isSelect: false),
+                                            XJJAlertTree(tree: 2,
+                                                         parentId: 0,
+                                                         text: XJJText("植物", color: UIColor.orange),
+                                                         deep: 1,
+                                                         children: [
+                                                            XJJAlertTree(tree: 8,
+                                                                         parentId: 2,
+                                                                         text: XJJText("被子植物", color: UIColor.orange),
+                                                                         deep: 2,
+                                                                         children: [
+                                                                            
+                                                                         ],
+                                                                         isSelect: false),
+                                                            XJJAlertTree(tree: 9,
+                                                                         parentId: 2,
+                                                                         text: XJJText("裸子植物", color: UIColor.orange),
+                                                                         deep: 2,
+                                                                         children: [
+                                                                            
+                                                                         ],
+                                                                         isSelect: false),
+                                                            XJJAlertTree(tree: 10,
+                                                                         parentId: 2,
+                                                                         text: XJJText("苔藓植物", color: UIColor.orange),
+                                                                         deep: 2,
+                                                                         children: [
+                                                                            
+                                                                         ],
+                                                                         isSelect: false),
+                                                            XJJAlertTree(tree: 11,
+                                                                         parentId: 2,
+                                                                         text: XJJText("蕨类植物", color: UIColor.orange),
+                                                                         deep: 2,
+                                                                         children: [
+                                                                            
+                                                                         ],
+                                                                         isSelect: false),
+                                                            XJJAlertTree(tree: 12,
+                                                                         parentId: 2,
+                                                                         text: XJJText("藻类植物", color: UIColor.orange),
+                                                                         deep: 2,
+                                                                         children: [
+                                                                            
+                                                                         ],
+                                                                         isSelect: false),
+                                                         ],
+                                                         isSelect: false)
+                                         ],
+                                         isSelect: false)
+                          ],
+                          message: XJJText("这是一个树形结构！！"))
+            { item in
+                print("我选择 - ", item.text?.text ?? "")
+            }
+        case "多选树形列表弹框":
+            XJJAlert.multipleTree(title: XJJText(text.text, color: UIColor.blue, font: UIFont.boldSystemFont(ofSize: 17), alignment: .center),
+                                  tableData: [
+                                    XJJAlertTree(tree: 0,
+                                                 parentId: -1,
+                                                 text: XJJText("生物", color: UIColor.orange),
+                                                 deep: 0,
+                                                 children: [
+                                                    XJJAlertTree(tree: 1,
+                                                                 parentId: 0,
+                                                                 text: XJJText("动物", color: UIColor.orange),
+                                                                 deep: 1,
+                                                                 children: [
+                                                                    XJJAlertTree(tree: 3,
+                                                                                 parentId: 1,
+                                                                                 text: XJJText("哺乳类", color: UIColor.orange),
+                                                                                 deep: 2,
+                                                                                 children: [
+                                                                                    
+                                                                                 ],
+                                                                                 isSelect: false),
+                                                                    XJJAlertTree(tree: 4,
+                                                                                 parentId: 1,
+                                                                                 text: XJJText("鱼类", color: UIColor.orange),
+                                                                                 deep: 2,
+                                                                                 children: [
+                                                                                    
+                                                                                 ],
+                                                                                 isSelect: false),
+                                                                    XJJAlertTree(tree: 5,
+                                                                                 parentId: 1,
+                                                                                 text: XJJText("鸟类", color: UIColor.orange),
+                                                                                 deep: 2,
+                                                                                 children: [
+                                                                                    
+                                                                                 ],
+                                                                                 isSelect: false),
+                                                                    XJJAlertTree(tree: 6,
+                                                                                 parentId: 1,
+                                                                                 text: XJJText("两栖类", color: UIColor.orange),
+                                                                                 deep: 2,
+                                                                                 children: [
+                                                                                    
+                                                                                 ],
+                                                                                 isSelect: false),
+                                                                    XJJAlertTree(tree: 7,
+                                                                                 parentId: 1,
+                                                                                 text: XJJText("昆虫类", color: UIColor.orange),
+                                                                                 deep: 2,
+                                                                                 children: [
+                                                                                    
+                                                                                 ],
+                                                                                 isSelect: false)
+                                                                 ],
+                                                                 isSelect: false),
+                                                    XJJAlertTree(tree: 2,
+                                                                 parentId: 0,
+                                                                 text: XJJText("植物", color: UIColor.orange),
+                                                                 deep: 1,
+                                                                 children: [
+                                                                    XJJAlertTree(tree: 8,
+                                                                                 parentId: 2,
+                                                                                 text: XJJText("被子植物", color: UIColor.orange),
+                                                                                 deep: 2,
+                                                                                 children: [
+                                                                                    
+                                                                                 ],
+                                                                                 isSelect: false),
+                                                                    XJJAlertTree(tree: 9,
+                                                                                 parentId: 2,
+                                                                                 text: XJJText("裸子植物", color: UIColor.orange),
+                                                                                 deep: 2,
+                                                                                 children: [
+                                                                                    
+                                                                                 ],
+                                                                                 isSelect: false),
+                                                                    XJJAlertTree(tree: 10,
+                                                                                 parentId: 2,
+                                                                                 text: XJJText("苔藓植物", color: UIColor.orange),
+                                                                                 deep: 2,
+                                                                                 children: [
+                                                                                    
+                                                                                 ],
+                                                                                 isSelect: false),
+                                                                    XJJAlertTree(tree: 11,
+                                                                                 parentId: 2,
+                                                                                 text: XJJText("蕨类植物", color: UIColor.orange),
+                                                                                 deep: 2,
+                                                                                 children: [
+                                                                                    
+                                                                                 ],
+                                                                                 isSelect: false),
+                                                                    XJJAlertTree(tree: 12,
+                                                                                 parentId: 2,
+                                                                                 text: XJJText("藻类植物", color: UIColor.orange),
+                                                                                 deep: 2,
+                                                                                 children: [
+                                                                                    
+                                                                                 ],
+                                                                                 isSelect: false),
+                                                                 ],
+                                                                 isSelect: false)
+                                                 ],
+                                                 isSelect: false)
+                                  ],
+                                  message: XJJText("这是一个树形结构！！"))
+            { items in
+                print("我选择 - ", items.map { $0.text?.text ?? "" }.joined(separator: ","))
             }
         case "底部系统Sheet":
             XJJAlert.sheet(on: self,

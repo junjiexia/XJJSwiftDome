@@ -43,7 +43,8 @@ class XJJImages {
     static let open: UIImage? = UIImage.subtract
     static let close: UIImage? = UIImage.add
     static let check: UIImage? = UIImage.check
-    static let noCheck: UIImage? = UIImage.noCheck
+    static let checkWithBox: UIImage? = UIImage.checkWithBox
+    static let noCheckWithBox: UIImage? = UIImage.noCheckWithBox
 }
 
 //MARK: - 电池图片

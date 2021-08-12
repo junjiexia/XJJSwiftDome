@@ -457,6 +457,30 @@ extension UIButton {
             break
         }
     }
+    
+    func setText(select text: XJJText?) {
+        switch text?.type {
+        case .text:
+            self.setAttributedTitle(nil, for: .selected)
+            self.setTitle(text?.text, for: .selected)
+            self.setTitleColor(text?.color, for: .selected)
+            self.titleLabel?.font = text?.font
+        case .range:
+            self.setTitle("", for: .selected)
+            self.setAttributedTitle(text?.rangeAttr, for: .selected)
+        case .designated:
+            self.setTitle("", for: .selected)
+            self.setAttributedTitle(text?.designatedAttr, for: .selected)
+        case .random:
+            self.setTitle("", for: .selected)
+            self.setAttributedTitle(text?.randomAttr, for: .selected)
+        case .wholeRandom:
+            self.setTitle("", for: .selected)
+            self.setAttributedTitle(text?.wholeRandomAttr, for: .selected)
+        case .none:
+            break
+        }
+    }
 }
 
 extension UITextField {

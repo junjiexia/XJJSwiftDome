@@ -34,23 +34,27 @@ class XJJAlertItem {
 
 class XJJAlertTree {
     var id: Int = 0
-    var parentId: Int = 0
     var text: XJJText?
     var isOpen: Bool?
     var isSelect: Bool?
-    var deep: Int = 0
     var children: [XJJAlertTree] = []
     
+    var parentId: Int = -1
+    var deep: Int = 0 // 深度记录，不设置也会默认设置
+    
+    init() {}
+    
     // 列表
-    init(list id: Int, text: XJJText, isSelect: Bool? = nil) {
+    init(list id: Int, text: XJJText?, isSelect: Bool? = nil) {
         self.id = id
         self.text = text
         self.isSelect = isSelect
     }
     
     // 树
-    init(tree id: Int, text: XJJText, deep: Int, children: [XJJAlertTree]? = nil, isSelect: Bool? = nil) {
+    init(tree id: Int, parentId: Int, text: XJJText?, deep: Int, children: [XJJAlertTree]? = nil, isSelect: Bool? = nil) {
         self.id = id
+        self.parentId = parentId
         self.text = text
         self.deep = deep
         self.children = children ?? []
@@ -62,20 +66,24 @@ class XJJAlertTree {
 }
 
 class XJJAlert {
-    static var ContentWidth: CGFloat = UIScreen.main.bounds.width / 4 * 3 // 弹框统一整体宽度
-    static var contentX: CGFloat = (UIScreen.main.bounds.width - ContentWidth) / 2 // 弹框统一x
+    static var contentWidth: CGFloat = UIScreen.main.bounds.width / 4 * 3 // 弹框统一整体宽度
+    static var contentX: CGFloat = (UIScreen.main.bounds.width - contentWidth) / 2 // 弹框统一x
     static let lineWidth: CGFloat = 1.5 // 统一线宽
     static let borderH: CGFloat = 16 // 统一水平边距
     static let borderV: CGFloat = 15 // 统一垂直边距
     static let mergeH: CGFloat = 5 // 统一水平间隔
     static let mergeV: CGFloat = 15 // 统一垂直间隔
     static let textHeight: CGFloat = 25 // 统一文字高度
+    static let oneTextWidth: CGFloat = 20 // 单个文字宽度
     static let btnHeight: CGFloat = 40 // 统一按钮高度
     static let textFieldHeight: CGFloat = 35 // 统一输入框高度
     static let textViewHeight: CGFloat = 150 // 统一文本输入框高度
     static let activityIndicatorWidth: CGFloat = 50 // 等待视图的宽度
     static let pickerHeight: CGFloat = 150 // 统一选择器高度
     static let treeIndent: CGFloat = 20 // 树结构展示的缩进
+    static let cellHeight: CGFloat = 44 // cell 高度
+    static let tableMaxHeight: CGFloat = 300 // 统一最大列表高度
+    static let treeHeight: CGFloat = UIScreen.main.bounds.height / 3 * 2 // 树结构固定统一高度
 }
 
 //MARK: - 连续无触发弹框 <Continuous no trigger>

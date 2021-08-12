@@ -29,6 +29,13 @@ class XJJVideoPlayerItem: NSObject {
         }
     }
     
+    deinit {
+        self.item = nil
+        self.xAsset = nil
+        self.removeObservers()
+        XJJVideo_print("XJJVideoPlayerItem deinit !!")
+    }
+    
     private func assetPrepare(assetKeys: [String]? = nil) {
         if self.item != nil {
             self.removeObservers()
@@ -87,9 +94,5 @@ class XJJVideoPlayerItem: NSObject {
         }else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
-    }
-    
-    deinit {
-        self.removeObservers()
     }
 }

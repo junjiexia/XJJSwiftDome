@@ -72,6 +72,11 @@ class XJJVideoAsset: NSObject {
     
     override init() { super.init() }
     
+    deinit {
+        self.asset = nil
+        XJJVideo_print("XJJVideoAsset deinit !!")
+    }
+    
     init(videoSource: XJJVideoSubItem, options: [String : Any]? = nil) {
         super.init()
         guard let urlString = videoSource.urlString else {XJJVideo_print("asset url 为空！"); return}

@@ -14,17 +14,17 @@ extension XJJAlert {
     private static var aiView: XJJActivityIndicatorView?
     
     private static func activityIndicatorSize(text: XJJText? = nil) -> CGSize {
-        var size: CGSize = CGSize(width: XJJAlert.activityIndicatorWidth + XJJAlert.borderH * 2, height: XJJAlert.activityIndicatorWidth + XJJAlert.borderV * 2)
+        var size: CGSize = CGSize(width: activityIndicatorWidth + borderH * 2, height: activityIndicatorWidth + borderV * 2)
         
         if let _text = text {
-            let textMaxWidth: CGFloat = XJJAlert.ContentWidth - XJJAlert.borderH * 2 // 文字最大宽度
+            let textMaxWidth: CGFloat = contentWidth - borderH * 2 // 文字最大宽度
             if _text.size.width > textMaxWidth {
                 let textHeight: CGFloat = _text.textHeight(textMaxWidth)
-                size.width = XJJAlert.ContentWidth
-                size.height += textHeight + XJJAlert.mergeV
+                size.width = contentWidth
+                size.height += textHeight + mergeV
             }else {
-                size.width = max(_text.size.width + XJJAlert.borderH * 2, size.width)
-                size.height += _text.size.height + XJJAlert.mergeV
+                size.width = max(_text.size.width + borderH * 2, size.width)
+                size.height += _text.size.height + mergeV
             }
         }
                 

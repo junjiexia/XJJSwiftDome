@@ -31,6 +31,10 @@ class XJJNewsVideoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func removeFromSuperview() {
+        super.removeFromSuperview()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         self.setupSubviewsLayout()

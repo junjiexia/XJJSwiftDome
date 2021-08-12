@@ -1157,13 +1157,13 @@ extension UIImage {
         // 符号
         let left_point = CGPoint(x: center.x - symbolRadius, y: center.y)
         let right_point = CGPoint(x: center.x + symbolRadius, y: center.y)
-        let top_point = CGPoint(x: center.x, y: center.y + symbolRadius)
-        let bottom_point = CGPoint(x: center.x, y: center.y - symbolRadius)
+        let top_point = CGPoint(x: center.x, y: center.y - symbolRadius)
+        let bottom_point = CGPoint(x: center.x, y: center.y + symbolRadius)
         // 方框
-        let lt_point = CGPoint(x: center.x - boxRadius, y: center.y + boxRadius)
-        let lb_point = CGPoint(x: center.x - boxRadius, y: center.y - boxRadius)
-        let rt_point = CGPoint(x: center.x + boxRadius, y: center.y + boxRadius)
-        let rb_point = CGPoint(x: center.x + boxRadius, y: center.y - boxRadius)
+        let lt_point = CGPoint(x: center.x - boxRadius, y: center.y - boxRadius)
+        let lb_point = CGPoint(x: center.x - boxRadius, y: center.y + boxRadius)
+        let rt_point = CGPoint(x: center.x + boxRadius, y: center.y - boxRadius)
+        let rb_point = CGPoint(x: center.x + boxRadius, y: center.y + boxRadius)
         
         UIGraphicsBeginImageContextWithOptions(_size, false, UIScreen.main.scale)
         
@@ -1203,14 +1203,18 @@ extension UIImage {
         * 勾 √
      */
     public static var check: UIImage? {
-        return drawTick(isCheck: true)
+        return drawTick(isCheck: true, hasBox: false)
     }
-    public static var noCheck: UIImage? {
-        return drawTick(isCheck: false)
+    public static var checkWithBox: UIImage? {
+        return drawTick(isCheck: true, hasBox: true)
+    }
+    public static var noCheckWithBox: UIImage? {
+        return drawTick(isCheck: false, hasBox: true)
     }
     
     // isCheck: 是否标记对号
     public static func drawTick(isCheck: Bool,
+                                hasBox: Bool,
                                 size: CGSize? = nil,
                                 tickColor: UIColor? = nil,
                                 boxColor: UIColor? = nil,
@@ -1225,15 +1229,15 @@ extension UIImage {
         let boxRadius = min_length * 0.35
         
         // 方框
-        let lt_point = CGPoint(x: center.x - boxRadius, y: center.y + boxRadius)
-        let lb_point = CGPoint(x: center.x - boxRadius, y: center.y - boxRadius)
-        let rt_point = CGPoint(x: center.x + boxRadius, y: center.y + boxRadius)
-        let rb_point = CGPoint(x: center.x + boxRadius, y: center.y - boxRadius)
+        let lt_point = CGPoint(x: center.x - boxRadius, y: center.y - boxRadius)
+        let lb_point = CGPoint(x: center.x - boxRadius, y: center.y + boxRadius)
+        let rt_point = CGPoint(x: center.x + boxRadius, y: center.y - boxRadius)
+        let rb_point = CGPoint(x: center.x + boxRadius, y: center.y + boxRadius)
         
         // 符号
         let first_point = CGPoint(x: center.x - boxRadius, y: center.y)
-        let second_point = CGPoint(x: center.x, y: center.y - boxRadius)
-        let third_point = CGPoint(x: center.x + min_length * 0.4, y: center.y + boxRadius)
+        let second_point = CGPoint(x: center.x, y: center.y + boxRadius)
+        let third_point = CGPoint(x: center.x + min_length * 0.4, y: center.y - boxRadius)
         
         UIGraphicsBeginImageContextWithOptions(_size, false, UIScreen.main.scale)
         
@@ -1242,13 +1246,15 @@ extension UIImage {
         context?.setLineWidth(strokeWidth!)
         
         // 方框
-        context?.setStrokeColor(_boxColor)
-        context?.move(to: lt_point)
-        context?.addLine(to: rt_point)
-        context?.addLine(to: rb_point)
-        context?.addLine(to: lb_point)
-        context?.closePath()
-        context?.strokePath()
+        if hasBox {
+            context?.setStrokeColor(_boxColor)
+            context?.move(to: lt_point)
+            context?.addLine(to: rt_point)
+            context?.addLine(to: rb_point)
+            context?.addLine(to: lb_point)
+            context?.closePath()
+            context?.strokePath()
+        }
         
         if isCheck {
             //对号

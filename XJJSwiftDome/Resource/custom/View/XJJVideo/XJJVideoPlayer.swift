@@ -51,6 +51,33 @@ class XJJVideoPlayer: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func removeFromSuperview() {
+        self.close()
+        super.removeFromSuperview()
+    }
+    
+    private func close() {
+        if self.player != nil {
+            self.player.pause()
+            self.player = nil
+        }
+        if self.playerItem != nil {
+            self.playerItem = nil
+        }
+        if self.playerLayer != nil {
+            self.playerLayer.removeFromSuperlayer()
+            self.playerLayer = nil
+        }
+        if self.playerMenu != nil {
+            self.playerMenu.removeFromSuperview()
+            self.playerMenu = nil
+        }
+    }
+    
+    deinit {
+        XJJVideo_print("XJJVideoPlayer deinit !!")
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         self.setupSubviewsLayout()

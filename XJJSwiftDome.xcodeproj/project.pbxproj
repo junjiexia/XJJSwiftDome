@@ -75,6 +75,7 @@
 		F98950E825E0E99900538A29 /* XJJNewsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98950E725E0E99900538A29 /* XJJNewsContentView.swift */; };
 		F98950EE25E0EB6F00538A29 /* XJJNewsTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98950ED25E0EB6F00538A29 /* XJJNewsTitleCell.swift */; };
 		F98950F325E0F95400538A29 /* XJJNewsTitleCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98950F225E0F95400538A29 /* XJJNewsTitleCellItem.swift */; };
+		F990213B26C2306600ECABDD /* XJJAlert+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990213A26C2306600ECABDD /* XJJAlert+Table.swift */; };
 		F9985DFE262D20620033BF42 /* XJJVideoProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9985DFD262D20620033BF42 /* XJJVideoProgressBar.swift */; };
 		F99F4162267345FE00278741 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99F4161267345FE00278741 /* UIViewController+Extension.swift */; };
 		F9A53B642616C5320019824A /* XJJVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A53B632616C5320019824A /* XJJVideoPlayer.swift */; };
@@ -217,6 +218,7 @@
 		F98950E725E0E99900538A29 /* XJJNewsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsContentView.swift; sourceTree = "<group>"; };
 		F98950ED25E0EB6F00538A29 /* XJJNewsTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsTitleCell.swift; sourceTree = "<group>"; };
 		F98950F225E0F95400538A29 /* XJJNewsTitleCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJNewsTitleCellItem.swift; sourceTree = "<group>"; };
+		F990213A26C2306600ECABDD /* XJJAlert+Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XJJAlert+Table.swift"; sourceTree = "<group>"; };
 		F9985DFD262D20620033BF42 /* XJJVideoProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoProgressBar.swift; sourceTree = "<group>"; };
 		F99F4161267345FE00278741 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		F9A53B632616C5320019824A /* XJJVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoPlayer.swift; sourceTree = "<group>"; };
@@ -799,6 +801,7 @@
 				F901ECC126B289E7009112C3 /* XJJAlert+Prompt.swift */,
 				F927E03B26BB9731001DA586 /* XJJAlert+ActivityIndicator.swift */,
 				F927E03F26BBD0E0001DA586 /* XJJAlert+Picker.swift */,
+				F990213A26C2306600ECABDD /* XJJAlert+Table.swift */,
 				F9EA8AC925E651B500FE563B /* XJJAlert+Sheet.swift */,
 			);
 			path = XJJAlert;
@@ -1044,6 +1047,7 @@
 				F930DAA625E8A11F007459FC /* XJJNewsItem.swift in Sources */,
 				F9D69168260B2CAA00089B8F /* XJJMMSConfig.swift in Sources */,
 				F98950F325E0F95400538A29 /* XJJNewsTitleCellItem.swift in Sources */,
+				F990213B26C2306600ECABDD /* XJJAlert+Table.swift in Sources */,
 				F9A77B5A25F21CB900142266 /* XJJFTPServer.swift in Sources */,
 				F9BAF46C25E3648000A16B47 /* XJJNewsContentCell.swift in Sources */,
 				F9BAF46625E3622900A16B47 /* UIColor+Extension.swift in Sources */,

@@ -45,7 +45,7 @@ class XJJRHLabel: UIView {
     }
     
     deinit {
-        print("XJJRHLabel deinit")
+        //print("XJJRHLabel deinit")
     }
     
     private var label: UILabel!
