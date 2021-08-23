@@ -20,6 +20,7 @@
 		F927E03C26BB9731001DA586 /* XJJAlert+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F927E03B26BB9731001DA586 /* XJJAlert+ActivityIndicator.swift */; };
 		F927E03E26BBBF75001DA586 /* XJJAlertPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F927E03D26BBBF75001DA586 /* XJJAlertPickerView.swift */; };
 		F927E04026BBD0E0001DA586 /* XJJAlert+Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F927E03F26BBD0E0001DA586 /* XJJAlert+Picker.swift */; };
+		F92CAEC426C60FC2002F56B3 /* XJJSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92CAEC326C60FC2002F56B3 /* XJJSliderView.swift */; };
 		F92DDB3C25CD2D0C00B390FE /* XJJTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB3B25CD2D0C00B390FE /* XJJTabBarController.swift */; };
 		F92DDB4125CD2EC400B390FE /* XJJTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB4025CD2EC400B390FE /* XJJTimer.swift */; };
 		F92DDB4825CD34C200B390FE /* XJJTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92DDB4725CD34C200B390FE /* XJJTimerViewController.swift */; };
@@ -91,6 +92,11 @@
 		F9BAF48325E3967C00A16B47 /* XJJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BAF48225E3967C00A16B47 /* XJJRefresh.swift */; };
 		F9BAF49525E3AF1F00A16B47 /* XJJRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BAF49425E3AF1F00A16B47 /* XJJRefreshControl.swift */; };
 		F9C31F6825E2121C00097909 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C31F6725E2121C00097909 /* Array+Extension.swift */; };
+		F9C3977E26C4C55500ACC3B0 /* XJJDrawingBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3977D26C4C55500ACC3B0 /* XJJDrawingBoardViewController.swift */; };
+		F9C3978126C4CD7700ACC3B0 /* XJJDrawingBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3978026C4CD7700ACC3B0 /* XJJDrawingBoardView.swift */; };
+		F9C3978526C5018900ACC3B0 /* XJJDrawingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3978426C5018900ACC3B0 /* XJJDrawingImageView.swift */; };
+		F9C3978726C501CB00ACC3B0 /* XJJDrawingToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3978626C501CB00ACC3B0 /* XJJDrawingToolView.swift */; };
+		F9C3978A26C5289400ACC3B0 /* XJJProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3978926C5289400ACC3B0 /* XJJProgressView.swift */; };
 		F9D54EC62626D036008BEE30 /* XJJVideoPlayerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D54EC52626D036008BEE30 /* XJJVideoPlayerMenu.swift */; };
 		F9D54ECB2626D289008BEE30 /* XJJVideoPlayerMenuTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D54ECA2626D289008BEE30 /* XJJVideoPlayerMenuTopView.swift */; };
 		F9D54ED02626D2B1008BEE30 /* XJJVideoPlayerMenuLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D54ECF2626D2B1008BEE30 /* XJJVideoPlayerMenuLeftView.swift */; };
@@ -157,6 +163,7 @@
 		F927E03B26BB9731001DA586 /* XJJAlert+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XJJAlert+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		F927E03D26BBBF75001DA586 /* XJJAlertPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJAlertPickerView.swift; sourceTree = "<group>"; };
 		F927E03F26BBD0E0001DA586 /* XJJAlert+Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XJJAlert+Picker.swift"; sourceTree = "<group>"; };
+		F92CAEC326C60FC2002F56B3 /* XJJSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJSliderView.swift; sourceTree = "<group>"; };
 		F92DDB3B25CD2D0C00B390FE /* XJJTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTabBarController.swift; sourceTree = "<group>"; };
 		F92DDB4025CD2EC400B390FE /* XJJTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTimer.swift; sourceTree = "<group>"; };
 		F92DDB4725CD34C200B390FE /* XJJTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJTimerViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +242,11 @@
 		F9BAF48225E3967C00A16B47 /* XJJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJRefresh.swift; sourceTree = "<group>"; };
 		F9BAF49425E3AF1F00A16B47 /* XJJRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJRefreshControl.swift; sourceTree = "<group>"; };
 		F9C31F6725E2121C00097909 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		F9C3977D26C4C55500ACC3B0 /* XJJDrawingBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJDrawingBoardViewController.swift; sourceTree = "<group>"; };
+		F9C3978026C4CD7700ACC3B0 /* XJJDrawingBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJDrawingBoardView.swift; sourceTree = "<group>"; };
+		F9C3978426C5018900ACC3B0 /* XJJDrawingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJDrawingImageView.swift; sourceTree = "<group>"; };
+		F9C3978626C501CB00ACC3B0 /* XJJDrawingToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJDrawingToolView.swift; sourceTree = "<group>"; };
+		F9C3978926C5289400ACC3B0 /* XJJProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJProgressView.swift; sourceTree = "<group>"; };
 		F9D54EC52626D036008BEE30 /* XJJVideoPlayerMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoPlayerMenu.swift; sourceTree = "<group>"; };
 		F9D54ECA2626D289008BEE30 /* XJJVideoPlayerMenuTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoPlayerMenuTopView.swift; sourceTree = "<group>"; };
 		F9D54ECF2626D2B1008BEE30 /* XJJVideoPlayerMenuLeftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XJJVideoPlayerMenuLeftView.swift; sourceTree = "<group>"; };
@@ -506,6 +518,7 @@
 				F969619325C7FEEB00CE461B /* ViewController.swift */,
 				F9E8B8BC25CBE859002E2664 /* TestViewController.swift */,
 				F96961CB25C8003C00CE461B /* XJJConfig.swift */,
+				F9C3977C26C4C43900ACC3B0 /* DrawingBoard */,
 				F9DA6C7D26B3B0D100D034D0 /* Alert */,
 				F92DDB4525CD346C00B390FE /* Main */,
 				F969619825C7FEF400CE461B /* Assets.xcassets */,
@@ -628,6 +641,8 @@
 		F96961DE25C8004400CE461B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F9C3978826C5287300ACC3B0 /* XJJProgress */,
+				F9C3977F26C4CD3C00ACC3B0 /* XJJDrawingBoard */,
 				F917ECA126BD396E00B9A7A6 /* XJJLabel */,
 				F9F6ABFD26B7DAAC00EFAF3E /* XJJInputView */,
 				F9F6ABFC26B7DA9300EFAF3E /* XJJNavigation */,
@@ -711,6 +726,33 @@
 				F9FA20B825E4FD9900DC0421 /* XJJLoadMoreControlView.swift */,
 			);
 			path = XJJRefresh;
+			sourceTree = "<group>";
+		};
+		F9C3977C26C4C43900ACC3B0 /* DrawingBoard */ = {
+			isa = PBXGroup;
+			children = (
+				F9C3977D26C4C55500ACC3B0 /* XJJDrawingBoardViewController.swift */,
+			);
+			path = DrawingBoard;
+			sourceTree = "<group>";
+		};
+		F9C3977F26C4CD3C00ACC3B0 /* XJJDrawingBoard */ = {
+			isa = PBXGroup;
+			children = (
+				F9C3978026C4CD7700ACC3B0 /* XJJDrawingBoardView.swift */,
+				F9C3978426C5018900ACC3B0 /* XJJDrawingImageView.swift */,
+				F9C3978626C501CB00ACC3B0 /* XJJDrawingToolView.swift */,
+			);
+			path = XJJDrawingBoard;
+			sourceTree = "<group>";
+		};
+		F9C3978826C5287300ACC3B0 /* XJJProgress */ = {
+			isa = PBXGroup;
+			children = (
+				F9C3978926C5289400ACC3B0 /* XJJProgressView.swift */,
+				F92CAEC326C60FC2002F56B3 /* XJJSliderView.swift */,
+			);
+			path = XJJProgress;
 			sourceTree = "<group>";
 		};
 		F9D54EC32626CFD9008BEE30 /* Source */ = {
@@ -1002,6 +1044,7 @@
 				F9D6915D260B161100089B8F /* XJJStream.swift in Sources */,
 				F930A497262AC01B00710842 /* UIImageView+Extension.swift in Sources */,
 				F98950D325E0BD6000538A29 /* UIDevice+Extension.swift in Sources */,
+				F9C3978A26C5289400ACC3B0 /* XJJProgressView.swift in Sources */,
 				F9D54ED02626D2B1008BEE30 /* XJJVideoPlayerMenuLeftView.swift in Sources */,
 				F937FB7825ECE7160073351E /* XJJNewsVideoView.swift in Sources */,
 				F98950EE25E0EB6F00538A29 /* XJJNewsTitleCell.swift in Sources */,
@@ -1014,9 +1057,12 @@
 				F917ECA326BD39F500B9A7A6 /* XJJRHLabel.swift in Sources */,
 				F9E7A79426BA376D0065B5B2 /* XJJTextView.swift in Sources */,
 				F95CBB5325EDEE63008A758D /* XJJHTTP.swift in Sources */,
+				F9C3978126C4CD7700ACC3B0 /* XJJDrawingBoardView.swift in Sources */,
 				F9BAF48325E3967C00A16B47 /* XJJRefresh.swift in Sources */,
+				F9C3977E26C4C55500ACC3B0 /* XJJDrawingBoardViewController.swift in Sources */,
 				F96961DF25C8004400CE461B /* XJJTheme.swift in Sources */,
 				F9A77B5025F2195900142266 /* XJJFTPClient.swift in Sources */,
+				F9C3978526C5018900ACC3B0 /* XJJDrawingImageView.swift in Sources */,
 				F9985DFE262D20620033BF42 /* XJJVideoProgressBar.swift in Sources */,
 				F927E03C26BB9731001DA586 /* XJJAlert+ActivityIndicator.swift in Sources */,
 				F924CC4A2649335D00D94946 /* XJJScreen.swift in Sources */,
@@ -1035,6 +1081,7 @@
 				F98950C925E0A57E00538A29 /* UITableView+Extension.swift in Sources */,
 				F9D54ECB2626D289008BEE30 /* XJJVideoPlayerMenuTopView.swift in Sources */,
 				F92DDB5025CD391800B390FE /* XJJMainViewController.swift in Sources */,
+				F92CAEC426C60FC2002F56B3 /* XJJSliderView.swift in Sources */,
 				F92DDB6425CD48F300B390FE /* UILabel+Extension.swift in Sources */,
 				F98950E825E0E99900538A29 /* XJJNewsContentView.swift in Sources */,
 				F937FB8E25ECF08C0073351E /* XJJVideoItem.swift in Sources */,
@@ -1042,6 +1089,7 @@
 				F9BAF49525E3AF1F00A16B47 /* XJJRefreshControl.swift in Sources */,
 				F9E8B8C725CBF752002E2664 /* UIView+Extension.swift in Sources */,
 				F950216C265E316800EDD434 /* XJJTools.swift in Sources */,
+				F9C3978726C501CB00ACC3B0 /* XJJDrawingToolView.swift in Sources */,
 				F9EA8ABF25E64DEB00FE563B /* XJJTheme+Normal.swift in Sources */,
 				F9E8B8C225CBEDE0002E2664 /* XJJNavigationTitleView.swift in Sources */,
 				F930DAA625E8A11F007459FC /* XJJNewsItem.swift in Sources */,

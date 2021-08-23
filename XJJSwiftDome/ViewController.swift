@@ -34,8 +34,9 @@ class ViewController: XJJBaseViewController {
         self.page = .first
         
         if let text = XJJThemeConfig.share.theme.page_text[.randomText] {
-            self.tableData.append(TableInfo(text: text.newText("打开主页"), id: "主页"))
+            self.tableData.append(TableInfo(text: text.newText("TabBar主页"), id: "主页"))
             self.tableData.append(TableInfo(text: text.newText("弹框示例"), id: "弹框"))
+            self.tableData.append(TableInfo(text: text.newText("绘画板"), id: "绘画板"))
             self.tableData.append(TableInfo(text: text.newText("切换主题"), id: "主题"))
         }
     }
@@ -100,6 +101,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             self.present(vc, animated: true, completion: nil)
         case "弹框":
             let vc = XJJAlertListViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        case "绘画板":
+            let vc = XJJDrawingBoardViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         case "主题":
             XJJAlert.sheet(on: self, XJJText("选择主题"), nil, [XJJText("默认主题"), XJJText("新年主题")]) {[weak self] (index, text) in

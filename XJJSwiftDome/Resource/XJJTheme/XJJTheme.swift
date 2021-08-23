@@ -20,6 +20,7 @@ enum XJJPage: String { // 页面  页面key = 页面名称
     case my = "我的"
     case test = "我爱你520"
     case alertList = "弹框示例列表"
+    case drawingBoard = "绘画板"
 }
 
 enum XJJPageText: String { // 页面文字格式 文字格式key = 文字格式说明
